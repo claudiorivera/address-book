@@ -10,10 +10,6 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Example {
-    id String @id @default(cuid())
-}
-
 // Necessary for Next auth
 model Account {
     id                String  @id @default(cuid())
@@ -57,4 +53,18 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+model Contact {
+    id          String  @id @default(cuid())
+    firstName   String?
+    lastName    String?
+    email       String?
+    phoneNumber String?
+    address1    String?
+    address2    String?
+    city        String?
+    state       String?
+    zip         String?
+    notes       String? @db.Text
 }
