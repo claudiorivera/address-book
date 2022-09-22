@@ -11,7 +11,7 @@ specifiers:
   '@trpc/react': 10.0.0-proxy-alpha.70
   '@trpc/server': 10.0.0-proxy-alpha.70
   '@types/node': 18.0.0
-  '@types/react': 18.0.14
+  '@types/react': 18.0.20
   '@types/react-dom': 18.0.5
   '@typescript-eslint/eslint-plugin': 5.37.0
   '@typescript-eslint/parser': 5.33.0
@@ -59,7 +59,7 @@ dependencies:
 devDependencies:
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.1.8
   '@types/node': 18.0.0
-  '@types/react': 18.0.14
+  '@types/react': 18.0.20
   '@types/react-dom': 18.0.5
   '@typescript-eslint/eslint-plugin': 5.37.0_yy5c4q6zhpajzhorvwhnwvctfe
   '@typescript-eslint/parser': 5.33.0_4rv7y5c6xz3vfxwhbrcxxi73bq
@@ -426,11 +426,11 @@ packages:
   /@types/react-dom/18.0.5:
     resolution: {integrity: sha512-OWPWTUrY/NIrjsAPkAk1wW9LZeIjSvkXRhclsFO8CZcZGCOg2G0YZy4ft+rOyYxy8B7ui5iZzi9OkDebZ7/QSA==}
     dependencies:
-      '@types/react': 18.0.14
+      '@types/react': 18.0.20
     dev: true
 
-  /@types/react/18.0.14:
-    resolution: {integrity: sha512-x4gGuASSiWmo0xjDLpm5mPb52syZHJx02VKbqUKdLmKtAwIh63XClGsiTI1K6DO5q7ox4xAsQrU+Gl3+gGXF9Q==}
+  /@types/react/18.0.20:
+    resolution: {integrity: sha512-MWul1teSPxujEHVwZl4a5HxQ9vVNsjTchVA+xRqv/VYGCuKGAU6UhfrTdF5aBefwD1BHUD8i/zq+O/vyCm/FrA==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
