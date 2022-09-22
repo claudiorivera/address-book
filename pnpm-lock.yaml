@@ -12,7 +12,7 @@ specifiers:
   '@trpc/server': 10.0.0-proxy-alpha.70
   '@types/node': 18.0.0
   '@types/react': 18.0.20
-  '@types/react-dom': 18.0.5
+  '@types/react-dom': 18.0.6
   '@typescript-eslint/eslint-plugin': 5.37.0
   '@typescript-eslint/parser': 5.33.0
   autoprefixer: 10.4.11
@@ -60,7 +60,7 @@ devDependencies:
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.1.8
   '@types/node': 18.0.0
   '@types/react': 18.0.20
-  '@types/react-dom': 18.0.5
+  '@types/react-dom': 18.0.6
   '@typescript-eslint/eslint-plugin': 5.37.0_yy5c4q6zhpajzhorvwhnwvctfe
   '@typescript-eslint/parser': 5.33.0_4rv7y5c6xz3vfxwhbrcxxi73bq
   autoprefixer: 10.4.11_postcss@8.4.16
@@ -423,8 +423,8 @@ packages:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: true
 
-  /@types/react-dom/18.0.5:
-    resolution: {integrity: sha512-OWPWTUrY/NIrjsAPkAk1wW9LZeIjSvkXRhclsFO8CZcZGCOg2G0YZy4ft+rOyYxy8B7ui5iZzi9OkDebZ7/QSA==}
+  /@types/react-dom/18.0.6:
+    resolution: {integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==}
     dependencies:
       '@types/react': 18.0.20
     dev: true
