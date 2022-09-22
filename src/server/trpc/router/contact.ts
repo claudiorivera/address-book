@@ -1,8 +1,9 @@
-import { t } from "../trpc";
-import { z } from "zod";
 import { Prisma } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
+import { z } from "zod";
+
 import { createContactValidationSchema } from "../../common/contact/createContactValidationSchema";
+import { t } from "../trpc";
 
 const defaultContactSelect = Prisma.validator<Prisma.ContactSelect>()({
   id: true,
