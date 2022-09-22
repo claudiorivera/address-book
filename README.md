@@ -1,6 +1,6 @@
 # address-book
 
-Address Book lets you add and manage your contacts.
+It's an address book! It lets you add and manage your contacts.
 
 ## Technologies Used
 
@@ -11,3 +11,15 @@ Address Book lets you add and manage your contacts.
   - Tailwind
   - Prisma
   - NextAuth.js
+
+## Configure
+
+- `cp .env.example .env` and update values
+
+## Install
+
+- `pnpm i`
+
+## Develop
+
+- `pnpm dev`
