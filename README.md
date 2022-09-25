@@ -12,6 +12,16 @@ It's an address book! It lets you add and manage your contacts.
   - Prisma
   - NextAuth.js
 
+## Prerequisites
+
+- Postgres
+- pnpm
+- Docker (optional)
+
+## Docker (Optional)
+
+- `docker compose up -d` to start the database
+
 ## Configure
 
 - `cp .env.example .env` and update values
