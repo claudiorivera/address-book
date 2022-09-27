@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import { ContactList } from "../components/ContactList";
 import { Meta } from "../components/Meta";
 import { Search } from "../components/Search";
+import { collateContacts } from "../utils/collateContacts";
 import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
@@ -17,7 +18,9 @@ const Home: NextPage = () => {
 
         <Search />
 
-        {contacts && <ContactList contacts={contacts} />}
+        {contacts && (
+          <ContactList collatedContacts={collateContacts(contacts)} />
+        )}
       </main>
     </>
   );
