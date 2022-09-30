@@ -5,17 +5,17 @@ type Options = {
 };
 
 export const collateContacts = (contacts: Contact[], options?: Options) => {
-  return contacts.reduce((obj, contact) => {
+  return contacts.reduce((unsortedObject, contact) => {
     const key = contact.firstName?.charAt(0).toUpperCase() || "#";
 
-    if (!obj[key]) {
-      obj[key] = [];
+    if (!unsortedObject[key]) {
+      unsortedObject[key] = [];
     }
 
-    obj[key]?.push(contact);
+    unsortedObject[key]?.push(contact);
 
     if (!!options?.sortKey) {
-      obj[key]?.sort(
+      unsortedObject[key]?.sort(
         (a, b) =>
           a[options.sortKey as keyof Contact]?.localeCompare(
             b[options.sortKey as keyof Contact] || ""
@@ -23,6 +23,15 @@ export const collateContacts = (contacts: Contact[], options?: Options) => {
       );
     }
 
-    return obj;
-  }, {} as Record<string, Contact[]>);
+    return (
+      Object.keys(unsortedObject)
+        // sort keys alphabetically with numbers last
+        .sort((a, b) => (a === "#" ? 1 : b === "#" ? -1 : a.localeCompare(b)))
+        .reduce((sortedObject, key) => {
+          sortedObject[key] = unsortedObject[key];
+
+          return sortedObject;
+        }, {} as Record<string, Contact[] | undefined>)
+    );
+  }, {} as Record<string, Contact[] | undefined>);
 };

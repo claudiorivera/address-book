@@ -18,6 +18,7 @@ specifiers:
   '@typescript-eslint/parser': 5.38.1
   autoprefixer: 10.4.12
   classnames: 2.3.2
+  cuid: 2.1.8
   daisyui: 2.31.0
   eslint: 8.24.0
   eslint-config-next: 12.2.5
@@ -68,6 +69,7 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 5.38.1_c7qepppml3d4ahu5cnfwqe6ltq
   '@typescript-eslint/parser': 5.38.1_ypn2ylkkyfa5i233caldtndbqa
   autoprefixer: 10.4.12_postcss@8.4.16
+  cuid: 2.1.8
   eslint: 8.24.0
   eslint-config-next: 12.2.5_ypn2ylkkyfa5i233caldtndbqa
   eslint-config-prettier: 8.5.0_eslint@8.24.0
@@ -963,6 +965,10 @@ packages:
 
   /csstype/3.1.1:
     resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
+    dev: true
+
+  /cuid/2.1.8:
+    resolution: {integrity: sha512-xiEMER6E7TlTPnDxrM4eRiC6TRgjNX9xzEZ5U/Se2YJKr7Mq4pJn/2XEHjl3STcSh96GmkHPcBXLES8M29wyyg==}
     dev: true
 
   /daisyui/2.31.0_2roj5ve2z6s5oxi3qmvnsoboqa:

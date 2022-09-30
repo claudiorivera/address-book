@@ -38,6 +38,7 @@
     "@typescript-eslint/eslint-plugin": "5.38.1",
     "@typescript-eslint/parser": "5.38.1",
     "autoprefixer": "10.4.12",
+    "cuid": "2.1.8",
     "eslint": "8.24.0",
     "eslint-config-next": "12.2.5",
     "eslint-config-prettier": "8.5.0",

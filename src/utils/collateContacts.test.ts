@@ -1,93 +1,52 @@
-import { describe, expect, it } from "vitest";
+import { faker } from "@faker-js/faker";
+import { Contact } from "@prisma/client";
+import cuid from "cuid";
+import { beforeEach, describe, expect, it } from "vitest";
 
 import { collateContacts } from "./collateContacts";
 
-const contacts = [
-  {
-    id: "a1",
-    firstName: "abby",
-    lastName: "Zang",
-    email: "",
-    phoneNumber: "",
-    address1: "",
-    address2: "",
-    city: "",
-    state: "",
-    zip: "",
-    notes: "",
-  },
-  {
-    id: "a2",
-    firstName: "Alice",
-    lastName: "Anderson",
-    email: "",
-    phoneNumber: "",
-    address1: "",
-    address2: "",
-    city: "",
-    state: "",
-    zip: "",
-    notes: "",
-  },
-  {
-    id: "#1",
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "555-555-5555",
-    address1: "",
-    address2: "",
-    city: "",
-    state: "",
-    zip: "",
-    notes: "",
-  },
-  {
-    id: "#2",
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "222-333-4444",
-    address1: "",
-    address2: "",
-    city: "",
-    state: "",
-    zip: "",
-    notes: "",
-  },
-];
+const contacts: Contact[] = [];
+
+beforeEach(async () => {
+  // Clear mocks and add some testing data after before each test run
+  contacts.length = 0;
+  for (let i = 0; i < 10; i++) {
+    const isOften = Math.random() > 0.2;
+    const isRarely = Math.random() > 0.75;
+
+    contacts.push({
+      id: cuid(),
+      firstName: isOften ? faker.name.firstName() : "",
+      lastName: isOften ? faker.name.lastName() : "",
+      phoneNumber: faker.phone.number("+1##########"),
+      email: isRarely ? faker.internet.email() : "",
+      address1: isRarely ? faker.address.streetAddress() : "",
+      address2: isRarely ? faker.address.secondaryAddress() : "",
+      city: isRarely ? faker.address.city() : "",
+      state: isRarely ? faker.address.state() : "",
+      zip: isRarely ? faker.address.zipCode() : "",
+      notes: isRarely ? faker.lorem.paragraph() : "",
+    });
+  }
+});
 
 describe("collateContacts", () => {
-  it("should return an object with 2 keys", () => {
-    expect(collateContacts(contacts)).toHaveProperty("A");
+  it("should return an object with a # key", () => {
     expect(collateContacts(contacts)).toHaveProperty("#");
-    expect(collateContacts(contacts)).not.toHaveProperty("B");
   });
 
-  it("should return the correct number of contacts for a given key", () => {
-    expect(collateContacts(contacts).A).toHaveLength(2);
-    expect(collateContacts(contacts)["#"]).toHaveLength(2);
+  it("should return an object with alpha keys first and numbers last", () => {
+    const keys = Object.keys(collateContacts(contacts));
+
+    expect(keys[0]).toMatch(/^[A-Z]$/);
+    expect(keys[keys.length - 1]).toBe("#");
   });
 
-  it("should sort by last name", () => {
-    const sortedContacts = collateContacts(contacts, {
-      sortKey: "lastName",
-    });
+  it("should return an object with alpha keys in alphabetical order", () => {
+    const keys = Object.keys(collateContacts(contacts));
 
-    expect(sortedContacts.A && sortedContacts.A[0]?.firstName).toBe("Alice");
-    expect(sortedContacts.A && sortedContacts.A[1]?.firstName).toBe("abby");
-  });
+    const alphaKeys = keys.filter((key) => key !== "#");
 
-  it("should sort by phone number", () => {
-    const sortedContacts = collateContacts(contacts, {
-      sortKey: "phoneNumber",
-    });
-
-    expect(sortedContacts["#"] && sortedContacts["#"][0]?.phoneNumber).toBe(
-      "222-333-4444"
-    );
-    expect(sortedContacts["#"] && sortedContacts["#"][1]?.phoneNumber).toBe(
-      "555-555-5555"
-    );
+    expect(alphaKeys).toEqual(alphaKeys.sort());
   });
 });

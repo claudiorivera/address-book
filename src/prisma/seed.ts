@@ -3,20 +3,26 @@ const prisma = new PrismaClient();
 import { faker } from "@faker-js/faker";
 
 async function main() {
-  // create 20 users
+  // delete all contacts
+  await prisma.contact.deleteMany();
+
+  // create 20 contacts
   for (let i = 0; i < 20; i++) {
+    const isOftenProvided = Math.random() > 0.2;
+    const isRarelyProvided = Math.random() > 0.75;
+
     await prisma.contact.create({
       data: {
-        firstName: faker.name.firstName(),
-        lastName: faker.name.lastName(),
-        email: faker.internet.email(),
-        phoneNumber: faker.phone.number("+1##########"),
-        address1: faker.address.streetAddress(),
-        address2: faker.address.secondaryAddress(),
-        city: faker.address.city(),
-        state: faker.address.state(),
-        zip: faker.address.zipCode(),
-        notes: faker.lorem.paragraph(),
+        firstName: isOftenProvided ? faker.name.firstName() : "",
+        lastName: isOftenProvided ? faker.name.lastName() : "",
+        phoneNumber: faker.phone.number("+1##########"), // assume always provided, for now
+        email: isRarelyProvided ? faker.internet.email() : "",
+        address1: isRarelyProvided ? faker.address.streetAddress() : "",
+        address2: isRarelyProvided ? faker.address.secondaryAddress() : "",
+        city: isRarelyProvided ? faker.address.city() : "",
+        state: isRarelyProvided ? faker.address.state() : "",
+        zip: isRarelyProvided ? faker.address.zipCode() : "",
+        notes: isRarelyProvided ? faker.lorem.paragraph() : "",
       },
     });
   }
