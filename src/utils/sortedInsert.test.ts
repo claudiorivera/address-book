@@ -31,25 +31,25 @@ describe("sortedInsert", () => {
 		expect(result5).toEqual([1]);
 	});
 
-	// it("should sort objects by a given sort key", () => {
-	// 	const array1 = [{ id: 1 }, { id: 3 }];
-	// 	const result1 = sortedInsert(array1, { id: 2 }, "id");
-	// 	expect(result1).toEqual([{ id: 1 }, { id: 2 }, { id: 3 }]);
+	it("should sort objects by a given sort key", () => {
+		const array1 = [{ id: 1 }, { id: 3 }];
+		const result1 = sortedInsert(array1, { id: 2 }, "id");
+		expect(result1).toEqual([{ id: 1 }, { id: 2 }, { id: 3 }]);
 
-	// 	const array2 = [{ id: 4 }, { id: 6 }, { id: 7 }];
-	// 	const result2 = sortedInsert(array2, { id: 5 }, "id");
-	// 	expect(result2).toEqual([{ id: 4 }, { id: 5 }, { id: 6 }, { id: 7 }]);
+		const array2 = [{ id: 4 }, { id: 6 }, { id: 7 }];
+		const result2 = sortedInsert(array2, { id: 5 }, "id");
+		expect(result2).toEqual([{ id: 4 }, { id: 5 }, { id: 6 }, { id: 7 }]);
 
-	// 	const array3 = [{ id: 1 }, { id: 2 }];
-	// 	const result3 = sortedInsert(array3, { id: 0 }, "id");
-	// 	expect(result3).toEqual([{ id: 0 }, { id: 1 }, { id: 2 }]);
+		const array3 = [{ id: 1 }, { id: 2 }];
+		const result3 = sortedInsert(array3, { id: 0 }, "id");
+		expect(result3).toEqual([{ id: 0 }, { id: 1 }, { id: 2 }]);
 
-	// 	const array4 = [{ id: 1 }, { id: 2 }];
-	// 	const result4 = sortedInsert(array4, { id: 3 }, "id");
-	// 	expect(result4).toEqual([{ id: 1 }, { id: 2 }, { id: 3 }]);
+		const array4 = [{ id: 1 }, { id: 2 }];
+		const result4 = sortedInsert(array4, { id: 3 }, "id");
+		expect(result4).toEqual([{ id: 1 }, { id: 2 }, { id: 3 }]);
 
-	// 	const array5: Array<{ id: number }> = [];
-	// 	const result5 = sortedInsert(array5, { id: 1 }, "id");
-	// 	expect(result5).toEqual([{ id: 1 }]);
-	// });
+		const array5: Array<{ id: number }> = [];
+		const result5 = sortedInsert(array5, { id: 1 }, "id");
+		expect(result5).toEqual([{ id: 1 }]);
+	});
 });

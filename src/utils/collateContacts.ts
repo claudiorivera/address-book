@@ -1,7 +1,9 @@
 import { Contact } from "@prisma/client";
 
+import { sortedInsert } from "./sortedInsert";
+
 type Options = {
-	sortKey?: "firstName" | "lastName";
+	sortKey?: keyof Contact;
 };
 
 export const collateContacts = (contacts: Contact[], options?: Options) => {
@@ -12,12 +14,26 @@ export const collateContacts = (contacts: Contact[], options?: Options) => {
 			contact[options?.sortKey || "firstName"]?.toUpperCase().slice(0, 1) ||
 			"#";
 
-		if (!collatedContacts.has(key)) {
-			collatedContacts.set(key, [contact]);
+		const contactsArrayForCurrentKey = collatedContacts.get(key);
+
+		if (contactsArrayForCurrentKey) {
+			const sortedArray = sortedInsert(
+				contactsArrayForCurrentKey,
+				contact,
+				options?.sortKey,
+			);
+
+			collatedContacts.set(key, sortedArray);
 		} else {
-			collatedContacts.get(key)?.push(contact);
+			collatedContacts.set(key, [contact]);
 		}
 	});
 
-	return collatedContacts;
+	return new Map(
+		[...collatedContacts.entries()].sort((a, b) => {
+			if (a[0] === "#") return 1;
+			if (b[0] === "#") return -1;
+			return a[0].localeCompare(b[0]);
+		}),
+	);
 };

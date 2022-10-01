@@ -6,13 +6,13 @@ import { ContactListSection } from "./ContactListSection";
 type Contact = inferProcedureOutput<AppRouter["contact"]["getById"]>;
 
 type Props = {
-	collatedContacts: Record<string, Contact[]>;
+	collatedContacts: Map<string, Contact[]>;
 };
 
 export const ContactList = ({ collatedContacts }: Props) => {
 	return (
 		<>
-			{Object.entries(collatedContacts).map(([label, contacts]) => (
+			{Array.from(collatedContacts.entries()).map(([label, contacts]) => (
 				<ContactListSection key={label} label={label} contacts={contacts} />
 			))}
 		</>
