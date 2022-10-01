@@ -45,7 +45,7 @@
 		"eslint-config-prettier": "8.5.0",
 		"eslint-plugin-simple-import-sort": "8.0.0",
 		"eslint-plugin-unused-imports": "2.0.0",
-		"postcss": "8.4.16",
+		"postcss": "8.4.17",
 		"prettier": "2.7.1",
 		"prettier-plugin-tailwindcss": "0.1.13",
 		"prisma": "4.4.0",
