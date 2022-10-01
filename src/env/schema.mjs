@@ -12,6 +12,7 @@ export const serverSchema = z.object({
 	NEXTAUTH_SECRET: z.string(),
 	NEXTAUTH_URL: z.string().url().optional(),
 	NODE_ENV: z.enum(["development", "test", "production"]),
+	CRON_SECRET: z.string(),
 });
 
 /**
