@@ -4,8 +4,8 @@ import { authRouter } from "./auth";
 import { contactRouter } from "./contact";
 
 export const appRouter = t.router({
-  auth: authRouter,
-  contact: contactRouter,
+	auth: authRouter,
+	contact: contactRouter,
 });
 
 // export type definition of API

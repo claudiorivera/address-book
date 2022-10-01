@@ -7,11 +7,11 @@ import { SessionProvider } from "next-auth/react";
 import { trpc } from "../utils/trpc";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
-  return (
-    <SessionProvider session={pageProps.session}>
-      <Component {...pageProps} />
-    </SessionProvider>
-  );
+	return (
+		<SessionProvider session={pageProps.session}>
+			<Component {...pageProps} />
+		</SessionProvider>
+	);
 };
 
 export default trpc.withTRPC(MyApp);

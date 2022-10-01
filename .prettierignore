@@ -1,0 +1,7 @@
+.next
+build
+dist
+out
+pnpm-lock.yaml
+yarn.lock
+package-lock.json

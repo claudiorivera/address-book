@@ -7,23 +7,23 @@ import { collateContacts } from "../utils/collateContacts";
 import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
-  const { data: contacts } = trpc.contact.getAll.useQuery();
+	const { data: contacts } = trpc.contact.getAll.useQuery();
 
-  return (
-    <>
-      <Meta />
+	return (
+		<>
+			<Meta />
 
-      <main className="container mx-auto">
-        <h1 className="p-4 text-xl font-bold">Address Book</h1>
+			<main className="container mx-auto">
+				<h1 className="p-4 text-xl font-bold">Address Book</h1>
 
-        <Search />
+				<Search />
 
-        {contacts && (
-          <ContactList collatedContacts={collateContacts(contacts)} />
-        )}
-      </main>
-    </>
-  );
+				{contacts && (
+					<ContactList collatedContacts={collateContacts(contacts)} />
+				)}
+			</main>
+		</>
+	);
 };
 
 export default Home;
