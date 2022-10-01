@@ -36,15 +36,14 @@ const handler: NextApiHandler = async (req, res) => {
 						},
 					});
 				}
-				res.status(204).end();
-				break;
+				return res.status(204).end();
 			default:
 				res.setHeader("Allow", ["POST"]);
-				res.status(405).end(`Method ${method} Not Allowed`);
+				return res.status(405).end(`Method ${method} Not Allowed`);
 		}
 	}
 
-	res.status(401).end("Unauthorized");
+	return res.status(401).end("Unauthorized");
 };
 
 export default handler;
