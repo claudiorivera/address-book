@@ -1,4 +1,7 @@
 import { Contact } from "@prisma/client";
+import Link from "next/link";
+
+import { ContactListRow } from "./ContactListRow";
 
 type Props = {
 	label: string;
@@ -15,18 +18,11 @@ export const ContactListSection = ({ label, contacts }: Props) => {
 				{contacts.map(
 					(contact) =>
 						contact && (
-							<div key={contact.id} className="flex items-center gap-4 p-4">
-								<div className="h-10" />
-								<strong className="text-sm font-medium text-slate-900 dark:text-slate-200">
-									{contact.firstName ? (
-										<span>
-											{contact.firstName} {contact.lastName}
-										</span>
-									) : (
-										<span>{contact.phoneNumber}</span>
-									)}
-								</strong>
-							</div>
+							<Link key={contact.id} href={`/contacts/${contact.id}`}>
+								<a>
+									<ContactListRow contact={contact} />
+								</a>
+							</Link>
 						),
 				)}
 			</div>
