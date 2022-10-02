@@ -25,6 +25,27 @@ export const contactRouter = t.router({
 			select: defaultContactSelect,
 		});
 	}),
+	getByQuery: t.procedure
+		.input(z.object({ query: z.string() }))
+		.query(({ ctx, input }) => {
+			return ctx.prisma.contact.findMany({
+				where: {
+					OR: [
+						{ firstName: { contains: input.query, mode: "insensitive" } },
+						{ lastName: { contains: input.query, mode: "insensitive" } },
+						{ email: { contains: input.query, mode: "insensitive" } },
+						{ phoneNumber: { contains: input.query, mode: "insensitive" } },
+						{ address1: { contains: input.query, mode: "insensitive" } },
+						{ address2: { contains: input.query, mode: "insensitive" } },
+						{ city: { contains: input.query, mode: "insensitive" } },
+						{ state: { contains: input.query, mode: "insensitive" } },
+						{ zip: { contains: input.query, mode: "insensitive" } },
+						{ notes: { contains: input.query, mode: "insensitive" } },
+					],
+				},
+				select: defaultContactSelect,
+			});
+		}),
 	getById: t.procedure
 		.input(z.object({ id: z.string().cuid() }))
 		.query(({ input, ctx }) => {

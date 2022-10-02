@@ -1,4 +1,11 @@
-export const Search = () => {
+import { Dispatch, SetStateAction } from "react";
+
+type Props = {
+	query: string;
+	setQuery: Dispatch<SetStateAction<string>>;
+};
+
+export const Search = ({ query, setQuery }: Props) => {
 	return (
 		<div className="p-4 pt-0">
 			<div className="relative">
@@ -28,6 +35,8 @@ export const Search = () => {
 					className="input input-bordered w-full pl-8"
 					placeholder="Search"
 					autoComplete="off"
+					value={query}
+					onChange={(e) => setQuery(e.target.value)}
 				/>
 			</div>
 		</div>
