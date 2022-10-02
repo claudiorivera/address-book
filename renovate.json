@@ -1,6 +1,6 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
-	"extends": ["config:base"],
+	"extends": ["config:base", ":rebaseStalePrs"],
 	"packageRules": [
 		{
 			"matchUpdateTypes": ["patch", "pin", "digest"],
@@ -10,6 +10,10 @@
 			"matchDepTypes": ["devDependencies"],
 			"matchUpdateTypes": ["minor", "patch", "pin", "digest"],
 			"automerge": true
+		},
+		{
+			"matchPackagePatterns": ["@trpc"],
+			"groupName": "trpc"
 		}
 	],
 	"commitMessagePrefix": "🤖"
