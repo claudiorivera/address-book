@@ -1,7 +1,6 @@
 services:
   postgres:
     image: postgres
-    restart: always
     environment:
       POSTGRES_PASSWORD: postgres
     volumes:
