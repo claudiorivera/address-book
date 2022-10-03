@@ -15,7 +15,7 @@ const Home: NextPage = () => {
 		<>
 			<Meta />
 
-			<main className="container mx-auto">
+			<main className="container mx-auto bg-base-200">
 				<h1 className="p-4 text-xl font-bold">Address Book</h1>
 
 				<Search query={query} setQuery={setQuery} />
