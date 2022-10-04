@@ -1,62 +1,83 @@
 import classNames from "classnames";
+import { GetServerSideProps } from "next";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
-import { useZodForm } from "../hooks/useZodForm";
-import { createContactValidationSchema } from "../server/common/contact/createContactValidationSchema";
-import { trpc } from "../utils/trpc";
+import { useZodForm } from "../../../hooks/useZodForm";
+import { createContactValidationSchema } from "../../../server/common/contact/createContactValidationSchema";
+import { trpc } from "../../../utils/trpc";
 
-type Props = {
-	onClose: () => void;
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+	const { contactId } = query;
+	return {
+		props: {
+			contactId,
+		},
+	};
 };
 
-export const CreateContactForm = ({ onClose }: Props) => {
+type Props = {
+	contactId: string;
+};
+
+const UpdateContactPage = ({ contactId }: Props) => {
+	const router = useRouter();
+	const { data: contact } = trpc.contact.getById.useQuery({ id: contactId });
+
 	const utils = trpc.useContext();
 
-	const { mutateAsync: createContact, isLoading } =
-		trpc.contact.create.useMutation({
+	const { mutateAsync: updateContact, isLoading } =
+		trpc.contact.update.useMutation({
 			onSuccess: async () => {
 				await utils.contact.getByQuery.invalidate();
-				onClose();
+				await router.push(`/contacts/${contactId}`);
 			},
 		});
 
 	const form = useZodForm({
 		schema: createContactValidationSchema,
 		defaultValues: {
-			firstName: "",
-			lastName: "",
-			email: "",
-			phoneNumber: "",
-			address1: "",
-			address2: "",
-			city: "",
-			state: "",
-			zip: "",
-			notes: "",
+			firstName: contact?.firstName ?? "",
+			lastName: contact?.lastName ?? "",
+			email: contact?.email ?? "",
+			phoneNumber: contact?.phoneNumber ?? "",
+			address1: contact?.address1 ?? "",
+			address2: contact?.address2 ?? "",
+			city: contact?.city ?? "",
+			state: contact?.state ?? "",
+			zip: contact?.zip ?? "",
+			notes: contact?.notes ?? "",
 		},
 	});
 
 	const isSubmitDisabled = isLoading || !form.formState.isDirty;
 
 	return (
-		<>
-			<div className="modal-action mt-0 flex justify-between pb-4">
-				<button onClick={onClose}>Cancel</button>
-				<h1 className="text-secondary">New Contact</h1>
+		<main className="container mx-auto h-screen bg-base-200 p-4">
+			<div className="flex items-center justify-between pb-4 text-secondary">
+				<Link href={`/contacts/${contactId}`}>
+					<a className="flex items-center">
+						<span className="text-sm">Cancel</span>
+					</a>
+				</Link>
 				<button
-					form="create-contact"
-					disabled={isSubmitDisabled}
-					className={classNames({
+					className={classNames("text-sm", {
 						"text-slate-500": isSubmitDisabled,
 					})}
+					form="update-contact"
+					disabled={isSubmitDisabled}
 				>
 					Done
 				</button>
 			</div>
 
 			<form
-				id="create-contact"
+				id="update-contact"
 				onSubmit={form.handleSubmit(async (values) => {
-					await createContact(values);
+					await updateContact({
+						id: contactId,
+						data: values,
+					});
 				})}
 				className="flex flex-col gap-2"
 			>
@@ -204,6 +225,8 @@ export const CreateContactForm = ({ onClose }: Props) => {
 					</label>
 				</div>
 			</form>
-		</>
+		</main>
 	);
 };
+
+export default UpdateContactPage;

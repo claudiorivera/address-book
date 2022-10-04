@@ -1,8 +1,8 @@
 import { GetServerSideProps } from "next";
 import Link from "next/link";
 
-import { ContactDetails } from "../../components/ContactDetails";
-import { trpc } from "../../utils/trpc";
+import { ContactDetails } from "../../../components/ContactDetails";
+import { trpc } from "../../../utils/trpc";
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 	const { contactId } = query;
@@ -40,6 +40,11 @@ const ContactDetailsPage = ({ contactId }: Props) => {
 							/>
 						</svg>
 						<span className="text-sm">Contacts</span>
+					</a>
+				</Link>
+				<Link href={`/contacts/${contactId}/update`}>
+					<a>
+						<span className="text-sm">Update</span>
 					</a>
 				</Link>
 			</div>
