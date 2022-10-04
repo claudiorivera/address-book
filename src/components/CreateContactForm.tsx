@@ -124,38 +124,36 @@ export const CreateContactForm = ({ onClose }: Props) => {
 						)}
 					</label>
 				</div>
-				<div className="md:flex">
-					<label className="label flex flex-col items-stretch gap-1 md:flex-1">
-						<span className="label-text">Address 1</span>
-						<input
-							{...form.register("address1")}
-							className={classNames("input input-bordered", {
-								"input-error": form.formState.errors.address1?.message,
-							})}
-							autoComplete="address-line1"
-						/>
-						{!!form.formState.errors.address1?.message && (
-							<div className="text-xs text-error">
-								{form.formState.errors.address1?.message}
-							</div>
-						)}
-					</label>
-					<label className="label flex flex-col items-stretch gap-1 md:flex-1">
-						<span className="label-text">Address 2</span>
-						<input
-							{...form.register("address2")}
-							className={classNames("input input-bordered", {
-								"input-error": form.formState.errors.address2?.message,
-							})}
-							autoComplete="address-line2"
-						/>
-						{!!form.formState.errors.address2?.message && (
-							<div className="text-xs text-error">
-								{form.formState.errors.address2?.message}
-							</div>
-						)}
-					</label>
-				</div>
+				<label className="label flex flex-col items-stretch gap-1 md:flex-1">
+					<span className="label-text">Address 1</span>
+					<input
+						{...form.register("address1")}
+						className={classNames("input input-bordered", {
+							"input-error": form.formState.errors.address1?.message,
+						})}
+						autoComplete="address-line1"
+					/>
+					{!!form.formState.errors.address1?.message && (
+						<div className="text-xs text-error">
+							{form.formState.errors.address1?.message}
+						</div>
+					)}
+				</label>
+				<label className="label flex flex-col items-stretch gap-1 md:flex-1">
+					<span className="label-text">Address 2</span>
+					<input
+						{...form.register("address2")}
+						className={classNames("input input-bordered", {
+							"input-error": form.formState.errors.address2?.message,
+						})}
+						autoComplete="address-line2"
+					/>
+					{!!form.formState.errors.address2?.message && (
+						<div className="text-xs text-error">
+							{form.formState.errors.address2?.message}
+						</div>
+					)}
+				</label>
 				<div className="md:flex">
 					<label className="label flex flex-col items-stretch gap-1 md:flex-1">
 						<span className="label-text">City</span>
@@ -172,6 +170,8 @@ export const CreateContactForm = ({ onClose }: Props) => {
 							</div>
 						)}
 					</label>
+				</div>
+				<div className="md:flex">
 					<label className="label flex flex-col items-stretch gap-1 md:flex-1">
 						<span className="label-text">State</span>
 						<input
