@@ -1,15 +1,19 @@
-import { inferProcedureOutput } from "@trpc/server";
+import { Contact } from "@prisma/client";
+import { useMemo } from "react";
 
-import { AppRouter } from "../server/trpc/router";
+import { collateContacts } from "../utils/collateContacts";
 import { ContactListSection } from "./ContactListSection";
 
-type Contact = inferProcedureOutput<AppRouter["contact"]["getById"]>;
-
 type Props = {
-	collatedContacts: Map<string, Contact[]>;
+	contacts: Contact[] | undefined;
 };
 
-export const ContactList = ({ collatedContacts }: Props) => {
+export const ContactList = ({ contacts }: Props) => {
+	const collatedContacts = useMemo(
+		() => collateContacts(contacts || []),
+		[contacts],
+	);
+
 	return (
 		<>
 			{Array.from(collatedContacts.entries()).map(([label, contacts]) => (
