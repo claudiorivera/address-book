@@ -20,11 +20,6 @@ const defaultContactSelect = Prisma.validator<Prisma.ContactSelect>()({
 });
 
 export const contactRouter = t.router({
-	getAll: t.procedure.query(({ ctx }) => {
-		return ctx.prisma.contact.findMany({
-			select: defaultContactSelect,
-		});
-	}),
 	getByQuery: t.procedure
 		.input(z.object({ query: z.string() }))
 		.query(({ ctx, input }) => {
