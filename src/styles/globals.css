@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+	.loading {
+		@apply h-1 w-full bg-gradient-to-r from-secondary via-primary to-secondary;
+
+		background-size: 400%;
+
+		animation: AnimationName 3s ease infinite;
+	}
+	@keyframes AnimationName {
+		0%,
+		100% {
+			background-position: left;
+		}
+		50% {
+			background-position: center;
+		}
+	}
+}

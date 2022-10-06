@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import type { NextPage } from "next";
 import { useState } from "react";
 
@@ -11,7 +12,9 @@ const Home: NextPage = () => {
 	const [isCreateContactModalOpen, setIsCreateContactModalOpen] =
 		useState(false);
 	const [query, setQuery] = useState("");
-	const { data: contacts } = trpc.contact.getByQuery.useQuery({ query });
+	const { data: contacts, isLoading } = trpc.contact.getByQuery.useQuery({
+		query,
+	});
 
 	const handleAddContactModalToggle = () => {
 		setIsCreateContactModalOpen(!isCreateContactModalOpen);
@@ -21,6 +24,11 @@ const Home: NextPage = () => {
 		<>
 			<Meta />
 
+			<div
+				className={classNames("loading", {
+					"animate-none": !isLoading,
+				})}
+			/>
 			<main className="container relative mx-auto bg-base-200">
 				<h1 className="p-4 text-xl font-bold text-secondary">Address Book</h1>
 				<button
@@ -44,7 +52,6 @@ const Home: NextPage = () => {
 				</button>
 
 				<Search query={query} setQuery={setQuery} />
-
 				<ContactList contacts={contacts} />
 
 				<CreateContactFormModal
