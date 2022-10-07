@@ -30,8 +30,8 @@ const handler: NextApiHandler = async (req, res) => {
 								? faker.address.secondaryAddress()
 								: "",
 							city: isRarelyProvided ? faker.address.city() : "",
-							state: isRarelyProvided ? faker.address.state() : "",
-							zip: isRarelyProvided ? faker.address.zipCode() : "",
+							state: isRarelyProvided ? faker.address.stateAbbr() : "",
+							zip: isRarelyProvided ? faker.address.zipCode("#####") : "",
 							notes: isRarelyProvided ? faker.lorem.paragraph() : "",
 						},
 					});
