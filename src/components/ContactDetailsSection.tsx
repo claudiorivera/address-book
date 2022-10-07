@@ -2,6 +2,7 @@ import { Contact } from "@prisma/client";
 import Link from "next/link";
 
 import { hrefPrefixForField } from "../utils/getHrefPrefixForField";
+import { ConditionalWrapper } from "./ConditionalWrapper";
 
 type Props = {
 	contact: Contact;
@@ -16,11 +17,16 @@ export const ContactDetailsSection = ({ contact, label, field }: Props) => {
 		<div className="card w-full rounded bg-base-100 text-xs">
 			<div className="card-body px-4 py-2">
 				<label className="text-secondary">{label}</label>
-				<Link href={`${hrefPrefixForField(field)}${contact[field]}`}>
-					<a>
-						<span>{contact[field]}</span>
-					</a>
-				</Link>
+				<ConditionalWrapper
+					condition={["email", "phoneNumber"].includes(field)}
+					wrapper={(children) => (
+						<Link href={`${hrefPrefixForField(field)}${contact[field]}`}>
+							<a>{children}</a>
+						</Link>
+					)}
+				>
+					<span>{contact[field]}</span>
+				</ConditionalWrapper>
 			</div>
 		</div>
 	);

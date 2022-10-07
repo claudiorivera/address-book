@@ -203,6 +203,22 @@ export const CreateContactForm = ({ onClose }: Props) => {
 						)}
 					</label>
 				</div>
+				<div className="md:flex">
+					<label className="label flex flex-col items-stretch gap-1 md:flex-1">
+						<span className="label-text">Notes</span>
+						<input
+							{...form.register("notes")}
+							className={classNames("input input-bordered", {
+								"input-error": form.formState.errors.notes?.message,
+							})}
+						/>
+						{!!form.formState.errors.notes?.message && (
+							<div className="text-xs text-error">
+								{form.formState.errors.notes?.message}
+							</div>
+						)}
+					</label>
+				</div>
 			</form>
 		</>
 	);
