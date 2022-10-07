@@ -1,11 +1,19 @@
 import { Contact } from "@prisma/client";
 
+import { getGoogleMapsUrlForContact } from "../utils/getGoogleMapsUrlForContact";
+
 type Props = {
 	contact: Contact;
 };
 
 export const ContactDetailsAddressSection = ({ contact }: Props) => {
-	if (!contact.address1) return null;
+	const { address1, address2, city, state, zip } = contact;
+
+	const hasNoAddressFields = [address1, address2, city, state, zip].every(
+		(field) => !field,
+	);
+
+	if (hasNoAddressFields) return null;
 
 	return (
 		<div className="card w-full rounded bg-base-100 text-xs">
@@ -14,16 +22,20 @@ export const ContactDetailsAddressSection = ({ contact }: Props) => {
 				<a
 					target="_blank"
 					rel="noopener noreferrer"
-					href={`https://www.google.com/maps/search/${contact.address1}`}
+					href={getGoogleMapsUrlForContact(contact)}
 					className="flex flex-col"
 				>
-					<span>{contact.address1}</span>
-					{contact.address2 && <span>{contact.address2}</span>}
-					{contact.city && (
+					<div className="flex flex-col">
+						<span>{address1}</span>
+						<span>{address2}</span>
 						<span>
-							{contact.city}, {contact.state} {contact.zip}
+							{city}
+							{state ? ", " : ""}
+							{state}
+							{zip ? " " : ""}
+							{zip}
 						</span>
-					)}
+					</div>
 				</a>
 			</div>
 		</div>
