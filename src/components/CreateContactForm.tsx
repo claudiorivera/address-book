@@ -62,34 +62,30 @@ export const CreateContactForm = ({ onClose }: Props) => {
 				})}
 				className="flex flex-col gap-2"
 			>
-				<div className="md:flex">
-					<TextField
-						label="First Name"
-						{...form.register("firstName")}
-						autoComplete="given-name"
-						fieldError={form.formState.errors.firstName}
-					/>
-					<TextField
-						label="Last Name"
-						{...form.register("lastName")}
-						autoComplete="family-name"
-						fieldError={form.formState.errors.lastName}
-					/>
-				</div>
-				<div className="md:flex">
-					<TextField
-						label="Email"
-						{...form.register("email")}
-						autoComplete="email"
-						fieldError={form.formState.errors.email}
-					/>
-					<TextField
-						label="Phone Number"
-						{...form.register("phoneNumber")}
-						autoComplete="tel"
-						fieldError={form.formState.errors.phoneNumber}
-					/>
-				</div>
+				<TextField
+					label="First Name"
+					{...form.register("firstName")}
+					autoComplete="given-name"
+					fieldError={form.formState.errors.firstName}
+				/>
+				<TextField
+					label="Last Name"
+					{...form.register("lastName")}
+					autoComplete="family-name"
+					fieldError={form.formState.errors.lastName}
+				/>
+				<TextField
+					label="Email"
+					{...form.register("email")}
+					autoComplete="email"
+					fieldError={form.formState.errors.email}
+				/>
+				<TextField
+					label="Phone Number"
+					{...form.register("phoneNumber")}
+					autoComplete="tel"
+					fieldError={form.formState.errors.phoneNumber}
+				/>
 				<TextField
 					label="Address 1"
 					{...form.register("address1")}
@@ -102,28 +98,24 @@ export const CreateContactForm = ({ onClose }: Props) => {
 					autoComplete="address-line2"
 					fieldError={form.formState.errors.address2}
 				/>
-				<div className="md:flex">
-					<TextField
-						label="City"
-						{...form.register("city")}
-						autoComplete="address-level2"
-						fieldError={form.formState.errors.city}
-					/>
-				</div>
-				<div className="md:flex">
-					<TextField
-						label="State"
-						{...form.register("state")}
-						autoComplete="address-level1"
-						fieldError={form.formState.errors.state}
-					/>
-					<TextField
-						label="Zip"
-						{...form.register("zip")}
-						autoComplete="postal-code"
-						fieldError={form.formState.errors.zip}
-					/>
-				</div>
+				<TextField
+					label="City"
+					{...form.register("city")}
+					autoComplete="address-level2"
+					fieldError={form.formState.errors.city}
+				/>
+				<TextField
+					label="State"
+					{...form.register("state")}
+					autoComplete="address-level1"
+					fieldError={form.formState.errors.state}
+				/>
+				<TextField
+					label="Zip"
+					{...form.register("zip")}
+					autoComplete="postal-code"
+					fieldError={form.formState.errors.zip}
+				/>
 				<TextArea
 					label="Notes"
 					{...form.register("notes")}
