@@ -30,7 +30,7 @@ const ContactDetailsPage = ({ contactId }: Props) => {
 					"animate-none": !isLoading,
 				})}
 			/>
-			<main className="container mx-auto min-h-screen bg-base-200 p-4">
+			<main className="container mx-auto min-h-screen max-w-3xl bg-base-200 p-4">
 				<div className="flex items-center justify-between pb-4 text-secondary">
 					<Link href="/">
 						<a className="flex items-center">

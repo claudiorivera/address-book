@@ -29,7 +29,7 @@ const Home: NextPage = () => {
 					"animate-none": !isLoading,
 				})}
 			/>
-			<main className="container relative mx-auto bg-base-200">
+			<main className="container relative mx-auto max-w-3xl bg-base-200">
 				<h1 className="p-4 text-xl font-bold text-secondary">Address Book</h1>
 				<button
 					className="absolute top-4 right-4 text-secondary"
