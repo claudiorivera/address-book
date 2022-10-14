@@ -1,9 +1,9 @@
 import { z } from "zod";
 
 export const createContactValidationSchema = z.object({
-	firstName: z.string().optional(),
+	firstName: z.string(),
 	lastName: z.string().optional(),
-	email: z.string().email().optional(),
+	email: z.string().email().optional().or(z.literal("")),
 	phoneNumber: z.string().optional(),
 	address1: z.string().optional(),
 	address2: z.string().optional(),

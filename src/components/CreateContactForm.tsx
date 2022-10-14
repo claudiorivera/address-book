@@ -3,8 +3,8 @@ import classNames from "classnames";
 import { useZodForm } from "../hooks/useZodForm";
 import { createContactValidationSchema } from "../server/common/contact/createContactValidationSchema";
 import { trpc } from "../utils/trpc";
+import { Input } from "./Input";
 import { TextArea } from "./TextArea";
-import { TextField } from "./TextField";
 
 type Props = {
 	onClose: () => void;
@@ -23,18 +23,6 @@ export const CreateContactForm = ({ onClose }: Props) => {
 
 	const form = useZodForm({
 		schema: createContactValidationSchema,
-		defaultValues: {
-			firstName: "",
-			lastName: "",
-			email: "",
-			phoneNumber: "",
-			address1: "",
-			address2: "",
-			city: "",
-			state: "",
-			zip: "",
-			notes: "",
-		},
 	});
 
 	const isSubmitDisabled = isLoading || !form.formState.isDirty;
@@ -62,64 +50,65 @@ export const CreateContactForm = ({ onClose }: Props) => {
 				})}
 				className="flex flex-col gap-2"
 			>
-				<TextField
+				<Input
 					label="First Name"
 					{...form.register("firstName")}
-					autoComplete="given-name"
-					fieldError={form.formState.errors.firstName}
+					error={form.formState.errors.firstName}
 				/>
-				<TextField
+				<Input
 					label="Last Name"
 					{...form.register("lastName")}
 					autoComplete="family-name"
-					fieldError={form.formState.errors.lastName}
+					error={form.formState.errors.lastName}
 				/>
-				<TextField
+				<Input
 					label="Email"
 					{...form.register("email")}
 					autoComplete="email"
-					fieldError={form.formState.errors.email}
+					type="email"
+					error={form.formState.errors.email}
 				/>
-				<TextField
+				<Input
 					label="Phone Number"
 					{...form.register("phoneNumber")}
 					autoComplete="tel"
-					fieldError={form.formState.errors.phoneNumber}
+					type="tel"
+					error={form.formState.errors.phoneNumber}
 				/>
-				<TextField
+				<Input
 					label="Address 1"
 					{...form.register("address1")}
 					autoComplete="address-line1"
-					fieldError={form.formState.errors.address1}
+					error={form.formState.errors.address1}
 				/>
-				<TextField
+				<Input
 					label="Address 2"
 					{...form.register("address2")}
 					autoComplete="address-line2"
-					fieldError={form.formState.errors.address2}
+					error={form.formState.errors.address2}
 				/>
-				<TextField
+				<Input
 					label="City"
 					{...form.register("city")}
 					autoComplete="address-level2"
-					fieldError={form.formState.errors.city}
+					error={form.formState.errors.city}
 				/>
-				<TextField
+				<Input
 					label="State"
 					{...form.register("state")}
 					autoComplete="address-level1"
-					fieldError={form.formState.errors.state}
+					error={form.formState.errors.state}
 				/>
-				<TextField
+				<Input
 					label="Zip"
 					{...form.register("zip")}
 					autoComplete="postal-code"
-					fieldError={form.formState.errors.zip}
+					error={form.formState.errors.zip}
 				/>
 				<TextArea
 					label="Notes"
 					{...form.register("notes")}
-					fieldError={form.formState.errors.notes}
+					error={form.formState.errors.notes}
 				/>
 			</form>
 		</>
