@@ -1,12 +1,32 @@
+import { createProxySSGHelpers } from "@trpc/react/ssg";
 import classNames from "classnames";
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import { useState } from "react";
+import superjson from "superjson";
 
 import { ContactList } from "../components/ContactList";
 import { CreateContactFormModal } from "../components/CreateContactFormModal";
 import { Meta } from "../components/Meta";
 import { Search } from "../components/Search";
+import { createContext } from "../server/trpc/context";
+import { appRouter } from "../server/trpc/router";
 import { trpc } from "../utils/trpc";
+
+export const getServerSideProps: GetServerSideProps = async () => {
+	const ssg = createProxySSGHelpers({
+		router: appRouter,
+		ctx: await createContext(),
+		transformer: superjson,
+	});
+
+	await ssg.contact.getByQuery.prefetch({ query: "" });
+
+	return {
+		props: {
+			trpcState: ssg.dehydrate(),
+		},
+	};
+};
 
 const Home: NextPage = () => {
 	const [isCreateContactModalOpen, setIsCreateContactModalOpen] =

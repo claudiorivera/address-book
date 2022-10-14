@@ -13,7 +13,7 @@ type CreateContextOptions = Record<string, never>;
  *  - testing, where we dont have to Mock Next.js' req/res
  *  - trpc's `createSSGHelpers` where we don't have req/res
  */
-export const createContextInner = async (opts: CreateContextOptions) => {
+export const createContextInner = async (_opts?: CreateContextOptions) => {
 	return {
 		prisma,
 	};
@@ -24,7 +24,7 @@ export const createContextInner = async (opts: CreateContextOptions) => {
  * @link https://trpc.io/docs/context
  **/
 export const createContext = async (
-	opts: trpcNext.CreateNextContextOptions,
+	_opts?: trpcNext.CreateNextContextOptions,
 ) => {
 	return await createContextInner({});
 };
