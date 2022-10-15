@@ -16,7 +16,7 @@ export const ContactListSection = ({ label, contacts }: Props) => {
 			</section>
 			{contacts.map(
 				(contact) =>
-					contact && (
+					!!contact && (
 						<Link key={contact.id} href={`/contacts/${contact.id}`}>
 							<a>
 								<ContactListRow contact={contact} />

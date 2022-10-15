@@ -34,7 +34,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 					)}
 				/>
 			</label>
-			<div className="text-xs text-red-500">{error?.message?.toString()}</div>
+			<div className="text-xs text-red-500">{error?.message}</div>
 		</>
 	);
 });

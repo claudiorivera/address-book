@@ -30,7 +30,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
 						})}
 					/>
 				</label>
-				<div className="text-xs text-red-500">{error?.message?.toString()}</div>
+				<div className="text-xs text-red-500">{error?.message}</div>
 			</>
 		);
 	},
