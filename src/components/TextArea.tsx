@@ -19,7 +19,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
 		const { label, error, ...inputProps } = props;
 
 		return (
-			<>
+			<div className="w-full">
 				<label className="label flex flex-col items-stretch gap-1">
 					<span className="label-text">{label}</span>
 					<textarea
@@ -31,7 +31,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
 					/>
 				</label>
 				<div className="text-xs text-red-500">{error?.message}</div>
-			</>
+			</div>
 		);
 	},
 );

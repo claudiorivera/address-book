@@ -10,7 +10,7 @@ type Props = {
 export const ContactDetails = ({ contact }: Props) => {
 	return (
 		<div className="flex flex-col items-center gap-4">
-			{contact.firstName && (
+			{(contact.firstName || contact.lastName) && (
 				<h1 className="mb-4 text-2xl font-bold text-base-content">
 					{contact.firstName} {contact.lastName}
 				</h1>
