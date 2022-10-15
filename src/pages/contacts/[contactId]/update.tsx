@@ -55,109 +55,102 @@ const UpdateContactPage = ({ contactId }: Props) => {
 	const isSubmitDisabled = isLoading || !form.formState.isDirty;
 
 	return (
-		<>
-			<div
-				className={classNames("loading", {
-					"animate-none": !isLoading,
-				})}
-			/>
-			<main className="container mx-auto min-h-screen max-w-3xl bg-base-200 p-4">
-				<div className="flex items-center justify-between pb-4 text-secondary">
-					<Link href={`/contacts/${contactId}`}>
-						<a className="flex items-center">
-							<span className="text-sm">Cancel</span>
-						</a>
-					</Link>
-					<button
-						className={classNames("text-sm", {
-							"text-slate-500": isSubmitDisabled,
-						})}
-						form="update-contact"
-						disabled={isSubmitDisabled}
-					>
-						Done
-					</button>
-				</div>
-				<form
-					id="update-contact"
-					onSubmit={form.handleSubmit(async (values) => {
-						await updateContact({
-							id: contactId,
-							data: values,
-						});
+		<div className="min-h-screen p-4">
+			<div className="flex items-center justify-between pb-4 text-secondary">
+				<Link href={`/contacts/${contactId}`}>
+					<a className="flex items-center">
+						<span className="text-sm">Cancel</span>
+					</a>
+				</Link>
+				<button
+					className={classNames("text-sm", {
+						"text-slate-500": isSubmitDisabled,
 					})}
-					className="flex flex-col gap-2"
+					form="update-contact"
+					disabled={isSubmitDisabled}
 				>
-					<div className="md:flex">
-						<Input
-							label="First Name"
-							{...form.register("firstName")}
-							autoComplete="given-name"
-							error={form.formState.errors.firstName}
-						/>
-						<Input
-							label="Last Name"
-							{...form.register("lastName")}
-							autoComplete="family-name"
-							error={form.formState.errors.lastName}
-						/>
-					</div>
-					<div className="md:flex">
-						<Input
-							label="Email"
-							{...form.register("email")}
-							autoComplete="email"
-							error={form.formState.errors.email}
-						/>
-						<Input
-							label="Phone Number"
-							{...form.register("phoneNumber")}
-							autoComplete="tel"
-							error={form.formState.errors.phoneNumber}
-						/>
-					</div>
+					Done
+				</button>
+			</div>
+			<form
+				id="update-contact"
+				onSubmit={form.handleSubmit(async (values) => {
+					await updateContact({
+						id: contactId,
+						data: values,
+					});
+				})}
+				className="flex flex-col gap-2"
+			>
+				<div className="md:flex">
 					<Input
-						label="Address 1"
-						{...form.register("address1")}
-						autoComplete="address-line1"
-						error={form.formState.errors.address1}
+						label="First Name"
+						{...form.register("firstName")}
+						autoComplete="given-name"
+						error={form.formState.errors.firstName}
 					/>
 					<Input
-						label="Address 2"
-						{...form.register("address2")}
-						autoComplete="address-line2"
-						error={form.formState.errors.address2}
+						label="Last Name"
+						{...form.register("lastName")}
+						autoComplete="family-name"
+						error={form.formState.errors.lastName}
 					/>
-					<div className="md:flex">
-						<Input
-							label="City"
-							{...form.register("city")}
-							autoComplete="address-level2"
-							error={form.formState.errors.city}
-						/>
-					</div>
-					<div className="md:flex">
-						<Input
-							label="State"
-							{...form.register("state")}
-							autoComplete="address-level1"
-							error={form.formState.errors.state}
-						/>
-						<Input
-							label="Zip"
-							{...form.register("zip")}
-							autoComplete="postal-code"
-							error={form.formState.errors.zip}
-						/>
-					</div>
-					<TextArea
-						label="Notes"
-						{...form.register("notes")}
-						error={form.formState.errors.notes}
+				</div>
+				<div className="md:flex">
+					<Input
+						label="Email"
+						{...form.register("email")}
+						autoComplete="email"
+						error={form.formState.errors.email}
 					/>
-				</form>
-			</main>
-		</>
+					<Input
+						label="Phone Number"
+						{...form.register("phoneNumber")}
+						autoComplete="tel"
+						error={form.formState.errors.phoneNumber}
+					/>
+				</div>
+				<Input
+					label="Address 1"
+					{...form.register("address1")}
+					autoComplete="address-line1"
+					error={form.formState.errors.address1}
+				/>
+				<Input
+					label="Address 2"
+					{...form.register("address2")}
+					autoComplete="address-line2"
+					error={form.formState.errors.address2}
+				/>
+				<div className="md:flex">
+					<Input
+						label="City"
+						{...form.register("city")}
+						autoComplete="address-level2"
+						error={form.formState.errors.city}
+					/>
+				</div>
+				<div className="md:flex">
+					<Input
+						label="State"
+						{...form.register("state")}
+						autoComplete="address-level1"
+						error={form.formState.errors.state}
+					/>
+					<Input
+						label="Zip"
+						{...form.register("zip")}
+						autoComplete="postal-code"
+						error={form.formState.errors.zip}
+					/>
+				</div>
+				<TextArea
+					label="Notes"
+					{...form.register("notes")}
+					error={form.formState.errors.notes}
+				/>
+			</form>
+		</div>
 	);
 };
 

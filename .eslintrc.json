@@ -7,7 +7,15 @@
 	"rules": {
 		"simple-import-sort/imports": "error",
 		"simple-import-sort/exports": "error",
-		"unused-imports/no-unused-imports": "error"
+		"unused-imports/no-unused-imports": "error",
+		"@typescript-eslint/no-unused-vars": [
+			"warn",
+			{
+				"argsIgnorePattern": "^_",
+				"varsIgnorePattern": "^_",
+				"caughtErrorsIgnorePattern": "^_"
+			}
+		]
 	},
 	"extends": [
 		"next/core-web-vitals",

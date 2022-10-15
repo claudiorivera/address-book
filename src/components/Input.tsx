@@ -14,7 +14,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 	const { label, error, type, ...inputProps } = props;
 
 	return (
-		<>
+		<div className="w-full">
 			<label className="label flex flex-col items-stretch gap-1">
 				<span className="label-text">{label}</span>
 				<input
@@ -35,7 +35,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 				/>
 			</label>
 			<div className="text-xs text-red-500">{error?.message}</div>
-		</>
+		</div>
 	);
 });
 
