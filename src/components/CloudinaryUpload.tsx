@@ -1,5 +1,4 @@
 import { inferProcedureOutput } from "@trpc/server";
-import classNames from "classnames";
 import Image from "next/future/image";
 import { FormEvent, useState } from "react";
 
@@ -47,45 +46,44 @@ export const CloudinaryUpload = ({ imageName }: Props) => {
 
 			setImage(undefined);
 		} else {
-			console.log("no image to remove");
+			console.log("Unable to remove", { image });
 		}
 	};
 
 	return (
-		<label className="h-96 w-96 bg-base-100">
-			<input
-				id="upload"
-				className="hidden"
-				type="file"
-				accept="image/*"
-				onChange={onFileChange}
-			/>
-			<>
-				<div
-					className={classNames(
-						"flex h-full items-center justify-center p-4 text-base-content",
-						{
-							"cursor-pointer": !image,
-						},
-					)}
-				>
-					{!image && <span className="btn">Add</span>}
-					{!!image && (
-						<div className="flex h-full w-full flex-col items-center gap-4">
-							<Image
-								src={image.url}
-								height={image.height}
-								width={image.width}
-								alt={image.cloudinaryId}
-								className="h-full w-full object-contain"
-							/>
-							<button className="btn" onClick={handleRemove}>
-								Remove
-							</button>
+		<div className="h-96 w-96 bg-base-100">
+			<label className="cursor-pointer">
+				<input
+					id="upload"
+					className="hidden"
+					type="file"
+					accept="image/*"
+					onChange={onFileChange}
+				/>
+				{!image && (
+					<div className="justify-content flex h-full items-center p-4">
+						<div className="flex w-full justify-center">
+							<span className="btn">Add</span>
 						</div>
-					)}
-				</div>
-			</>
-		</label>
+					</div>
+				)}
+			</label>
+			<div className="justify-content flex h-full items-center p-4">
+				{!!image && (
+					<div className="flex h-full w-full flex-col items-center gap-4">
+						<Image
+							src={image.url}
+							height={image.height}
+							width={image.width}
+							alt={image.cloudinaryId}
+							className="h-full w-full object-contain"
+						/>
+						<button className="btn" onClick={handleRemove}>
+							Remove
+						</button>
+					</div>
+				)}
+			</div>
+		</div>
 	);
 };
