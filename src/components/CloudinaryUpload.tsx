@@ -55,7 +55,9 @@ export const CloudinaryUpload = ({ imageName }: Props) => {
 			{!image && (
 				<div className="flex h-full items-center justify-center border border-dashed border-stone-400">
 					<label>
-						<div className="btn">Add</div>
+						<div className="btn btn-square w-full rounded-none p-4">
+							Upload photo
+						</div>
 						<input
 							className="hidden"
 							type="file"
@@ -75,7 +77,7 @@ export const CloudinaryUpload = ({ imageName }: Props) => {
 						className="h-60 w-96 object-contain"
 					/>
 					<button
-						className="btn btn-ghost btn-square absolute top-2 right-2 rounded-none"
+						className="btn btn-primary btn-square absolute top-2 right-2 rounded-none"
 						onClick={handleRemove}
 					>
 						<svg
