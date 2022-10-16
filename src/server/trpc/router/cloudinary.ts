@@ -33,7 +33,7 @@ export const cloudinaryRouter = t.router({
 				});
 			}
 		}),
-	destroy: t.procedure
+	remove: t.procedure
 		.input(z.object({ cloudinaryId: z.string() }))
 		.mutation(({ input }) => {
 			const { cloudinaryId } = input;

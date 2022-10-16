@@ -1,4 +1,5 @@
 import { inferProcedureOutput } from "@trpc/server";
+import classNames from "classnames";
 import Image from "next/future/image";
 import { FormEvent, useState } from "react";
 
@@ -23,7 +24,7 @@ export const CloudinaryUpload = ({ imageName }: Props) => {
 		},
 	});
 
-	const { mutateAsync: destroy } = trpc.cloudinary.destroy.useMutation();
+	const { mutateAsync: remove } = trpc.cloudinary.remove.useMutation();
 
 	const onFileChange = async (event: FormEvent<HTMLInputElement>) => {
 		if (!!event.currentTarget.files?.[0]) {
@@ -38,33 +39,53 @@ export const CloudinaryUpload = ({ imageName }: Props) => {
 		}
 	};
 
-	const handleDestroy = async () => {
+	const handleRemove = async () => {
 		if (image) {
-			await destroy({
+			await remove({
 				cloudinaryId: image.cloudinaryId,
 			});
 
 			setImage(undefined);
 		} else {
-			console.log("no image to destroy");
+			console.log("no image to remove");
 		}
 	};
 
 	return (
-		<div className="w-full p-4">
-			<input type="file" accept="image/*" onChange={onFileChange} />
-			{image && (
-				<div className="h-32 w-32 bg-base-content">
-					<Image
-						src={image.url}
-						height={image.height}
-						width={image.width}
-						alt={image.cloudinaryId}
-						className="h-full w-full object-contain"
-					/>
-					<button onClick={handleDestroy}>Destroy</button>
+		<label className="h-96 w-96 bg-base-100">
+			<input
+				id="upload"
+				className="hidden"
+				type="file"
+				accept="image/*"
+				onChange={onFileChange}
+			/>
+			<>
+				<div
+					className={classNames(
+						"flex h-full items-center justify-center p-4 text-base-content",
+						{
+							"cursor-pointer": !image,
+						},
+					)}
+				>
+					{!image && <span className="btn">Add</span>}
+					{!!image && (
+						<div className="flex h-full w-full flex-col items-center gap-4">
+							<Image
+								src={image.url}
+								height={image.height}
+								width={image.width}
+								alt={image.cloudinaryId}
+								className="h-full w-full object-contain"
+							/>
+							<button className="btn" onClick={handleRemove}>
+								Remove
+							</button>
+						</div>
+					)}
 				</div>
-			)}
-		</div>
+			</>
+		</label>
 	);
 };
