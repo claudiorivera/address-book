@@ -51,39 +51,50 @@ export const CloudinaryUpload = ({ imageName }: Props) => {
 	};
 
 	return (
-		<div className="h-96 w-96 bg-base-100">
-			<label className="cursor-pointer">
-				<input
-					id="upload"
-					className="hidden"
-					type="file"
-					accept="image/*"
-					onChange={onFileChange}
-				/>
-				{!image && (
-					<div className="justify-content flex h-full items-center p-4">
-						<div className="flex w-full justify-center">
-							<span className="btn">Add</span>
-						</div>
-					</div>
-				)}
-			</label>
-			<div className="justify-content flex h-full items-center p-4">
-				{!!image && (
-					<div className="flex h-full w-full flex-col items-center gap-4">
-						<Image
-							src={image.url}
-							height={image.height}
-							width={image.width}
-							alt={image.cloudinaryId}
-							className="h-full w-full object-contain"
+		<div className="h-60 w-96 bg-stone-100">
+			{!image && (
+				<div className="flex h-full items-center justify-center border border-dashed border-stone-400">
+					<label>
+						<div className="btn">Add</div>
+						<input
+							className="hidden"
+							type="file"
+							accept="image/*"
+							onChange={onFileChange}
 						/>
-						<button className="btn" onClick={handleRemove}>
-							Remove
-						</button>
-					</div>
-				)}
-			</div>
+					</label>
+				</div>
+			)}
+			{!!image && (
+				<div className="relative bg-black">
+					<Image
+						src={image.url}
+						height={image.height}
+						width={image.width}
+						alt={image.cloudinaryId}
+						className="h-60 w-96 object-contain"
+					/>
+					<button
+						className="btn btn-ghost btn-square absolute top-2 right-2 rounded-none"
+						onClick={handleRemove}
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							strokeWidth={1.5}
+							stroke="currentColor"
+							className="h-4 w-4"
+						>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								d="M6 18L18 6M6 6l12 12"
+							/>
+						</svg>
+					</button>
+				</div>
+			)}
 		</div>
 	);
 };
