@@ -9,3 +9,11 @@ export default createNextApiHandler({
 	router: appRouter,
 	createContext,
 });
+
+export const config = {
+	api: {
+		bodyParser: {
+			sizeLimit: "10mb",
+		},
+	},
+};
