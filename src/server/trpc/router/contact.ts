@@ -1,5 +1,4 @@
 import { Prisma } from "@prisma/client";
-import { TRPCError } from "@trpc/server";
 import { v2 as cloudinary } from "cloudinary";
 import { z } from "zod";
 
@@ -64,24 +63,22 @@ export const contactRouter = t.router({
 	update: t.procedure
 		.input(updateContactValidationSchema)
 		.mutation(async ({ input, ctx }) => {
-			const { id, data } = input;
-
-			if (!data.photo)
-				return await ctx.prisma.contact.update({
-					where: { id },
-					data,
+			if (!input.photo)
+				return ctx.prisma.contact.update({
+					where: { id: input.id },
+					data: input,
 					select: defaultContactSelect,
 				});
 
 			const { secure_url, height, width, public_id } =
-				await cloudinary.uploader.upload(data.photo, {
-					public_id: `address-book/${id}`,
+				await cloudinary.uploader.upload(input.photo, {
+					public_id: `address-book/${input.id}`,
 				});
 
 			return await ctx.prisma.contact.update({
-				where: { id },
+				where: { id: input.id },
 				data: {
-					...data,
+					...input,
 					photo: {
 						create: {
 							cloudinaryId: public_id,
@@ -103,48 +100,5 @@ export const contactRouter = t.router({
 		.mutation(({ input, ctx }) => {
 			const { id } = input;
 			return ctx.prisma.contact.delete({ where: { id } });
-		}),
-	updatePhoto: t.procedure
-		.input(
-			z.object({
-				base64: z.string(),
-				contactId: z.string().cuid(),
-			}),
-		)
-		.mutation(async ({ input, ctx }) => {
-			const { base64, contactId } = input;
-			try {
-				const { secure_url, height, width, public_id } =
-					await cloudinary.uploader.upload(base64, {
-						public_id: `address-book/${contactId}`,
-						overwrite: true,
-					});
-
-				const uploadedPhoto = {
-					cloudinaryId: public_id,
-					url: secure_url,
-					height,
-					width,
-				};
-
-				return await ctx.prisma.contact.update({
-					where: { id: contactId },
-					data: {
-						photo: {
-							upsert: {
-								create: uploadedPhoto,
-								update: uploadedPhoto,
-							},
-						},
-					},
-					select: defaultContactSelect,
-				});
-			} catch (error) {
-				throw new TRPCError({
-					code: "INTERNAL_SERVER_ERROR",
-					message: "An unexpected error occurred, please try again later.",
-					cause: error,
-				});
-			}
 		}),
 });

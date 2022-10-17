@@ -8,7 +8,7 @@ import { FormEvent, useState } from "react";
 import { Input } from "../../../components/Input";
 import { TextArea } from "../../../components/TextArea";
 import { useZodForm } from "../../../hooks/useZodForm";
-import { createContactValidationSchema } from "../../../server/common/contact/createContactValidationSchema";
+import { updateContactValidationSchema } from "../../../server/common/contact/updateContactValidationSchema";
 import { getBase64 } from "../../../utils/getBase64";
 import { trpc } from "../../../utils/trpc";
 
@@ -29,16 +29,15 @@ type Props = {
 
 const UpdateContactPage = ({ contactId }: Props) => {
 	const router = useRouter();
-	const { data: contact } = trpc.contact.getById.useQuery({ id: contactId });
-
 	const utils = trpc.useContext();
+
+	const { data: contact } = trpc.contact.getById.useQuery({ id: contactId });
 
 	const [photo, setPhoto] = useState<Photo>({
 		src: contact?.photo?.url,
 		height: contact?.photo?.height,
 		width: contact?.photo?.width,
 	});
-	const [base64, setBase64] = useState<string | null>(null);
 
 	const { mutateAsync: updateContact, isLoading } =
 		trpc.contact.update.useMutation({
@@ -49,7 +48,7 @@ const UpdateContactPage = ({ contactId }: Props) => {
 		});
 
 	const form = useZodForm({
-		schema: createContactValidationSchema,
+		schema: updateContactValidationSchema,
 		defaultValues: {
 			firstName: contact?.firstName ?? "",
 			lastName: contact?.lastName ?? "",
@@ -61,6 +60,7 @@ const UpdateContactPage = ({ contactId }: Props) => {
 			state: contact?.state ?? "",
 			zip: contact?.zip ?? "",
 			notes: contact?.notes ?? "",
+			photo: "",
 		},
 	});
 
@@ -79,7 +79,7 @@ const UpdateContactPage = ({ contactId }: Props) => {
 			const base64string = await getBase64(file);
 
 			if (typeof base64string === "string") {
-				setBase64(base64string);
+				form.setValue("photo", base64string);
 			}
 		}
 	};
@@ -103,43 +103,44 @@ const UpdateContactPage = ({ contactId }: Props) => {
 				</button>
 			</div>
 
-			<div className="flex flex-col items-center gap-2">
-				<div className="avatar placeholder">
-					<div className="w-24 rounded-full bg-base-100 text-primary-content ring ring-secondary">
-						{!photo.src && (
-							<span className="text-3xl">
-								{contact?.firstName?.charAt(0).toUpperCase()}
-								{contact?.lastName?.charAt(0).toUpperCase()}
-							</span>
-						)}
-						{!!photo.src && (
-							<NextImage
-								src={photo.src}
-								alt="avatar"
-								height={photo.height}
-								width={photo.width}
-							/>
-						)}
-					</div>
-				</div>
-				<div>
-					<input type="file" onChange={onFileChange} />
-				</div>
-			</div>
-
 			<form
 				id="update-contact"
-				onSubmit={form.handleSubmit(async (values) => {
-					await updateContact({
-						id: contactId,
-						data: {
-							...values,
-							...(base64 && { photo: base64 }),
-						},
-					});
+				onSubmit={form.handleSubmit((values) => {
+					updateContact(values);
 				})}
 				className="flex flex-col gap-2"
 			>
+				<div className="flex flex-col items-center gap-2">
+					<div className="avatar placeholder">
+						<div className="w-24 rounded-full bg-base-100 text-primary-content ring ring-secondary">
+							{!photo.src && (
+								<span className="text-3xl">
+									{contact?.firstName?.charAt(0).toUpperCase()}
+									{contact?.lastName?.charAt(0).toUpperCase()}
+								</span>
+							)}
+							{!!photo.src && (
+								<NextImage
+									src={photo.src}
+									alt="avatar"
+									height={photo.height}
+									width={photo.width}
+								/>
+							)}
+						</div>
+					</div>
+					<div>
+						<input
+							type="file"
+							{...form.register("photo")}
+							onChange={onFileChange}
+						/>
+						<div className="text-xs text-red-500">
+							{form.formState.errors.photo?.message}
+						</div>
+					</div>
+				</div>
+
 				<div className="md:flex">
 					<Input
 						label="First Name"
