@@ -1,8 +1,12 @@
+import { inferProcedureOutput } from "@trpc/server";
 import { GetServerSideProps } from "next";
 import Link from "next/link";
 
 import { ContactDetails } from "../../../components/ContactDetails";
+import { AppRouter } from "../../../server/trpc/router";
 import { trpc } from "../../../utils/trpc";
+
+export type ContactType = inferProcedureOutput<AppRouter["contact"]["getById"]>;
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 	const { contactId } = query;

@@ -21,7 +21,7 @@ export default defineNextConfig({
 		defaultLocale: "en",
 	},
 	images: {
-		domains: ["res.cloudinary.com"],
+		domains: ["res.cloudinary.com", "picsum.photos", "loremflickr.com"],
 	},
 	experimental: { images: { allowFutureImage: true } },
 });

@@ -1,20 +1,19 @@
-import { Contact } from "@prisma/client";
-
+import { ContactType } from "../pages/contacts/[contactId]";
 import { ContactDetailsAddressSection } from "./ContactDetailsAddressSection";
+import { ContactDetailsHeader } from "./ContactDetailsHeader";
 import { ContactDetailsSection } from "./ContactDetailsSection";
 
 type Props = {
-	contact: Contact;
+	contact: ContactType;
 };
 
 export const ContactDetails = ({ contact }: Props) => {
+	if (!contact) return null;
+
 	return (
 		<div className="flex flex-col items-center gap-4">
-			{(contact.firstName || contact.lastName) && (
-				<h1 className="mb-4 text-2xl font-bold text-base-content">
-					{contact.firstName} {contact.lastName}
-				</h1>
-			)}
+			<ContactDetailsHeader contact={contact} />
+
 			<ContactDetailsSection
 				label="Phone Number"
 				contact={contact}

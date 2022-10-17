@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Contact {
-    id          String  @id @default(cuid())
+    id          String        @id @default(cuid())
     firstName   String?
     lastName    String?
     email       String?
@@ -21,5 +21,18 @@ model Contact {
     city        String?
     state       String?
     zip         String?
-    notes       String? @db.Text
+    notes       String?       @db.Text
+    photo       ContactPhoto?
+}
+
+model ContactPhoto {
+    id           String @id @default(cuid())
+    cloudinaryId String @unique
+
+    url    String
+    width  Int
+    height Int
+
+    contact   Contact @relation(fields: [contactId], references: [id])
+    contactId String  @unique
 }

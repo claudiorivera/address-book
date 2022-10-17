@@ -1,5 +1,6 @@
 import { Prisma } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
+import { v2 as cloudinary } from "cloudinary";
 import { z } from "zod";
 
 import { createContactValidationSchema } from "../../common/contact/createContactValidationSchema";
@@ -17,6 +18,7 @@ const defaultContactSelect = Prisma.validator<Prisma.ContactSelect>()({
 	state: true,
 	zip: true,
 	notes: true,
+	photo: true,
 });
 
 export const contactRouter = t.router({
@@ -45,28 +47,18 @@ export const contactRouter = t.router({
 		.input(z.object({ id: z.string().cuid() }))
 		.query(({ input, ctx }) => {
 			const { id } = input;
-			const contact = ctx.prisma.contact.findUnique({
+			return ctx.prisma.contact.findUnique({
 				where: { id },
 				select: defaultContactSelect,
 			});
-
-			if (!contact) {
-				throw new TRPCError({
-					code: "NOT_FOUND",
-					message: `No event with id '${id}'`,
-				});
-			}
-
-			return contact;
 		}),
 	create: t.procedure
 		.input(createContactValidationSchema)
-		.mutation(async ({ input, ctx }) => {
-			const contact = await ctx.prisma.contact.create({
+		.mutation(({ input, ctx }) => {
+			return ctx.prisma.contact.create({
 				data: input,
 				select: defaultContactSelect,
 			});
-			return contact;
 		}),
 	update: t.procedure
 		.input(
@@ -86,14 +78,13 @@ export const contactRouter = t.router({
 				}),
 			}),
 		)
-		.mutation(async ({ input, ctx }) => {
+		.mutation(({ input, ctx }) => {
 			const { id, data } = input;
-			const contact = await ctx.prisma.contact.update({
+			return ctx.prisma.contact.update({
 				where: { id },
 				data,
 				select: defaultContactSelect,
 			});
-			return contact;
 		}),
 	delete: t.procedure
 		.input(
@@ -101,11 +92,51 @@ export const contactRouter = t.router({
 				id: z.string().cuid(),
 			}),
 		)
-		.mutation(async ({ input, ctx }) => {
+		.mutation(({ input, ctx }) => {
 			const { id } = input;
-			await ctx.prisma.contact.delete({ where: { id } });
-			return {
-				id,
-			};
+			return ctx.prisma.contact.delete({ where: { id } });
+		}),
+	updatePhoto: t.procedure
+		.input(
+			z.object({
+				base64: z.string(),
+				contactId: z.string().cuid(),
+			}),
+		)
+		.mutation(async ({ input, ctx }) => {
+			const { base64, contactId } = input;
+			try {
+				const { secure_url, height, width, public_id } =
+					await cloudinary.uploader.upload(base64, {
+						public_id: `address-book/${contactId}`,
+						overwrite: true,
+					});
+
+				const uploadedPhoto = {
+					cloudinaryId: public_id,
+					url: secure_url,
+					height,
+					width,
+				};
+
+				return await ctx.prisma.contact.update({
+					where: { id: contactId },
+					data: {
+						photo: {
+							upsert: {
+								create: uploadedPhoto,
+								update: uploadedPhoto,
+							},
+						},
+					},
+					select: defaultContactSelect,
+				});
+			} catch (error) {
+				throw new TRPCError({
+					code: "INTERNAL_SERVER_ERROR",
+					message: "An unexpected error occurred, please try again later.",
+					cause: error,
+				});
+			}
 		}),
 });
