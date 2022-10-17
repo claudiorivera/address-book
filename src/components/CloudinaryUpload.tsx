@@ -47,8 +47,6 @@ export const CloudinaryUpload = ({ imageName }: Props) => {
 			});
 
 			setImage(undefined);
-		} else {
-			console.log("Unable to remove", { image });
 		}
 	};
 
@@ -105,7 +103,7 @@ export const CloudinaryUpload = ({ imageName }: Props) => {
 						className="h-60 w-96 object-contain"
 					/>
 					<button
-						className="btn btn-primary btn-square absolute top-2 right-2 rounded-none"
+						className="btn btn-square btn-primary absolute top-2 right-2 rounded-none"
 						onClick={handleRemove}
 					>
 						{!isLoading && (

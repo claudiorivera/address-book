@@ -4,6 +4,7 @@ import { v2 as cloudinary } from "cloudinary";
 import { z } from "zod";
 
 import { createContactValidationSchema } from "../../common/contact/createContactValidationSchema";
+import { updateContactValidationSchema } from "../../common/contact/updateContactValidationSchema";
 import { t } from "../trpc";
 
 const defaultContactSelect = Prisma.validator<Prisma.ContactSelect>()({
@@ -61,28 +62,35 @@ export const contactRouter = t.router({
 			});
 		}),
 	update: t.procedure
-		.input(
-			z.object({
-				id: z.string().cuid(),
-				data: z.object({
-					firstName: z.string().optional(),
-					lastName: z.string().optional(),
-					email: z.string().email().optional(),
-					phoneNumber: z.string().optional(),
-					address1: z.string().optional(),
-					address2: z.string().optional(),
-					city: z.string().optional(),
-					state: z.string().optional(),
-					zip: z.string().optional(),
-					notes: z.string().optional(),
-				}),
-			}),
-		)
-		.mutation(({ input, ctx }) => {
+		.input(updateContactValidationSchema)
+		.mutation(async ({ input, ctx }) => {
 			const { id, data } = input;
-			return ctx.prisma.contact.update({
+
+			if (!data.photo)
+				return await ctx.prisma.contact.update({
+					where: { id },
+					data,
+					select: defaultContactSelect,
+				});
+
+			const { secure_url, height, width, public_id } =
+				await cloudinary.uploader.upload(data.photo, {
+					public_id: `address-book/${id}`,
+				});
+
+			return await ctx.prisma.contact.update({
 				where: { id },
-				data,
+				data: {
+					...data,
+					photo: {
+						create: {
+							cloudinaryId: public_id,
+							url: secure_url,
+							height,
+							width,
+						},
+					},
+				},
 				select: defaultContactSelect,
 			});
 		}),

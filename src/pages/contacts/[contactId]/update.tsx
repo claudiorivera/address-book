@@ -1,13 +1,18 @@
 import classNames from "classnames";
 import { GetServerSideProps } from "next";
+import NextImage from "next/future/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { FormEvent, useState } from "react";
 
 import { Input } from "../../../components/Input";
 import { TextArea } from "../../../components/TextArea";
 import { useZodForm } from "../../../hooks/useZodForm";
 import { createContactValidationSchema } from "../../../server/common/contact/createContactValidationSchema";
+import { getBase64 } from "../../../utils/getBase64";
 import { trpc } from "../../../utils/trpc";
+
+type Photo = Partial<Pick<HTMLImageElement, "src" | "width" | "height">>;
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 	const { contactId } = query;
@@ -27,6 +32,13 @@ const UpdateContactPage = ({ contactId }: Props) => {
 	const { data: contact } = trpc.contact.getById.useQuery({ id: contactId });
 
 	const utils = trpc.useContext();
+
+	const [photo, setPhoto] = useState<Photo>({
+		src: contact?.photo?.url,
+		height: contact?.photo?.height,
+		width: contact?.photo?.width,
+	});
+	const [base64, setBase64] = useState<string | null>(null);
 
 	const { mutateAsync: updateContact, isLoading } =
 		trpc.contact.update.useMutation({
@@ -54,6 +66,24 @@ const UpdateContactPage = ({ contactId }: Props) => {
 
 	const isSubmitDisabled = isLoading || !form.formState.isDirty;
 
+	const onFileChange = async (event: FormEvent<HTMLInputElement>) => {
+		if (!!event.currentTarget.files?.[0]) {
+			const file = event.currentTarget.files[0];
+
+			const image = new Image();
+			image.src = URL.createObjectURL(file);
+			image.onload = () => {
+				setPhoto(image);
+			};
+
+			const base64string = await getBase64(file);
+
+			if (typeof base64string === "string") {
+				setBase64(base64string);
+			}
+		}
+	};
+
 	return (
 		<div className="min-h-screen p-4">
 			<div className="flex items-center justify-between pb-4 text-secondary">
@@ -72,12 +102,40 @@ const UpdateContactPage = ({ contactId }: Props) => {
 					Done
 				</button>
 			</div>
+
+			<div className="flex flex-col items-center gap-2">
+				<div className="avatar placeholder">
+					<div className="w-24 rounded-full bg-base-100 text-primary-content ring ring-secondary">
+						{!photo.src && (
+							<span className="text-3xl">
+								{contact?.firstName?.charAt(0).toUpperCase()}
+								{contact?.lastName?.charAt(0).toUpperCase()}
+							</span>
+						)}
+						{!!photo.src && (
+							<NextImage
+								src={photo.src}
+								alt="avatar"
+								height={photo.height}
+								width={photo.width}
+							/>
+						)}
+					</div>
+				</div>
+				<div>
+					<input type="file" onChange={onFileChange} />
+				</div>
+			</div>
+
 			<form
 				id="update-contact"
 				onSubmit={form.handleSubmit(async (values) => {
 					await updateContact({
 						id: contactId,
-						data: values,
+						data: {
+							...values,
+							...(base64 && { photo: base64 }),
+						},
 					});
 				})}
 				className="flex flex-col gap-2"
