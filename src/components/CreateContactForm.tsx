@@ -16,7 +16,7 @@ export const CreateContactForm = ({ onClose }: Props) => {
 	const { mutateAsync: createContact, isLoading } =
 		trpc.contact.create.useMutation({
 			onSuccess: async () => {
-				await utils.contact.getByQuery.invalidate();
+				await utils.contact.getAll.invalidate();
 				onClose();
 			},
 		});

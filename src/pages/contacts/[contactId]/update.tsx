@@ -42,7 +42,7 @@ const UpdateContactPage = ({ contactId }: Props) => {
 	const { mutateAsync: updateContact, isLoading } =
 		trpc.contact.update.useMutation({
 			onSuccess: async () => {
-				await utils.contact.getByQuery.invalidate();
+				await utils.contact.getById.invalidate();
 				await router.push(`/contacts/${contactId}`);
 			},
 		});
