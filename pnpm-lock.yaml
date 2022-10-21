@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@faker-js/faker': 7.6.0
-  '@hookform/resolvers': 2.9.9
+  '@hookform/resolvers': 2.9.10
   '@prisma/client': 4.5.0
   '@tailwindcss/forms': 0.5.3
   '@tanstack/react-query': 4.12.0
@@ -40,7 +40,7 @@ specifiers:
   zod: 3.19.1
 
 dependencies:
-  '@hookform/resolvers': 2.9.9_react-hook-form@7.38.0
+  '@hookform/resolvers': 2.9.10_react-hook-form@7.38.0
   '@prisma/client': 4.5.0_prisma@4.5.0
   '@tanstack/react-query': 4.12.0_biqbaboplfbrettd7655fr4n2y
   '@trpc/client': 10.0.0-proxy-beta.20_js337ud2le6czcgg3wukbmhvpu
@@ -143,8 +143,8 @@ packages:
     engines: {node: '>=14.0.0', npm: '>=6.0.0'}
     dev: true
 
-  /@hookform/resolvers/2.9.9_react-hook-form@7.38.0:
-    resolution: {integrity: sha512-WMKO5HbNoGMdQNmf6kcjHmBKPd3voKvDdzr+IQGn1Rtb7dIQbTE33zf5dptZnv8dF4K0NvnzpTgz3bLdeAPc9w==}
+  /@hookform/resolvers/2.9.10_react-hook-form@7.38.0:
+    resolution: {integrity: sha512-JIL1DgJIlH9yuxcNGtyhsWX/PgNltz+5Gr6+8SX9fhXc/hPbEIk6wPI82nhgvp3uUb6ZfAM5mqg/x7KR7NAb+A==}
     peerDependencies:
       react-hook-form: ^7.0.0
     dependencies:
