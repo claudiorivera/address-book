@@ -18,7 +18,7 @@ specifiers:
   autoprefixer: 10.4.12
   classnames: 2.3.2
   cuid: 2.1.8
-  daisyui: 2.31.0
+  daisyui: 2.33.0
   eslint: 8.25.0
   eslint-config-next: 12.2.5
   eslint-config-prettier: 8.5.0
@@ -48,7 +48,7 @@ dependencies:
   '@trpc/react': 10.0.0-proxy-beta.20_zon4p5uwixrqixcewcs4l4ezkm
   '@trpc/server': 10.0.0-proxy-beta.20
   classnames: 2.3.2
-  daisyui: 2.31.0_lecjcatbfhr65vykvcrh2zikoy
+  daisyui: 2.33.0_lecjcatbfhr65vykvcrh2zikoy
   next: 12.2.5_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -944,8 +944,8 @@ packages:
     resolution: {integrity: sha512-xiEMER6E7TlTPnDxrM4eRiC6TRgjNX9xzEZ5U/Se2YJKr7Mq4pJn/2XEHjl3STcSh96GmkHPcBXLES8M29wyyg==}
     dev: true
 
-  /daisyui/2.31.0_lecjcatbfhr65vykvcrh2zikoy:
-    resolution: {integrity: sha512-qepRXgQPLNcJ8ZPZy+dUvsC7mRWvMLRcVMe85/wZA60Tnhm/bkidhOzdllL8aAk2JX+W/xlIsTJ8NZFpPm+eyw==}
+  /daisyui/2.33.0_lecjcatbfhr65vykvcrh2zikoy:
+    resolution: {integrity: sha512-NviwGs9oC9NW7IEZiLexHtxkpzP38AKxb9GTUCqUa0qoU8NHKQGqJUzQWZwWSZakU57KsQLblFVe0xMhqw4TlA==}
     peerDependencies:
       autoprefixer: ^10.0.2
       postcss: ^8.1.6
