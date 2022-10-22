@@ -33,6 +33,6 @@ model ContactPhoto {
     width  Int
     height Int
 
-    contact   Contact @relation(fields: [contactId], references: [id])
+    contact   Contact @relation(fields: [contactId], references: [id], onDelete: Cascade)
     contactId String  @unique
 }

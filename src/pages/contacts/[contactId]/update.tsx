@@ -1,42 +1,60 @@
+import { createProxySSGHelpers } from "@trpc/react/ssg";
 import classNames from "classnames";
-import { GetServerSideProps } from "next";
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import NextImage from "next/future/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { FormEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
+import superjson from "superjson";
 
 import { Input } from "../../../components/Input";
 import { TextArea } from "../../../components/TextArea";
 import { useZodForm } from "../../../hooks/useZodForm";
 import { updateContactValidationSchema } from "../../../server/common/contact/updateContactValidationSchema";
+import { createContext } from "../../../server/trpc/context";
+import { appRouter } from "../../../server/trpc/router";
 import { getBase64 } from "../../../utils/getBase64";
 import { trpc } from "../../../utils/trpc";
 
 type Photo = Partial<Pick<HTMLImageElement, "src" | "width" | "height">>;
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-	const { contactId } = query;
+export const getServerSideProps = async ({
+	params,
+}: GetServerSidePropsContext<{ contactId: string }>) => {
+	const contactId = params?.contactId as string;
+
+	const ssg = createProxySSGHelpers({
+		router: appRouter,
+		ctx: await createContext(),
+		transformer: superjson,
+	});
+
+	if (typeof contactId === "string") {
+		ssg.contact.getById.prefetch({ id: contactId });
+	}
+
 	return {
 		props: {
 			contactId,
+			trpcState: ssg.dehydrate(),
 		},
 	};
 };
 
-type Props = {
-	contactId: string;
-};
-
-const UpdateContactPage = ({ contactId }: Props) => {
+const UpdateContactPage = ({
+	contactId,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 	const router = useRouter();
 	const utils = trpc.useContext();
 
-	const { data: contact } = trpc.contact.getById.useQuery({ id: contactId });
+	const { data: contact } = trpc.contact.getById.useQuery({
+		id: contactId,
+	});
 
 	const [photo, setPhoto] = useState<Photo>({
 		src: contact?.photo?.url,
-		height: contact?.photo?.height,
 		width: contact?.photo?.width,
+		height: contact?.photo?.height,
 	});
 
 	const { mutateAsync: updateContact, isLoading } =
@@ -47,26 +65,19 @@ const UpdateContactPage = ({ contactId }: Props) => {
 			},
 		});
 
-	const form = useZodForm({
+	const {
+		register,
+		formState: { isDirty, errors },
+		setValue,
+		handleSubmit,
+	} = useZodForm({
 		schema: updateContactValidationSchema,
 		defaultValues: {
-			firstName: contact?.firstName ?? "",
-			lastName: contact?.lastName ?? "",
-			email: contact?.email ?? "",
-			phoneNumber: contact?.phoneNumber ?? "",
-			address1: contact?.address1 ?? "",
-			address2: contact?.address2 ?? "",
-			city: contact?.city ?? "",
-			state: contact?.state ?? "",
-			zip: contact?.zip ?? "",
-			notes: contact?.notes ?? "",
-			photo: "",
+			...contact,
 		},
 	});
 
-	const isSubmitDisabled = isLoading || !form.formState.isDirty;
-
-	const onFileChange = async (event: FormEvent<HTMLInputElement>) => {
+	const onFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
 		if (!!event.currentTarget.files?.[0]) {
 			const file = event.currentTarget.files[0];
 
@@ -79,7 +90,9 @@ const UpdateContactPage = ({ contactId }: Props) => {
 			const base64string = await getBase64(file);
 
 			if (typeof base64string === "string") {
-				form.setValue("photo", base64string);
+				setValue("photoBase64", base64string, {
+					shouldDirty: true,
+				});
 			}
 		}
 	};
@@ -94,10 +107,10 @@ const UpdateContactPage = ({ contactId }: Props) => {
 				</Link>
 				<button
 					className={classNames("text-sm", {
-						"text-slate-500": isSubmitDisabled,
+						"text-gray-500": !isDirty,
 					})}
 					form="update-contact"
-					disabled={isSubmitDisabled}
+					disabled={!isDirty || isLoading}
 				>
 					Done
 				</button>
@@ -105,7 +118,7 @@ const UpdateContactPage = ({ contactId }: Props) => {
 
 			<form
 				id="update-contact"
-				onSubmit={form.handleSubmit((values) => {
+				onSubmit={handleSubmit((values) => {
 					updateContact(values);
 				})}
 				className="flex flex-col gap-2"
@@ -130,84 +143,74 @@ const UpdateContactPage = ({ contactId }: Props) => {
 						</div>
 					</div>
 					<div>
-						<input
-							type="file"
-							{...form.register("photo")}
-							onChange={onFileChange}
-						/>
-						<div className="text-xs text-red-500">
-							{form.formState.errors.photo?.message}
-						</div>
+						<input hidden {...register("photoBase64")} />
+						<input type="file" onChange={onFileChange} />
 					</div>
 				</div>
 
 				<div className="md:flex">
 					<Input
 						label="First Name"
-						{...form.register("firstName")}
+						{...register("firstName")}
 						autoComplete="given-name"
-						error={form.formState.errors.firstName}
+						error={errors.firstName}
 					/>
 					<Input
 						label="Last Name"
-						{...form.register("lastName")}
+						{...register("lastName")}
 						autoComplete="family-name"
-						error={form.formState.errors.lastName}
+						error={errors.lastName}
 					/>
 				</div>
 				<div className="md:flex">
 					<Input
 						label="Email"
-						{...form.register("email")}
+						{...register("email")}
 						autoComplete="email"
-						error={form.formState.errors.email}
+						error={errors.email}
 					/>
 					<Input
 						label="Phone Number"
-						{...form.register("phoneNumber")}
+						{...register("phoneNumber")}
 						autoComplete="tel"
-						error={form.formState.errors.phoneNumber}
+						error={errors.phoneNumber}
 					/>
 				</div>
 				<Input
 					label="Address 1"
-					{...form.register("address1")}
+					{...register("address1")}
 					autoComplete="address-line1"
-					error={form.formState.errors.address1}
+					error={errors.address1}
 				/>
 				<Input
 					label="Address 2"
-					{...form.register("address2")}
+					{...register("address2")}
 					autoComplete="address-line2"
-					error={form.formState.errors.address2}
+					error={errors.address2}
 				/>
 				<div className="md:flex">
 					<Input
 						label="City"
-						{...form.register("city")}
+						{...register("city")}
 						autoComplete="address-level2"
-						error={form.formState.errors.city}
+						error={errors.city}
 					/>
 				</div>
 				<div className="md:flex">
 					<Input
 						label="State"
-						{...form.register("state")}
+						{...register("state")}
 						autoComplete="address-level1"
-						error={form.formState.errors.state}
+						error={errors.state}
 					/>
 					<Input
 						label="Zip"
-						{...form.register("zip")}
+						{...register("zip")}
 						autoComplete="postal-code"
-						error={form.formState.errors.zip}
+						error={errors.zip}
 					/>
 				</div>
-				<TextArea
-					label="Notes"
-					{...form.register("notes")}
-					error={form.formState.errors.notes}
-				/>
+				<TextArea label="Notes" {...register("notes")} error={errors.notes} />
 			</form>
 		</div>
 	);

@@ -47,28 +47,35 @@ export const contactRouter = t.router({
 	update: t.procedure
 		.input(updateContactValidationSchema)
 		.mutation(async ({ input, ctx }) => {
-			if (!input.photo)
+			const { photoBase64, ...contact } = input;
+
+			if (!photoBase64)
 				return ctx.prisma.contact.update({
 					where: { id: input.id },
-					data: input,
+					data: contact,
 					select: defaultContactSelect,
 				});
 
 			const { secure_url, height, width, public_id } =
-				await cloudinary.uploader.upload(input.photo, {
+				await cloudinary.uploader.upload(photoBase64, {
 					public_id: `address-book/${input.id}`,
 				});
+
+			const contactPhoto = {
+				cloudinaryId: public_id,
+				url: secure_url,
+				height,
+				width,
+			};
 
 			return await ctx.prisma.contact.update({
 				where: { id: input.id },
 				data: {
-					...input,
+					...contact,
 					photo: {
-						create: {
-							cloudinaryId: public_id,
-							url: secure_url,
-							height,
-							width,
+						upsert: {
+							create: contactPhoto,
+							update: contactPhoto,
 						},
 					},
 				},
