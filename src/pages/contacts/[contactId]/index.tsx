@@ -1,27 +1,37 @@
-import { inferProcedureOutput } from "@trpc/server";
-import { GetServerSideProps } from "next";
+import { createProxySSGHelpers } from "@trpc/react/ssg";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Link from "next/link";
+import superjson from "superjson";
 
 import { ContactDetails } from "../../../components/ContactDetails";
-import { AppRouter } from "../../../server/trpc/router";
+import { createContext } from "../../../server/trpc/context";
+import { appRouter } from "../../../server/trpc/router";
 import { trpc } from "../../../utils/trpc";
 
-export type ContactType = inferProcedureOutput<AppRouter["contact"]["getById"]>;
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+	const contactId = params?.contactId as string;
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-	const { contactId } = query;
+	const ssg = createProxySSGHelpers({
+		router: appRouter,
+		ctx: await createContext(),
+		transformer: superjson,
+	});
+
+	if (typeof contactId === "string") {
+		ssg.contact.getById.prefetch({ id: contactId });
+	}
+
 	return {
 		props: {
 			contactId,
+			trpcState: ssg.dehydrate(),
 		},
 	};
 };
 
-type Props = {
-	contactId: string;
-};
-
-const ContactDetailsPage = ({ contactId }: Props) => {
+const ContactDetailsPage = ({
+	contactId,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 	const { data: contact } = trpc.contact.getById.useQuery({
 		id: contactId,
 	});
