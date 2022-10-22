@@ -123,9 +123,10 @@ const UpdateContactPage = ({
 				})}
 				className="flex flex-col gap-2"
 			>
-				<div className="flex flex-col items-center gap-2">
-					<div className="avatar placeholder">
-						<div className="w-24 rounded-full bg-base-100 text-primary-content ring ring-secondary">
+				<input hidden {...register("photoBase64")} />
+				<div className="mx-auto">
+					<div className="placeholder avatar">
+						<div className="relative w-24 rounded-full bg-base-100 text-primary-content ring ring-secondary">
 							{!photo.src && (
 								<span className="text-3xl">
 									{contact?.firstName?.charAt(0).toUpperCase()}
@@ -140,11 +141,22 @@ const UpdateContactPage = ({
 									width={photo.width}
 								/>
 							)}
+							<div className="absolute top-0 right-0 bottom-0 left-0">
+								<div className="flex h-full flex-col justify-end">
+									<label className="cursor-pointer text-center hover:bg-base-100">
+										<div className="text-transparent hover:text-secondary">
+											Edit
+										</div>
+										<input
+											className="hidden"
+											type="file"
+											accept="image/*"
+											onChange={onFileChange}
+										/>
+									</label>
+								</div>
+							</div>
 						</div>
-					</div>
-					<div>
-						<input hidden {...register("photoBase64")} />
-						<input type="file" onChange={onFileChange} />
 					</div>
 				</div>
 
