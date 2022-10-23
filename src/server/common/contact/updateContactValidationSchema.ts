@@ -1,9 +1,10 @@
-import { z } from "zod";
+import { literal, z } from "zod";
 
-export const createContactValidationSchema = z.object({
-	firstName: z.string(),
+export const updateContactValidationSchema = z.object({
+	id: z.string().cuid(),
+	firstName: z.string().nullish(),
 	lastName: z.string().nullish(),
-	email: z.string().email().or(z.literal("")).nullish(),
+	email: z.string().email().or(literal("")).nullish(),
 	phoneNumber: z.string().nullish(),
 	address1: z.string().nullish(),
 	address2: z.string().nullish(),
@@ -11,4 +12,5 @@ export const createContactValidationSchema = z.object({
 	state: z.string().nullish(),
 	zip: z.string().nullish(),
 	notes: z.string().nullish(),
+	photoBase64: z.string().nullish(),
 });

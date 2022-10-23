@@ -8,6 +8,7 @@ import { CreateContactFormModal } from "../components/CreateContactFormModal";
 import { Search } from "../components/Search";
 import { createContext } from "../server/trpc/context";
 import { appRouter } from "../server/trpc/router";
+import { filterByQuery } from "../utils/filterByQuery";
 import { trpc } from "../utils/trpc";
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -17,7 +18,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 		transformer: superjson,
 	});
 
-	await ssg.contact.getByQuery.prefetch({ query: "" });
+	await ssg.contact.getAll.prefetch();
 
 	return {
 		props: {
@@ -30,9 +31,9 @@ const Home: NextPage = () => {
 	const [isCreateContactModalOpen, setIsCreateContactModalOpen] =
 		useState(false);
 	const [query, setQuery] = useState("");
-	const { data: contacts } = trpc.contact.getByQuery.useQuery({
-		query,
-	});
+	const { data: contacts } = trpc.contact.getAll.useQuery();
+
+	const filteredContacts = filterByQuery(contacts ?? [], query);
 
 	const handleAddContactModalToggle = () => {
 		setIsCreateContactModalOpen(!isCreateContactModalOpen);
@@ -62,7 +63,7 @@ const Home: NextPage = () => {
 			</button>
 
 			<Search query={query} setQuery={setQuery} />
-			<ContactList contacts={contacts} />
+			<ContactList contacts={filteredContacts} />
 
 			<CreateContactFormModal
 				isOpen={isCreateContactModalOpen}

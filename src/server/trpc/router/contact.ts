@@ -1,8 +1,9 @@
 import { Prisma } from "@prisma/client";
-import { TRPCError } from "@trpc/server";
+import { v2 as cloudinary } from "cloudinary";
 import { z } from "zod";
 
 import { createContactValidationSchema } from "../../common/contact/createContactValidationSchema";
+import { updateContactValidationSchema } from "../../common/contact/updateContactValidationSchema";
 import { t } from "../trpc";
 
 const defaultContactSelect = Prisma.validator<Prisma.ContactSelect>()({
@@ -17,83 +18,69 @@ const defaultContactSelect = Prisma.validator<Prisma.ContactSelect>()({
 	state: true,
 	zip: true,
 	notes: true,
+	photo: true,
 });
 
 export const contactRouter = t.router({
-	getByQuery: t.procedure
-		.input(z.object({ query: z.string() }))
-		.query(({ ctx, input }) => {
-			return ctx.prisma.contact.findMany({
-				where: {
-					OR: [
-						{ firstName: { contains: input.query, mode: "insensitive" } },
-						{ lastName: { contains: input.query, mode: "insensitive" } },
-						{ email: { contains: input.query, mode: "insensitive" } },
-						{ phoneNumber: { contains: input.query, mode: "insensitive" } },
-						{ address1: { contains: input.query, mode: "insensitive" } },
-						{ address2: { contains: input.query, mode: "insensitive" } },
-						{ city: { contains: input.query, mode: "insensitive" } },
-						{ state: { contains: input.query, mode: "insensitive" } },
-						{ zip: { contains: input.query, mode: "insensitive" } },
-						{ notes: { contains: input.query, mode: "insensitive" } },
-					],
-				},
-				select: defaultContactSelect,
-			});
+	getAll: t.procedure.query(({ ctx }) =>
+		ctx.prisma.contact.findMany({
+			select: defaultContactSelect,
 		}),
+	),
 	getById: t.procedure
 		.input(z.object({ id: z.string().cuid() }))
 		.query(({ input, ctx }) => {
 			const { id } = input;
-			const contact = ctx.prisma.contact.findUnique({
+			return ctx.prisma.contact.findUnique({
 				where: { id },
 				select: defaultContactSelect,
 			});
-
-			if (!contact) {
-				throw new TRPCError({
-					code: "NOT_FOUND",
-					message: `No event with id '${id}'`,
-				});
-			}
-
-			return contact;
 		}),
 	create: t.procedure
 		.input(createContactValidationSchema)
-		.mutation(async ({ input, ctx }) => {
-			const contact = await ctx.prisma.contact.create({
+		.mutation(({ input, ctx }) => {
+			return ctx.prisma.contact.create({
 				data: input,
 				select: defaultContactSelect,
 			});
-			return contact;
 		}),
 	update: t.procedure
-		.input(
-			z.object({
-				id: z.string().cuid(),
-				data: z.object({
-					firstName: z.string().optional(),
-					lastName: z.string().optional(),
-					email: z.string().email().optional(),
-					phoneNumber: z.string().optional(),
-					address1: z.string().optional(),
-					address2: z.string().optional(),
-					city: z.string().optional(),
-					state: z.string().optional(),
-					zip: z.string().optional(),
-					notes: z.string().optional(),
-				}),
-			}),
-		)
+		.input(updateContactValidationSchema)
 		.mutation(async ({ input, ctx }) => {
-			const { id, data } = input;
-			const contact = await ctx.prisma.contact.update({
-				where: { id },
-				data,
+			const { photoBase64, ...contact } = input;
+
+			if (!photoBase64)
+				return ctx.prisma.contact.update({
+					where: { id: input.id },
+					data: contact,
+					select: defaultContactSelect,
+				});
+
+			const { secure_url, height, width, public_id } =
+				await cloudinary.uploader.upload(photoBase64, {
+					public_id: `address-book/${input.id}`,
+				});
+
+			const contactPhoto = {
+				cloudinaryId: public_id,
+				url: secure_url,
+				height,
+				width,
+			};
+
+			return await ctx.prisma.contact.update({
+				where: { id: input.id },
+				data: {
+					...contact,
+					photo: {
+						upsert: {
+							create: contactPhoto,
+							update: contactPhoto,
+						},
+					},
+				},
 				select: defaultContactSelect,
 			});
-			return contact;
 		}),
 	delete: t.procedure
 		.input(
@@ -101,11 +88,8 @@ export const contactRouter = t.router({
 				id: z.string().cuid(),
 			}),
 		)
-		.mutation(async ({ input, ctx }) => {
+		.mutation(({ input, ctx }) => {
 			const { id } = input;
-			await ctx.prisma.contact.delete({ where: { id } });
-			return {
-				id,
-			};
+			return ctx.prisma.contact.delete({ where: { id } });
 		}),
 });
