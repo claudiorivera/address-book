@@ -1,9 +1,10 @@
+import { inferProcedureOutput } from "@trpc/server";
 import NextImage from "next/future/image";
 
-import { ContactType } from "../pages/contacts/[contactId]";
+import { AppRouter } from "../server/trpc/router";
 
 type Props = {
-	contact: ContactType;
+	contact: inferProcedureOutput<AppRouter["contact"]["getById"]>;
 };
 
 export const ContactDetailsHeader = ({ contact }: Props) => {
@@ -11,7 +12,7 @@ export const ContactDetailsHeader = ({ contact }: Props) => {
 
 	return (
 		<>
-			<div className="avatar placeholder">
+			<div className="placeholder avatar">
 				<div className="w-24 rounded-full bg-base-100 text-primary-content ring ring-secondary">
 					{!contact.photo?.url && (
 						<span className="text-3xl">
