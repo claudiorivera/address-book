@@ -7,14 +7,12 @@ import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
 import superjson from "superjson";
 
-import { Input } from "../../../components/Input";
-import { TextArea } from "../../../components/TextArea";
-import { useZodForm } from "../../../hooks/useZodForm";
-import { updateContactValidationSchema } from "../../../server/common/contact/updateContactValidationSchema";
-import { createContext } from "../../../server/trpc/context";
-import { appRouter } from "../../../server/trpc/router";
-import { getBase64 } from "../../../utils/getBase64";
-import { trpc } from "../../../utils/trpc";
+import { Input, TextArea } from "@/components";
+import { useZodForm } from "@/hooks";
+import { updateContactValidationSchema } from "@/schemas";
+import { createContext } from "@/server/trpc/context";
+import { appRouter } from "@/server/trpc/router";
+import { getBase64, trpc } from "@/utils";
 
 type Photo = Partial<Pick<HTMLImageElement, "src" | "width" | "height">>;
 

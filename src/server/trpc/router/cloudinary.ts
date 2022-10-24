@@ -2,7 +2,7 @@ import { TRPCError } from "@trpc/server";
 import { v2 as cloudinary } from "cloudinary";
 import { z } from "zod";
 
-import { t } from "../trpc";
+import { t } from "@/server/trpc/trpc";
 
 export const cloudinaryRouter = t.router({
 	upload: t.procedure

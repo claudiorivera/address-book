@@ -1,9 +1,9 @@
-import "../styles/globals.css";
+import "@/styles/globals.css";
 
 import type { AppType } from "next/dist/shared/lib/utils";
 
-import { Layout } from "../components/Layout";
-import { trpc } from "../utils/trpc";
+import { Layout } from "@/components";
+import { trpc } from "@/utils";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
 	return (

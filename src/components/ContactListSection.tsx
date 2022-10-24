@@ -1,7 +1,7 @@
 import { Contact } from "@prisma/client";
 import Link from "next/link";
 
-import { ContactListRow } from "./ContactListRow";
+import { ContactListRow } from "@/components";
 
 type Props = {
 	label: string;

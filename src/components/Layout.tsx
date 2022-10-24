@@ -2,7 +2,7 @@ import { useIsFetching } from "@tanstack/react-query";
 import classNames from "classnames";
 import { ReactNode } from "react";
 
-import { Meta } from "./Meta";
+import { Meta } from "@/components";
 
 type Props = {
 	children: ReactNode;

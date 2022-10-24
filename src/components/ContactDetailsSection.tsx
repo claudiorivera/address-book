@@ -1,8 +1,8 @@
 import { Contact } from "@prisma/client";
 import Link from "next/link";
 
-import { hrefPrefixForField } from "../utils/getHrefPrefixForField";
-import { ConditionalWrapper } from "./ConditionalWrapper";
+import { ConditionalWrapper } from "@/components";
+import { hrefPrefixForField } from "@/utils";
 
 type Props = {
 	contact: Contact;

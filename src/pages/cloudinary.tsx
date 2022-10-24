@@ -2,9 +2,9 @@ import classNames from "classnames";
 import { useState } from "react";
 import { Controller } from "react-hook-form";
 
-import { ImagePicker } from "../components/ImagePicker";
-import { useZodForm } from "../hooks/useZodForm";
-import { imageUploadValidationSchema } from "../server/common/imageUploadValidationSchema";
+import { ImagePicker } from "@/components";
+import { useZodForm } from "@/hooks";
+import { imageUploadValidationSchema } from "@/schemas";
 
 const CloudinaryTestPage = () => {
 	const [isLoading, setIsLoading] = useState(false);
