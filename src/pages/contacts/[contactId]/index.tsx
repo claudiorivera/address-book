@@ -3,10 +3,10 @@ import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Link from "next/link";
 import superjson from "superjson";
 
-import { ContactDetails } from "../../../components/ContactDetails";
-import { createContext } from "../../../server/trpc/context";
-import { appRouter } from "../../../server/trpc/router";
-import { trpc } from "../../../utils/trpc";
+import { ContactDetails } from "@/components";
+import { createContext } from "@/server/trpc/context";
+import { appRouter } from "@/server/trpc/router";
+import { trpc } from "@/utils";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 	const contactId = params?.contactId as string;

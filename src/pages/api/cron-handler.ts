@@ -1,8 +1,8 @@
 import { faker } from "@faker-js/faker";
 import { NextApiHandler } from "next";
 
-import { env } from "../../env/server.mjs";
-import { prisma } from "../../server/db/client";
+import { env } from "@/env/server.mjs";
+import { prisma } from "@/server/db/client";
 
 const handler: NextApiHandler = async (req, res) => {
 	const { method } = req;

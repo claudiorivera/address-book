@@ -2,9 +2,11 @@ import { Prisma } from "@prisma/client";
 import { v2 as cloudinary } from "cloudinary";
 import { z } from "zod";
 
-import { createContactValidationSchema } from "../../common/contact/createContactValidationSchema";
-import { updateContactValidationSchema } from "../../common/contact/updateContactValidationSchema";
-import { t } from "../trpc";
+import {
+	createContactValidationSchema,
+	updateContactValidationSchema,
+} from "@/schemas";
+import { t } from "@/server/trpc/trpc";
 
 const defaultContactSelect = Prisma.validator<Prisma.ContactSelect>()({
 	id: true,

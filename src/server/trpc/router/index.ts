@@ -1,7 +1,6 @@
-// src/server/trpc/router/index.ts
-import { t } from "../trpc";
-import { cloudinaryRouter } from "./cloudinary";
-import { contactRouter } from "./contact";
+import { cloudinaryRouter } from "@/server/trpc/router/cloudinary";
+import { contactRouter } from "@/server/trpc/router/contact";
+import { t } from "@/server/trpc/trpc";
 
 export const appRouter = t.router({
 	contact: contactRouter,

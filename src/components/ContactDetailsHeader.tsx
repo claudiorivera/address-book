@@ -1,7 +1,7 @@
 import { inferProcedureOutput } from "@trpc/server";
 import NextImage from "next/future/image";
 
-import { AppRouter } from "../server/trpc/router";
+import { AppRouter } from "@/server/trpc/router";
 
 type Props = {
 	contact: inferProcedureOutput<AppRouter["contact"]["getById"]>;

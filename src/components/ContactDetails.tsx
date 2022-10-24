@@ -1,9 +1,11 @@
 import { inferProcedureOutput } from "@trpc/server";
 
-import { AppRouter } from "../server/trpc/router";
-import { ContactDetailsAddressSection } from "./ContactDetailsAddressSection";
-import { ContactDetailsHeader } from "./ContactDetailsHeader";
-import { ContactDetailsSection } from "./ContactDetailsSection";
+import {
+	ContactDetailsAddressSection,
+	ContactDetailsHeader,
+	ContactDetailsSection,
+} from "@/components";
+import { AppRouter } from "@/server/trpc/router";
 
 type Props = {
 	contact: inferProcedureOutput<AppRouter["contact"]["getById"]>;

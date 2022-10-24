@@ -3,13 +3,10 @@ import type { GetServerSideProps, NextPage } from "next";
 import { useState } from "react";
 import superjson from "superjson";
 
-import { ContactList } from "../components/ContactList";
-import { CreateContactFormModal } from "../components/CreateContactFormModal";
-import { Search } from "../components/Search";
-import { createContext } from "../server/trpc/context";
-import { appRouter } from "../server/trpc/router";
-import { filterByQuery } from "../utils/filterByQuery";
-import { trpc } from "../utils/trpc";
+import { ContactList, CreateContactFormModal, Search } from "@/components";
+import { createContext } from "@/server/trpc/context";
+import { appRouter } from "@/server/trpc/router";
+import { filterByQuery, trpc } from "@/utils";
 
 export const getServerSideProps: GetServerSideProps = async () => {
 	const ssg = createProxySSGHelpers({

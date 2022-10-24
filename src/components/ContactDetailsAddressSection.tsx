@@ -1,6 +1,6 @@
 import { Contact } from "@prisma/client";
 
-import { getGoogleMapsUrlForContact } from "../utils/getGoogleMapsUrlForContact";
+import { getGoogleMapsUrlForContact } from "@/utils";
 
 type Props = {
 	contact: Contact;

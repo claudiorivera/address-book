@@ -1,7 +1,7 @@
 import NextImage from "next/future/image";
 import { FormEvent, useState } from "react";
 
-import { getBase64 } from "../utils/getBase64";
+import { getBase64 } from "@/utils";
 
 type ImagePreview = Pick<HTMLImageElement, "src" | "width" | "height">;
 
