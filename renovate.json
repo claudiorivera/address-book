@@ -13,7 +13,8 @@
 		},
 		{
 			"matchPackagePatterns": ["@trpc"],
-			"groupName": "trpc"
+			"groupName": "trpc",
+			"automerge": false
 		}
 	],
 	"commitMessagePrefix": "🤖"
