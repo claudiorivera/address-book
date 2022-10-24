@@ -35,19 +35,19 @@ const CloudinaryTestPage = () => {
 					name="base64Image"
 					render={({ field: { onChange } }) => (
 						<ImagePicker
-							className="h-64 w-auto"
+							className="aspect-[3/2] w-full"
 							onChange={onChange}
 							isLoading={isLoading}
 						/>
 					)}
 				/>
-				<div className="flex h-64 flex-wrap gap-2">
+				<div className="flex flex-wrap gap-2">
 					<Controller
 						control={control}
 						name="base64Image"
 						render={({ field: { onChange } }) => (
 							<ImagePicker
-								className="h-full flex-1"
+								className="aspect-[2/3] h-full flex-1"
 								onChange={onChange}
 								isLoading={isLoading}
 							/>
@@ -58,7 +58,7 @@ const CloudinaryTestPage = () => {
 						name="base64Image"
 						render={({ field: { onChange } }) => (
 							<ImagePicker
-								className="h-full flex-1"
+								className="aspect-[2/3] h-full flex-1"
 								onChange={onChange}
 								isLoading={isLoading}
 							/>
