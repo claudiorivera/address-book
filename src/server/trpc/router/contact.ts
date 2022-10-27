@@ -6,7 +6,8 @@ import {
 	createContactValidationSchema,
 	updateContactValidationSchema,
 } from "@/schemas";
-import { t } from "@/server/trpc/trpc";
+import { publicProcedure, router } from "@/server/trpc/trpc";
+import { RouterOutput } from "@/utils";
 
 const defaultContactSelect = Prisma.validator<Prisma.ContactSelect>()({
 	id: true,
@@ -23,13 +24,13 @@ const defaultContactSelect = Prisma.validator<Prisma.ContactSelect>()({
 	photo: true,
 });
 
-export const contactRouter = t.router({
-	getAll: t.procedure.query(({ ctx }) =>
+export const contactRouter = router({
+	getAll: publicProcedure.query(({ ctx }) =>
 		ctx.prisma.contact.findMany({
 			select: defaultContactSelect,
 		}),
 	),
-	getById: t.procedure
+	getById: publicProcedure
 		.input(z.object({ id: z.string().cuid() }))
 		.query(({ input, ctx }) => {
 			const { id } = input;
@@ -38,7 +39,7 @@ export const contactRouter = t.router({
 				select: defaultContactSelect,
 			});
 		}),
-	create: t.procedure
+	create: publicProcedure
 		.input(createContactValidationSchema)
 		.mutation(({ input, ctx }) => {
 			return ctx.prisma.contact.create({
@@ -46,7 +47,7 @@ export const contactRouter = t.router({
 				select: defaultContactSelect,
 			});
 		}),
-	update: t.procedure
+	update: publicProcedure
 		.input(updateContactValidationSchema)
 		.mutation(async ({ input, ctx }) => {
 			const { photoBase64, ...contact } = input;
@@ -84,7 +85,7 @@ export const contactRouter = t.router({
 				select: defaultContactSelect,
 			});
 		}),
-	delete: t.procedure
+	delete: publicProcedure
 		.input(
 			z.object({
 				id: z.string().cuid(),
@@ -95,3 +96,7 @@ export const contactRouter = t.router({
 			return ctx.prisma.contact.delete({ where: { id } });
 		}),
 });
+
+export type ContactCreateOutput = RouterOutput["contact"]["create"];
+export type ContactGetAllOutput = RouterOutput["contact"]["getAll"];
+export type ContactGetByIdOutput = RouterOutput["contact"]["getById"];

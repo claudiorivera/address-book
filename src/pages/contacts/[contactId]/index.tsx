@@ -5,7 +5,7 @@ import superjson from "superjson";
 
 import { ContactDetails } from "@/components";
 import { createContext } from "@/server/trpc/context";
-import { appRouter } from "@/server/trpc/router";
+import { appRouter } from "@/server/trpc/router/_app";
 import { trpc } from "@/utils";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {

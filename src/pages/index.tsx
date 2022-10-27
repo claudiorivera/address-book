@@ -5,10 +5,8 @@ import superjson from "superjson";
 
 import { ContactList, CreateContactFormModal, Search } from "@/components";
 import { createContext } from "@/server/trpc/context";
-import { appRouter } from "@/server/trpc/router";
-import { filterByQuery, InferProcedures, trpc } from "@/utils";
-
-type Contact = InferProcedures["contact"]["getAll"]["output"][number];
+import { appRouter } from "@/server/trpc/router/_app";
+import { trpc } from "@/utils";
 
 export const getServerSideProps: GetServerSideProps = async () => {
 	const ssg = createProxySSGHelpers({
@@ -30,9 +28,13 @@ const Home: NextPage = () => {
 	const [isCreateContactModalOpen, setIsCreateContactModalOpen] =
 		useState(false);
 	const [query, setQuery] = useState("");
-	const { data: contacts } = trpc.contact.getAll.useQuery();
+	const { data: contacts } = trpc.
 
-	const filteredContacts = filterByQuery<Contact>(contacts ?? [], query);
+	const filteredContacts = contacts.filter((contact) =>
+		Object.values(contact).some((el) =>
+			el.toLowerCase().includes(query.toLowerCase()),
+		),
+	);
 
 	const handleAddContactModalToggle = () => {
 		setIsCreateContactModalOpen(!isCreateContactModalOpen);

@@ -3,10 +3,10 @@ import {
 	ContactDetailsHeader,
 	ContactDetailsSection,
 } from "@/components";
-import { InferProcedures } from "@/utils";
+import { ContactGetByIdOutput } from "@/server/trpc/router/contact";
 
 type Props = {
-	contact: InferProcedures["contact"]["getById"]["output"];
+	contact: ContactGetByIdOutput;
 };
 
 export const ContactDetails = ({ contact }: Props) => {

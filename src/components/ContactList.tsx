@@ -1,8 +1,9 @@
 import { ContactListSection } from "@/components";
-import { collateContacts, InferProcedures } from "@/utils";
+import { ContactGetAllOutput } from "@/server/trpc/router/contact";
+import { collateContacts } from "@/utils";
 
 type Props = {
-	contacts: InferProcedures["contact"]["getAll"]["output"];
+	contacts: ContactGetAllOutput;
 };
 
 export const ContactList = ({ contacts }: Props) => {

@@ -1,9 +1,7 @@
-import { InferProcedures } from "@/utils";
-
-type Contact = InferProcedures["contact"]["getById"]["output"];
+import { ContactGetByIdOutput } from "@/server/trpc/router/contact";
 
 type Props = {
-	contact: Contact;
+	contact: ContactGetByIdOutput;
 };
 
 export const ContactListRow = ({ contact }: Props) => {
@@ -18,7 +16,7 @@ export const ContactListRow = ({ contact }: Props) => {
 };
 
 type NameOrPhoneNumberProps = {
-	contact: Contact;
+	contact: ContactGetByIdOutput;
 };
 
 const NameOrPhoneNumber = ({ contact }: NameOrPhoneNumberProps) => {

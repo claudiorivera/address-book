@@ -1,20 +1,17 @@
 import { Contact } from "@prisma/client";
 
 import { sortedInsert } from "./sortedInsert";
-import { InferProcedures } from "./trpc";
+import { RouterOutput } from "./trpc";
 
 type Options = {
 	sortKey?: keyof Contact;
 };
 
 export const collateContacts = (
-	contacts: InferProcedures["contact"]["getAll"]["output"],
+	contacts: RouterOutput["contact"]["getAll"],
 	options?: Options,
 ) => {
-	const collatedContacts = new Map<
-		string,
-		InferProcedures["contact"]["getAll"]["output"]
-	>();
+	const collatedContacts = new Map<string, RouterOutput["contact"]["getAll"]>();
 
 	contacts.forEach((contact) => {
 		const key =

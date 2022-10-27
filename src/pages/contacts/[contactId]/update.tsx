@@ -11,7 +11,7 @@ import { Input, TextArea } from "@/components";
 import { useZodForm } from "@/hooks";
 import { updateContactValidationSchema } from "@/schemas";
 import { createContext } from "@/server/trpc/context";
-import { appRouter } from "@/server/trpc/router";
+import { appRouter } from "@/server/trpc/router/_app";
 import { getBase64, trpc } from "@/utils";
 
 type Photo = Partial<Pick<HTMLImageElement, "src" | "width" | "height">>;
