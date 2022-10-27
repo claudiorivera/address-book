@@ -1,7 +1,9 @@
-import { Contact } from "@prisma/client";
+import { InferProcedures } from "./trpc";
 
-export const hrefPrefixForField = (field: keyof Contact) => {
-	switch (field) {
+type Contact = InferProcedures["contact"]["getById"]["output"];
+
+export const hrefPrefixForField = (field: string) => {
+	switch (field as keyof Contact) {
 		case "phoneNumber":
 			return "tel:";
 		case "email":

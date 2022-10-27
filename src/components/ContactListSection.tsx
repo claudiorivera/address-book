@@ -1,11 +1,11 @@
-import { Contact } from "@prisma/client";
 import Link from "next/link";
 
 import { ContactListRow } from "@/components";
+import { InferProcedures } from "@/utils";
 
 type Props = {
 	label: string;
-	contacts: Array<Contact | null>;
+	contacts: InferProcedures["contact"]["getAll"]["output"];
 };
 
 export const ContactListSection = ({ label, contacts }: Props) => {

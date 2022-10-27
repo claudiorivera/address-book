@@ -1,18 +1,12 @@
-import { Contact } from "@prisma/client";
-import { useMemo } from "react";
-
 import { ContactListSection } from "@/components";
-import { collateContacts } from "@/utils";
+import { collateContacts, InferProcedures } from "@/utils";
 
 type Props = {
-	contacts: Contact[] | undefined;
+	contacts: InferProcedures["contact"]["getAll"]["output"];
 };
 
 export const ContactList = ({ contacts }: Props) => {
-	const collatedContacts = useMemo(
-		() => collateContacts(contacts || []),
-		[contacts],
-	);
+	const collatedContacts = collateContacts(contacts);
 
 	return (
 		<>

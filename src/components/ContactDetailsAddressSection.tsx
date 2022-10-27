@@ -1,12 +1,12 @@
-import { Contact } from "@prisma/client";
-
-import { getGoogleMapsUrlForContact } from "@/utils";
+import { getGoogleMapsUrlForContact, InferProcedures } from "@/utils";
 
 type Props = {
-	contact: Contact;
+	contact: InferProcedures["contact"]["getById"]["output"];
 };
 
 export const ContactDetailsAddressSection = ({ contact }: Props) => {
+	if (!contact) return null;
+
 	const { address1, address2, city, state, zip } = contact;
 
 	const hasNoAddressFields = [address1, address2, city, state, zip].every(

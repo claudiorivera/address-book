@@ -1,10 +1,9 @@
-import { inferProcedureOutput } from "@trpc/server";
 import NextImage from "next/future/image";
 
-import { AppRouter } from "@/server/trpc/router";
+import { InferProcedures } from "@/utils";
 
 type Props = {
-	contact: inferProcedureOutput<AppRouter["contact"]["getById"]>;
+	contact: InferProcedures["contact"]["getById"]["output"];
 };
 
 export const ContactDetailsHeader = ({ contact }: Props) => {
