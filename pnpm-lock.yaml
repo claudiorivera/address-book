@@ -15,7 +15,7 @@ specifiers:
   '@types/react-dom': 18.0.8
   '@typescript-eslint/eslint-plugin': 5.41.0
   '@typescript-eslint/parser': 5.41.0
-  autoprefixer: 10.4.12
+  autoprefixer: 10.4.13
   classnames: 2.3.2
   cloudinary: 1.32.0
   cuid: 2.1.8
@@ -50,7 +50,7 @@ dependencies:
   '@trpc/server': 10.0.0-proxy-beta.20
   classnames: 2.3.2
   cloudinary: 1.32.0
-  daisyui: 2.33.0_lecjcatbfhr65vykvcrh2zikoy
+  daisyui: 2.33.0_axqeqcuz5amcmkns6zo6im645q
   next: 12.2.5_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -66,7 +66,7 @@ devDependencies:
   '@types/react-dom': 18.0.8
   '@typescript-eslint/eslint-plugin': 5.41.0_huremdigmcnkianavgfk3x6iou
   '@typescript-eslint/parser': 5.41.0_wyqvi574yv7oiwfeinomdzmc3m
-  autoprefixer: 10.4.12_postcss@8.4.18
+  autoprefixer: 10.4.13_postcss@8.4.18
   cuid: 2.1.8
   eslint: 8.26.0
   eslint-config-next: 12.2.5_wyqvi574yv7oiwfeinomdzmc3m
@@ -777,15 +777,15 @@ packages:
     dev: false
     optional: true
 
-  /autoprefixer/10.4.12_postcss@8.4.18:
-    resolution: {integrity: sha512-WrCGV9/b97Pa+jtwf5UGaRjgQIg7OK3D06GnoYoZNcG1Xb8Gt3EfuKjlhh9i/VtT16g6PYjZ69jdJ2g8FxSC4Q==}
+  /autoprefixer/10.4.13_postcss@8.4.18:
+    resolution: {integrity: sha512-49vKpMqcZYsJjwotvt4+h/BCjJVnhGwcLpDt5xkcaOG3eLrG/HUYLagrihYsQ+qrIBgIzX1Rw7a6L8I/ZA1Atg==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.4
-      caniuse-lite: 1.0.30001409
+      caniuse-lite: 1.0.30001426
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -827,7 +827,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001409
+      caniuse-lite: 1.0.30001426
       electron-to-chromium: 1.4.254
       node-releases: 2.0.6
       update-browserslist-db: 1.0.9_browserslist@4.21.4
@@ -858,8 +858,8 @@ packages:
     resolution: {integrity: sha512-Mx4MlhXO5NwuvXGgVb+hg65HZ+bhUYsz8QtDGDo2QmaJS2GBX47Xfi2koL86lc8K+l+htXeTEB/Aeqvezoo6Ew==}
     dev: false
 
-  /caniuse-lite/1.0.30001409:
-    resolution: {integrity: sha512-V0mnJ5dwarmhYv8/MzhJ//aW68UpvnQBXv8lJ2QUsvn2pHcmAuNtu8hQEDz37XnA1iE+lRR9CIfGWWpgJ5QedQ==}
+  /caniuse-lite/1.0.30001426:
+    resolution: {integrity: sha512-n7cosrHLl8AWt0wwZw/PJZgUg3lV0gk9LMI7ikGJwhyhgsd2Nb65vKvmSexCqq/J7rbH3mFG6yZZiPR5dLPW5A==}
 
   /chai/4.3.6:
     resolution: {integrity: sha512-bbcp3YfHCUzMOvKqsztczerVgBKSsEijCySNlHHbX3VG1nskvqjz5Rfso1gGwD6w6oOV3eI60pKuMOV5MV7p3Q==}
@@ -1008,13 +1008,13 @@ packages:
     resolution: {integrity: sha512-xiEMER6E7TlTPnDxrM4eRiC6TRgjNX9xzEZ5U/Se2YJKr7Mq4pJn/2XEHjl3STcSh96GmkHPcBXLES8M29wyyg==}
     dev: true
 
-  /daisyui/2.33.0_lecjcatbfhr65vykvcrh2zikoy:
+  /daisyui/2.33.0_axqeqcuz5amcmkns6zo6im645q:
     resolution: {integrity: sha512-NviwGs9oC9NW7IEZiLexHtxkpzP38AKxb9GTUCqUa0qoU8NHKQGqJUzQWZwWSZakU57KsQLblFVe0xMhqw4TlA==}
     peerDependencies:
       autoprefixer: ^10.0.2
       postcss: ^8.1.6
     dependencies:
-      autoprefixer: 10.4.12_postcss@8.4.18
+      autoprefixer: 10.4.13_postcss@8.4.18
       color: 4.2.3
       css-selector-tokenizer: 0.8.0
       postcss: 8.4.18
