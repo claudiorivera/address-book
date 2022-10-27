@@ -1,4 +1,6 @@
-import { Contact } from "@prisma/client";
+import { InferProcedures } from "@/utils";
+
+type Contact = InferProcedures["contact"]["getById"]["output"];
 
 type Props = {
 	contact: Contact;
@@ -18,8 +20,9 @@ export const ContactListRow = ({ contact }: Props) => {
 type NameOrPhoneNumberProps = {
 	contact: Contact;
 };
+
 const NameOrPhoneNumber = ({ contact }: NameOrPhoneNumberProps) => {
-	if (contact.firstName || contact.lastName) {
+	if (contact?.firstName || contact?.lastName) {
 		return (
 			<span>
 				{contact.firstName} {contact.lastName}
@@ -27,5 +30,5 @@ const NameOrPhoneNumber = ({ contact }: NameOrPhoneNumberProps) => {
 		);
 	}
 
-	return <span>{contact.phoneNumber}</span>;
+	return <span>{contact?.phoneNumber}</span>;
 };
