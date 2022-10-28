@@ -1,4 +1,4 @@
-import { createProxySSGHelpers } from "@trpc/react/ssg";
+import { createProxySSGHelpers } from "@trpc/react-query/ssg";
 import classNames from "classnames";
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import NextImage from "next/future/image";

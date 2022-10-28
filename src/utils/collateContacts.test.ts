@@ -1,9 +1,9 @@
 import { faker } from "@faker-js/faker";
-import { Contact } from "@prisma/client";
 import cuid from "cuid";
 import { describe, expect, it } from "vitest";
 
 import { collateContacts } from "./collateContacts";
+import { RouterOutput } from "./trpc";
 
 const fakeContact = {
 	id: cuid(),
@@ -17,10 +17,11 @@ const fakeContact = {
 	state: "",
 	zip: "",
 	notes: "",
+	photo: null,
 };
 
 describe("collateContacts", () => {
-	const contacts: Contact[] = [];
+	const contacts: RouterOutput["contact"]["getAll"] = [];
 
 	it("should return an object with a # key", () => {
 		contacts.length = 0;
@@ -56,6 +57,7 @@ describe("collateContacts", () => {
 				state: "",
 				zip: "",
 				notes: "",
+				photo: null,
 			},
 			{
 				id: cuid(),
@@ -69,6 +71,7 @@ describe("collateContacts", () => {
 				state: "",
 				zip: "",
 				notes: "",
+				photo: null,
 			},
 		);
 		const sortedContacts = collateContacts(contacts);

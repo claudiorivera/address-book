@@ -1,4 +1,4 @@
-import { createProxySSGHelpers } from "@trpc/react/ssg";
+import { createProxySSGHelpers } from "@trpc/react-query/ssg";
 import type { GetServerSideProps, NextPage } from "next";
 import { useState } from "react";
 import superjson from "superjson";
@@ -29,13 +29,14 @@ const Home: NextPage = () => {
 		useState(false);
 	const [query, setQuery] = useState("");
 
-	const { data: contact } = trpc.contact.getAll.useQuery();
+	const { data: contacts } = trpc.contact.getAll.useQuery();
 
-	const filteredContacts = contacts.filter((contact) =>
-		Object.values(contact).some((el) =>
-			el.toLowerCase().includes(query.toLowerCase()),
-		),
-	);
+	const filteredContacts =
+		contacts?.filter((contact) =>
+			Object.values(contact)
+				.filter((value): value is string => !!value)
+				.some((el) => el?.toLowerCase().includes(query.toLowerCase())),
+		) ?? [];
 
 	const handleAddContactModalToggle = () => {
 		setIsCreateContactModalOpen(!isCreateContactModalOpen);
