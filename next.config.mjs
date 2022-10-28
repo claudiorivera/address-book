@@ -25,5 +25,4 @@ export default defineNextConfig({
 	images: {
 		domains: ["res.cloudinary.com", "picsum.photos", "loremflickr.com"],
 	},
-	experimental: { images: { allowFutureImage: true } },
 });

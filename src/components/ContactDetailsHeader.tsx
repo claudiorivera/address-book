@@ -1,4 +1,4 @@
-import NextImage from "next/future/image";
+import NextImage from "next/image";
 
 import { ContactGetByIdOutput } from "@/server/trpc/router/contact";
 

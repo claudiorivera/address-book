@@ -23,7 +23,7 @@ export const ContactDetailsSection = ({ contact, label, field }: Props) => {
 					condition={["email", "phoneNumber"].includes(field)}
 					wrapper={(children) => (
 						<Link href={`${hrefPrefixForField(field)}${value}`}>
-							<a>{children}</a>
+							{children}
 						</Link>
 					)}
 				>

@@ -6,7 +6,7 @@ import superjson from "superjson";
 import { ContactList, CreateContactFormModal, Search } from "@/components";
 import { createContext } from "@/server/trpc/context";
 import { appRouter } from "@/server/trpc/router/_app";
-import { trpc } from "@/utils";
+import { filterByQuery, trpc } from "@/utils";
 
 export const getServerSideProps: GetServerSideProps = async () => {
 	const ssg = createProxySSGHelpers({
@@ -31,12 +31,7 @@ const Home: NextPage = () => {
 
 	const { data: contacts } = trpc.contact.getAll.useQuery();
 
-	const filteredContacts =
-		contacts?.filter((contact) =>
-			Object.values(contact)
-				.filter((value): value is string => !!value)
-				.some((el) => el?.toLowerCase().includes(query.toLowerCase())),
-		) ?? [];
+	const filteredContacts = filterByQuery(contacts ?? [], query);
 
 	const handleAddContactModalToggle = () => {
 		setIsCreateContactModalOpen(!isCreateContactModalOpen);
