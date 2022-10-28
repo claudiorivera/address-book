@@ -28,7 +28,8 @@ const Home: NextPage = () => {
 	const [isCreateContactModalOpen, setIsCreateContactModalOpen] =
 		useState(false);
 	const [query, setQuery] = useState("");
-	const { data: contacts } = trpc.
+
+	const { data: contact } = trpc.contact.getAll.useQuery();
 
 	const filteredContacts = contacts.filter((contact) =>
 		Object.values(contact).some((el) =>
