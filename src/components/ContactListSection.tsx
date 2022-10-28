@@ -1,11 +1,11 @@
 import Link from "next/link";
 
 import { ContactListRow } from "@/components";
-import { InferProcedures } from "@/utils";
+import { ContactGetAllOutput } from "@/server/trpc/router/contact";
 
 type Props = {
 	label: string;
-	contacts: InferProcedures["contact"]["getAll"]["output"];
+	contacts: ContactGetAllOutput;
 };
 
 export const ContactListSection = ({ label, contacts }: Props) => {

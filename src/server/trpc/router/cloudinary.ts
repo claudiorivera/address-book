@@ -2,10 +2,10 @@ import { TRPCError } from "@trpc/server";
 import { v2 as cloudinary } from "cloudinary";
 import { z } from "zod";
 
-import { t } from "@/server/trpc/trpc";
+import { publicProcedure, router } from "@/server/trpc/trpc";
 
-export const cloudinaryRouter = t.router({
-	upload: t.procedure
+export const cloudinaryRouter = router({
+	upload: publicProcedure
 		.input(
 			z.object({
 				base64string: z.string(),
@@ -33,7 +33,7 @@ export const cloudinaryRouter = t.router({
 				});
 			}
 		}),
-	remove: t.procedure
+	remove: publicProcedure
 		.input(z.object({ cloudinaryId: z.string() }))
 		.mutation(({ input }) => {
 			const { cloudinaryId } = input;

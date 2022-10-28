@@ -1,6 +1,6 @@
-import { InferProcedures } from "./trpc";
+import { RouterOutput } from "./trpc";
 
-type Contact = InferProcedures["contact"]["getById"]["output"];
+type Contact = RouterOutput["contact"]["getById"];
 
 export const hrefPrefixForField = (field: string) => {
 	switch (field as keyof Contact) {

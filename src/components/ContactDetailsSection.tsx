@@ -1,20 +1,19 @@
 import Link from "next/link";
 
 import { ConditionalWrapper } from "@/components";
-import { hrefPrefixForField, InferProcedures } from "@/utils";
-
-type Contact = NonNullable<InferProcedures["contact"]["getById"]["output"]>;
+import { ContactGetByIdOutput } from "@/server/trpc/router/contact";
+import { hrefPrefixForField } from "@/utils";
 
 type Props = {
-	contact: Contact;
+	contact: ContactGetByIdOutput;
 	label: string;
 	field: string;
 };
 
 export const ContactDetailsSection = ({ contact, label, field }: Props) => {
-	if (!contact?.[field as keyof Contact]) return null;
+	if (!contact?.[field as keyof ContactGetByIdOutput]) return null;
 
-	const value = contact[field as keyof Contact];
+	const value = contact[field as keyof ContactGetByIdOutput];
 
 	return (
 		<div className="card w-full rounded bg-base-100 text-xs">
@@ -23,9 +22,7 @@ export const ContactDetailsSection = ({ contact, label, field }: Props) => {
 				<ConditionalWrapper
 					condition={["email", "phoneNumber"].includes(field)}
 					wrapper={(children) => (
-						<Link
-							href={`${hrefPrefixForField(field as keyof Contact)}${value}`}
-						>
+						<Link href={`${hrefPrefixForField(field)}${value}`}>
 							<a>{children}</a>
 						</Link>
 					)}
