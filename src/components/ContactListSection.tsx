@@ -18,9 +18,7 @@ export const ContactListSection = ({ label, contacts }: Props) => {
 				(contact) =>
 					!!contact && (
 						<Link key={contact.id} href={`/contacts/${contact.id}`}>
-							<a>
-								<ContactListRow contact={contact} />
-							</a>
+							<ContactListRow contact={contact} />
 						</Link>
 					),
 			)}

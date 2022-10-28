@@ -1,4 +1,4 @@
-import NextImage from "next/future/image";
+import NextImage from "next/image";
 import { FormEvent, useState } from "react";
 
 import { getBase64 } from "@/utils";
@@ -85,6 +85,7 @@ export const ImagePicker = ({ onChange, isLoading, className }: Props) => {
 						height={imagePreview.height}
 						width={imagePreview.width}
 						className="h-full w-full object-contain"
+						alt=""
 					/>
 					<button
 						className="btn-primary btn-square btn absolute top-2 right-2 rounded-none"

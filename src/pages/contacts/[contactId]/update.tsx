@@ -1,7 +1,7 @@
 import { createProxySSGHelpers } from "@trpc/react-query/ssg";
 import classNames from "classnames";
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
-import NextImage from "next/future/image";
+import NextImage from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
@@ -98,10 +98,8 @@ const UpdateContactPage = ({
 	return (
 		<div className="min-h-screen p-4">
 			<div className="flex items-center justify-between pb-4 text-secondary">
-				<Link href={`/contacts/${contactId}`}>
-					<a className="flex items-center">
-						<span className="text-sm">Cancel</span>
-					</a>
+				<Link href={`/contacts/${contactId}`} className="flex items-center">
+					<span className="text-sm">Cancel</span>
 				</Link>
 				<button
 					className={classNames("text-sm", {
