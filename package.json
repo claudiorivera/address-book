@@ -5,11 +5,12 @@
 	"scripts": {
 		"build": "next build",
 		"dev": "next dev",
-		"vercel-build": "prisma generate && prisma migrate deploy && next build",
+		"vercel-build": "prisma migrate deploy && next build",
 		"lint": "next lint",
 		"start": "next start",
 		"test": "vitest",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"postinstall": "prisma generate"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "2.9.10",
