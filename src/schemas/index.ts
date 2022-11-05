@@ -1,3 +1,2 @@
-export * from './createContactValidationSchema';
-export * from './imageUploadValidationSchema';
-export * from './updateContactValidationSchema';
+export * from "./createContactValidationSchema";
+export * from "./updateContactValidationSchema";

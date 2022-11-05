@@ -12,7 +12,7 @@ export const ContactDetailsHeader = ({ contact }: Props) => {
 	return (
 		<>
 			<div className="placeholder avatar">
-				<div className="w-24 rounded-full bg-base-100 text-base-content ring ring-secondary">
+				<div className="w-24 rounded-full bg-base-300 text-base-content ring ring-secondary">
 					{!contact.photo?.url && (
 						<span className="text-3xl">
 							{contact.firstName?.charAt(0).toUpperCase()}

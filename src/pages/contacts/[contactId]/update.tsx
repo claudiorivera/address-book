@@ -122,7 +122,7 @@ const UpdateContactPage = ({
 				<input hidden {...register("photoBase64")} />
 				<div className="mx-auto">
 					<div className="placeholder avatar">
-						<div className="relative w-24 rounded-full bg-base-100 text-primary-content ring ring-secondary">
+						<div className="relative w-24 rounded-full bg-base-300 text-base-content ring ring-secondary">
 							{!photo.src && (
 								<span className="text-3xl">
 									{contact?.firstName?.charAt(0).toUpperCase()}
@@ -139,7 +139,7 @@ const UpdateContactPage = ({
 							)}
 							<div className="absolute top-0 right-0 bottom-0 left-0">
 								<div className="flex h-full flex-col justify-end">
-									<label className="cursor-pointer text-center hover:bg-base-100">
+									<label className="cursor-pointer text-center hover:bg-base-100/80">
 										<div className="text-transparent hover:text-secondary">
 											Edit
 										</div>
