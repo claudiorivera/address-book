@@ -19,7 +19,7 @@ specifiers:
   classnames: 2.3.2
   cloudinary: 1.32.0
   cuid: 2.1.8
-  daisyui: 2.39.1
+  daisyui: 2.40.1
   eslint: 8.27.0
   eslint-config-next: 13.0.3
   eslint-config-prettier: 8.5.0
@@ -50,7 +50,7 @@ dependencies:
   '@trpc/server': 10.0.0-rc.8
   classnames: 2.3.2
   cloudinary: 1.32.0
-  daisyui: 2.39.1_l5bzpxvjbqhurjfyo5fybuhvfy
+  daisyui: 2.40.1_l5bzpxvjbqhurjfyo5fybuhvfy
   next: 13.0.3_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -1009,8 +1009,8 @@ packages:
     resolution: {integrity: sha512-xiEMER6E7TlTPnDxrM4eRiC6TRgjNX9xzEZ5U/Se2YJKr7Mq4pJn/2XEHjl3STcSh96GmkHPcBXLES8M29wyyg==}
     dev: true
 
-  /daisyui/2.39.1_l5bzpxvjbqhurjfyo5fybuhvfy:
-    resolution: {integrity: sha512-J7goHjiQ6zk7irpKJ0HyElAuWF+x8iGoebQ1IfHM6BuvKoGSOcfZC/bedTultsX2Co5XARsE+qvE7BI1amUtsQ==}
+  /daisyui/2.40.1_l5bzpxvjbqhurjfyo5fybuhvfy:
+    resolution: {integrity: sha512-nzLpcU8kCLU4zoMQ0hUKw1orRRn2x/LJLZenIsHF+UlGVsml02U4u20nb/knN7B06MPpDZ4RAZyp0rEp67iwzQ==}
     peerDependencies:
       autoprefixer: ^10.0.2
       postcss: ^8.1.6
