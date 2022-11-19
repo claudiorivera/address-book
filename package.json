@@ -40,7 +40,7 @@
 		"@typescript-eslint/parser": "5.43.0",
 		"autoprefixer": "10.4.13",
 		"cuid": "2.1.8",
-		"eslint": "8.27.0",
+		"eslint": "8.28.0",
 		"eslint-config-next": "13.0.4",
 		"eslint-config-prettier": "8.5.0",
 		"eslint-plugin-simple-import-sort": "8.0.0",
