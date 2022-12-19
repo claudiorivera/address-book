@@ -1,49 +1,20 @@
-import { createProxySSGHelpers } from "@trpc/react-query/ssg";
 import classNames from "classnames";
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import NextImage from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
-import superjson from "superjson";
 
 import { Input, TextArea } from "@/components";
 import { useZodForm } from "@/hooks";
 import { updateContactValidationSchema } from "@/schemas";
-import { createContext } from "@/server/trpc/context";
-import { appRouter } from "@/server/trpc/router/_app";
 import { getBase64, trpc } from "@/utils";
 
 type Photo = Partial<Pick<HTMLImageElement, "src" | "width" | "height">>;
 
-export const getServerSideProps = async ({
-	params,
-}: GetServerSidePropsContext<{ contactId: string }>) => {
-	const contactId = params?.contactId as string;
-
-	const ssg = createProxySSGHelpers({
-		router: appRouter,
-		ctx: await createContext(),
-		transformer: superjson,
-	});
-
-	if (typeof contactId === "string") {
-		ssg.contact.getById.prefetch({ id: contactId });
-	}
-
-	return {
-		props: {
-			contactId,
-			trpcState: ssg.dehydrate(),
-		},
-	};
-};
-
-const UpdateContactPage = ({
-	contactId,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const UpdateContactPage = () => {
 	const router = useRouter();
 	const utils = trpc.useContext();
+	const contactId = router.query.contactId as string;
 
 	const { data: contact } = trpc.contact.getById.useQuery({
 		id: contactId,
@@ -70,8 +41,18 @@ const UpdateContactPage = ({
 		handleSubmit,
 	} = useZodForm({
 		schema: updateContactValidationSchema,
-		defaultValues: {
-			...contact,
+		values: {
+			id: contactId,
+			firstName: contact?.firstName,
+			lastName: contact?.lastName,
+			address1: contact?.address1,
+			address2: contact?.address2,
+			city: contact?.city,
+			state: contact?.state,
+			zip: contact?.zip,
+			email: contact?.email,
+			phoneNumber: contact?.phoneNumber,
+			notes: contact?.notes,
 		},
 	});
 
