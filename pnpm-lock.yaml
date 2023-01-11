@@ -6,10 +6,10 @@ specifiers:
   '@prisma/client': 4.8.1
   '@tailwindcss/forms': 0.5.3
   '@tanstack/react-query': 4.22.0
-  '@trpc/client': 10.8.2
-  '@trpc/next': 10.8.2
-  '@trpc/react-query': 10.8.2
-  '@trpc/server': 10.8.2
+  '@trpc/client': 10.9.0
+  '@trpc/next': 10.9.0
+  '@trpc/react-query': 10.9.0
+  '@trpc/server': 10.9.0
   '@types/node': 18.11.18
   '@types/react': 18.0.26
   '@types/react-dom': 18.0.10
@@ -44,10 +44,10 @@ dependencies:
   '@hookform/resolvers': 2.9.10_react-hook-form@7.41.5
   '@prisma/client': 4.8.1_prisma@4.8.1
   '@tanstack/react-query': 4.22.0_biqbaboplfbrettd7655fr4n2y
-  '@trpc/client': 10.8.2_@trpc+server@10.8.2
-  '@trpc/next': 10.8.2_vhvmlqqydbw6uuokaxtwch54zy
-  '@trpc/react-query': 10.8.2_jk7y2roqpjmck5g55a4fdace5i
-  '@trpc/server': 10.8.2
+  '@trpc/client': 10.9.0_@trpc+server@10.9.0
+  '@trpc/next': 10.9.0_x4tyufyemzhcd3jbb4hcrq3eou
+  '@trpc/react-query': 10.9.0_qw4miir7nnxijwjta54q3esyeq
+  '@trpc/server': 10.9.0
   classnames: 2.3.2
   cloudinary: 1.33.0
   daisyui: 2.46.1_by5iqycgvtroytm54ytclj4zzi
@@ -412,53 +412,53 @@ packages:
     dev: false
     optional: true
 
-  /@trpc/client/10.8.2_@trpc+server@10.8.2:
-    resolution: {integrity: sha512-uQi+FWjogxQS7H09s5phWB8XeazlbA6R1eabFXq84Tmtvt6BWTYxStFLcv7C/p8gyduwT8/ZyrZ61P1Igce7gA==}
+  /@trpc/client/10.9.0_@trpc+server@10.9.0:
+    resolution: {integrity: sha512-id6318qpgqllNOuBp7nuciXFPXCe+zae5d4r1hze6Eyp5fFFNO58TqA+4Q44KIcHgpfWyW2egs6iPeql3PrdKA==}
     peerDependencies:
-      '@trpc/server': 10.8.2
+      '@trpc/server': 10.9.0
     dependencies:
-      '@trpc/server': 10.8.2
+      '@trpc/server': 10.9.0
     dev: false
 
-  /@trpc/next/10.8.2_vhvmlqqydbw6uuokaxtwch54zy:
-    resolution: {integrity: sha512-exJzXUZbTK4vWVQRVfnwnWenjVNXPGqgWpa70r92X+w3bNatfqf4FUFegFcswpcK1JSHZCjye25eiiB7WVYQ1g==}
+  /@trpc/next/10.9.0_x4tyufyemzhcd3jbb4hcrq3eou:
+    resolution: {integrity: sha512-h/W8VHMki/fw7vHNMs1Ku7bLqccjpiKCE1wkqbvHfBOO1ARDmarRbuK6dLqJilip/f7jkFXcrxwB+eNgK4+6Wg==}
     peerDependencies:
       '@tanstack/react-query': ^4.3.8
-      '@trpc/client': 10.8.2
+      '@trpc/client': 10.9.0
       '@trpc/react-query': ^10.8.0
-      '@trpc/server': 10.8.2
+      '@trpc/server': 10.9.0
       next: '*'
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
       '@tanstack/react-query': 4.22.0_biqbaboplfbrettd7655fr4n2y
-      '@trpc/client': 10.8.2_@trpc+server@10.8.2
-      '@trpc/react-query': 10.8.2_jk7y2roqpjmck5g55a4fdace5i
-      '@trpc/server': 10.8.2
+      '@trpc/client': 10.9.0_@trpc+server@10.9.0
+      '@trpc/react-query': 10.9.0_qw4miir7nnxijwjta54q3esyeq
+      '@trpc/server': 10.9.0
       next: 13.1.1_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-ssr-prepass: 1.5.0_react@18.2.0
     dev: false
 
-  /@trpc/react-query/10.8.2_jk7y2roqpjmck5g55a4fdace5i:
-    resolution: {integrity: sha512-Ehpv1cKkTC3yHdZvVTR0iCRk/TGUsNzRUdsHZm8ZFw3+LE3QCygMjvrFo+Dbgs/c/ZcZ2e9rW8tr40B6eGZCRg==}
+  /@trpc/react-query/10.9.0_qw4miir7nnxijwjta54q3esyeq:
+    resolution: {integrity: sha512-I7xtdFj/AETwc9HfY2bGxKINij39r26LvfIiTBfz2pBj1ELrcgucWmPeI2eS6pon/uI1E9Nqa6fQCg/zkg764Q==}
     peerDependencies:
       '@tanstack/react-query': ^4.3.8
-      '@trpc/client': 10.8.2
-      '@trpc/server': 10.8.2
+      '@trpc/client': 10.9.0
+      '@trpc/server': 10.9.0
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
       '@tanstack/react-query': 4.22.0_biqbaboplfbrettd7655fr4n2y
-      '@trpc/client': 10.8.2_@trpc+server@10.8.2
-      '@trpc/server': 10.8.2
+      '@trpc/client': 10.9.0_@trpc+server@10.9.0
+      '@trpc/server': 10.9.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@trpc/server/10.8.2:
-    resolution: {integrity: sha512-a5Ak83Q01l0yV8lg2NkpQeYWdNPjKxXVllBLliWdkvkVEodH3mLqqhYymzJkhCusSlBwwOff28JRHY0gF98/zQ==}
+  /@trpc/server/10.9.0:
+    resolution: {integrity: sha512-5psyZgbvy29pJND32hwkWTMbv6s86IbsPOeDopsgNF0VegZT6Dsijmb7Ub/TDhuJVQVq5u4u5briMXi3SxmBkw==}
     dev: false
 
   /@tsconfig/node10/1.0.9:
