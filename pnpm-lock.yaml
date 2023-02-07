@@ -32,7 +32,7 @@ specifiers:
   prisma: 4.9.0
   react: 18.2.0
   react-dom: 18.2.0
-  react-hook-form: 7.43.0
+  react-hook-form: 7.43.1
   superjson: 1.12.2
   tailwindcss: 3.2.4
   ts-node: 10.9.1
@@ -41,7 +41,7 @@ specifiers:
   zod: 3.20.2
 
 dependencies:
-  '@hookform/resolvers': 2.9.10_react-hook-form@7.43.0
+  '@hookform/resolvers': 2.9.10_react-hook-form@7.43.1
   '@prisma/client': 4.9.0_prisma@4.9.0
   '@tanstack/react-query': 4.24.4_biqbaboplfbrettd7655fr4n2y
   '@trpc/client': 10.10.0_@trpc+server@10.10.0
@@ -54,7 +54,7 @@ dependencies:
   next: 13.1.6_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  react-hook-form: 7.43.0_react@18.2.0
+  react-hook-form: 7.43.1_react@18.2.0
   superjson: 1.12.2
   zod: 3.20.2
 
@@ -145,12 +145,12 @@ packages:
     engines: {node: '>=14.0.0', npm: '>=6.0.0'}
     dev: true
 
-  /@hookform/resolvers/2.9.10_react-hook-form@7.43.0:
+  /@hookform/resolvers/2.9.10_react-hook-form@7.43.1:
     resolution: {integrity: sha512-JIL1DgJIlH9yuxcNGtyhsWX/PgNltz+5Gr6+8SX9fhXc/hPbEIk6wPI82nhgvp3uUb6ZfAM5mqg/x7KR7NAb+A==}
     peerDependencies:
       react-hook-form: ^7.0.0
     dependencies:
-      react-hook-form: 7.43.0_react@18.2.0
+      react-hook-form: 7.43.1_react@18.2.0
     dev: false
 
   /@humanwhocodes/config-array/0.11.8:
@@ -3049,8 +3049,8 @@ packages:
       scheduler: 0.23.0
     dev: false
 
-  /react-hook-form/7.43.0_react@18.2.0:
-    resolution: {integrity: sha512-/rVEz7T0gLdSFwPqutJ1kn2e0sQNyb9ci/hmwEYr2YG0KF/LSuRLvNrf9QWJM+gj88CjDpDW5Bh/1AD7B2+z9Q==}
+  /react-hook-form/7.43.1_react@18.2.0:
+    resolution: {integrity: sha512-+s3+s8LLytRMriwwuSqeLStVjRXFGxgjjx2jED7Z+wz1J/88vpxieRQGvJVvzrzVxshZ0BRuocFERb779m2kNg==}
     engines: {node: '>=12.22.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18
