@@ -6,10 +6,10 @@ specifiers:
   '@prisma/client': 4.10.1
   '@tailwindcss/forms': 0.5.3
   '@tanstack/react-query': 4.24.4
-  '@trpc/client': 10.10.0
-  '@trpc/next': 10.10.0
-  '@trpc/react-query': 10.10.0
-  '@trpc/server': 10.10.0
+  '@trpc/client': 10.11.0
+  '@trpc/next': 10.11.0
+  '@trpc/react-query': 10.11.0
+  '@trpc/server': 10.11.0
   '@types/node': 18.13.0
   '@types/react': 18.0.27
   '@types/react-dom': 18.0.10
@@ -44,10 +44,10 @@ dependencies:
   '@hookform/resolvers': 2.9.11_react-hook-form@7.43.1
   '@prisma/client': 4.10.1_prisma@4.10.1
   '@tanstack/react-query': 4.24.4_biqbaboplfbrettd7655fr4n2y
-  '@trpc/client': 10.10.0_@trpc+server@10.10.0
-  '@trpc/next': 10.10.0_ngwrfmgr4sjzncpabpxzk5etba
-  '@trpc/react-query': 10.10.0_5mhyv2iryamqlilh5gtjpyz23q
-  '@trpc/server': 10.10.0
+  '@trpc/client': 10.11.0_@trpc+server@10.11.0
+  '@trpc/next': 10.11.0_rid2hrxunbm3ffp2k2uj3yfmiq
+  '@trpc/react-query': 10.11.0_cpeqqrckfgr33xypfmr4g7wgmq
+  '@trpc/server': 10.11.0
   classnames: 2.3.2
   cloudinary: 1.33.0
   daisyui: 2.50.0_by5iqycgvtroytm54ytclj4zzi
@@ -412,53 +412,53 @@ packages:
     dev: false
     optional: true
 
-  /@trpc/client/10.10.0_@trpc+server@10.10.0:
-    resolution: {integrity: sha512-HRVGkOsR4FIYpyQILP84HLbj6pRnLKgxy4AIelTf9d9TxD60M5bNhbR2Uz3hqNSb9a2ppaRJBLv7twlV9b4qHQ==}
+  /@trpc/client/10.11.0_@trpc+server@10.11.0:
+    resolution: {integrity: sha512-GdSfyJxYI3Z9zyz2fEdJBGWLzqrpaonRtG1BtYLR5/63/eaW3/weA3JcEl2H3/CvqSNZfptNMZqLmaZyChTxdg==}
     peerDependencies:
-      '@trpc/server': 10.10.0
+      '@trpc/server': 10.11.0
     dependencies:
-      '@trpc/server': 10.10.0
+      '@trpc/server': 10.11.0
     dev: false
 
-  /@trpc/next/10.10.0_ngwrfmgr4sjzncpabpxzk5etba:
-    resolution: {integrity: sha512-7d84L2OoF0RW06drTbNGOOggwMes8JxI3Ln/VOIaYeERzwOFNCtWPmGjWCdq4l1SKbXC6+baS+b9n5cXc+euwA==}
+  /@trpc/next/10.11.0_rid2hrxunbm3ffp2k2uj3yfmiq:
+    resolution: {integrity: sha512-BOKqJw7hq/QFMzWaMxK9nhov0+DYdBJJ9fkPWvQZNz1f4hiGsgl0BHygFg2pd2xWzjz1bgdHh//NJT9l7wbLyA==}
     peerDependencies:
       '@tanstack/react-query': ^4.3.8
-      '@trpc/client': 10.10.0
+      '@trpc/client': 10.11.0
       '@trpc/react-query': ^10.8.0
-      '@trpc/server': 10.10.0
+      '@trpc/server': 10.11.0
       next: '*'
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
       '@tanstack/react-query': 4.24.4_biqbaboplfbrettd7655fr4n2y
-      '@trpc/client': 10.10.0_@trpc+server@10.10.0
-      '@trpc/react-query': 10.10.0_5mhyv2iryamqlilh5gtjpyz23q
-      '@trpc/server': 10.10.0
+      '@trpc/client': 10.11.0_@trpc+server@10.11.0
+      '@trpc/react-query': 10.11.0_cpeqqrckfgr33xypfmr4g7wgmq
+      '@trpc/server': 10.11.0
       next: 13.1.6_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-ssr-prepass: 1.5.0_react@18.2.0
     dev: false
 
-  /@trpc/react-query/10.10.0_5mhyv2iryamqlilh5gtjpyz23q:
-    resolution: {integrity: sha512-Jc/uii1MPevf95/z/W3ufYGHvrFvrtkjxQ8UuXhJCzOgv/FGPqhmA5PH124nLHEgGLBA7zQxHumofhdXosEhUQ==}
+  /@trpc/react-query/10.11.0_cpeqqrckfgr33xypfmr4g7wgmq:
+    resolution: {integrity: sha512-KsyjckHFa6uRC3nEZASJ5n44j090dQqDxdHgdxNDHS4Da7Hwq2fGgdfEAgERzGzp8RjH+qKpU/PD0/MYxHmNDQ==}
     peerDependencies:
       '@tanstack/react-query': ^4.3.8
-      '@trpc/client': 10.10.0
-      '@trpc/server': 10.10.0
+      '@trpc/client': 10.11.0
+      '@trpc/server': 10.11.0
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
       '@tanstack/react-query': 4.24.4_biqbaboplfbrettd7655fr4n2y
-      '@trpc/client': 10.10.0_@trpc+server@10.10.0
-      '@trpc/server': 10.10.0
+      '@trpc/client': 10.11.0_@trpc+server@10.11.0
+      '@trpc/server': 10.11.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@trpc/server/10.10.0:
-    resolution: {integrity: sha512-tCTqcqBT+3nebYFTHtwM877qo5xQPtVlptxKdUzMVWleWT4lFTL4oddk45qVURToci2iMbVJjd4jQU9y9/XwlQ==}
+  /@trpc/server/10.11.0:
+    resolution: {integrity: sha512-alV96Bjpa3bPgF+LZkJeQtrUJP/BM5EVpsB8S755RA3xtbudMw/lvLJFep8L/xTRw1HFZ7r4uRD31dKLOrMpaA==}
     dev: false
 
   /@tsconfig/node10/1.0.9:
