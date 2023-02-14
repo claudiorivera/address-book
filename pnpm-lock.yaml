@@ -19,7 +19,7 @@ specifiers:
   classnames: 2.3.2
   cloudinary: 1.34.0
   cuid: 3.0.0
-  daisyui: 2.50.0
+  daisyui: 2.50.1
   eslint: 8.34.0
   eslint-config-next: 13.1.6
   eslint-config-prettier: 8.6.0
@@ -50,7 +50,7 @@ dependencies:
   '@trpc/server': 10.11.1
   classnames: 2.3.2
   cloudinary: 1.34.0
-  daisyui: 2.50.0_by5iqycgvtroytm54ytclj4zzi
+  daisyui: 2.50.1_by5iqycgvtroytm54ytclj4zzi
   next: 13.1.6_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -1092,8 +1092,8 @@ packages:
     deprecated: Cuid and other k-sortable and non-cryptographic ids (Ulid, ObjectId, KSUID, all UUIDs) are all insecure. Use @paralleldrive/cuid2 instead.
     dev: true
 
-  /daisyui/2.50.0_by5iqycgvtroytm54ytclj4zzi:
-    resolution: {integrity: sha512-KiqRvqMXi9rgoH84M8D69gXPg6x+cbdiaHqm8pFHOsXXN1rTl/+OcCKkSnkEwTtIge9VJVDGU6l4B8/n+Juc5g==}
+  /daisyui/2.50.1_by5iqycgvtroytm54ytclj4zzi:
+    resolution: {integrity: sha512-Z4GuU/ZknYoHt7qfDQSC5rrxMJ6ffNV9baQfCSbo5J/clC1DBppfrqLJXS8A3NPBRo2GbbpKwdA1ZdThWdpBtQ==}
     peerDependencies:
       autoprefixer: ^10.0.2
       postcss: ^8.1.6
