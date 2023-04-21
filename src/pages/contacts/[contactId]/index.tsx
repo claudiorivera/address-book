@@ -1,4 +1,4 @@
-import { createProxySSGHelpers } from "@trpc/react-query/ssg";
+import { createServerSideHelpers } from "@trpc/react-query/server";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Link from "next/link";
 import superjson from "superjson";
@@ -11,20 +11,18 @@ import { trpc } from "@/utils";
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 	const contactId = params?.contactId as string;
 
-	const ssg = createProxySSGHelpers({
+	const helpers = createServerSideHelpers({
 		router: appRouter,
 		ctx: await createContext(),
 		transformer: superjson,
 	});
 
-	if (typeof contactId === "string") {
-		ssg.contact.getById.prefetch({ id: contactId });
-	}
+	helpers.contact.getById.prefetch({ id: contactId });
 
 	return {
 		props: {
 			contactId,
-			trpcState: ssg.dehydrate(),
+			trpcState: helpers.dehydrate(),
 		},
 	};
 };

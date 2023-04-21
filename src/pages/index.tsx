@@ -1,4 +1,4 @@
-import { createProxySSGHelpers } from "@trpc/react-query/ssg";
+import { createServerSideHelpers } from "@trpc/react-query/server";
 import type { GetServerSideProps, NextPage } from "next";
 import { useState } from "react";
 import superjson from "superjson";
@@ -9,17 +9,17 @@ import { appRouter } from "@/server/trpc/router/_app";
 import { filterByQuery, trpc } from "@/utils";
 
 export const getServerSideProps: GetServerSideProps = async () => {
-	const ssg = createProxySSGHelpers({
+	const helpers = createServerSideHelpers({
 		router: appRouter,
 		ctx: await createContext(),
 		transformer: superjson,
 	});
 
-	await ssg.contact.getAll.prefetch();
+	await helpers.contact.getAll.prefetch();
 
 	return {
 		props: {
-			trpcState: ssg.dehydrate(),
+			trpcState: helpers.dehydrate(),
 		},
 	};
 };
@@ -41,7 +41,7 @@ const Home: NextPage = () => {
 		<div className="relative">
 			<h1 className="p-4 text-xl font-bold text-secondary">Address Book</h1>
 			<button
-				className="absolute top-4 right-4 text-secondary"
+				className="absolute right-4 top-4 text-secondary"
 				onClick={handleAddContactModalToggle}
 			>
 				<svg
