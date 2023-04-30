@@ -12,5 +12,4 @@ export const updateContactValidationSchema = z.object({
 	state: z.string().nullish(),
 	zip: z.string().nullish(),
 	notes: z.string().nullish(),
-	photoBase64: z.string().nullish(),
 });

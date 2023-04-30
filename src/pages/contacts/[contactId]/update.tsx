@@ -2,12 +2,11 @@ import classNames from "classnames";
 import NextImage from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { ChangeEvent, useState } from "react";
 
 import { Input, TextArea } from "@/components";
 import { useZodForm } from "@/hooks";
 import { updateContactValidationSchema } from "@/schemas";
-import { getBase64, trpc } from "@/utils";
+import { trpc } from "@/utils";
 
 type Photo = Partial<Pick<HTMLImageElement, "src" | "width" | "height">>;
 
@@ -20,11 +19,11 @@ const UpdateContactPage = () => {
 		id: contactId,
 	});
 
-	const [photo, setPhoto] = useState<Photo>({
+	const photo: Photo = {
 		src: contact?.photo?.url,
 		width: contact?.photo?.width,
 		height: contact?.photo?.height,
-	});
+	};
 
 	const { mutateAsync: updateContact, isLoading } =
 		trpc.contact.update.useMutation({
@@ -37,7 +36,6 @@ const UpdateContactPage = () => {
 	const {
 		register,
 		formState: { isDirty, errors },
-		setValue,
 		handleSubmit,
 	} = useZodForm({
 		schema: updateContactValidationSchema,
@@ -55,26 +53,6 @@ const UpdateContactPage = () => {
 			notes: contact?.notes,
 		},
 	});
-
-	const onFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
-		if (!!event.currentTarget.files?.[0]) {
-			const file = event.currentTarget.files[0];
-
-			const image = new Image();
-			image.src = URL.createObjectURL(file);
-			image.onload = () => {
-				setPhoto(image);
-			};
-
-			const base64string = await getBase64(file);
-
-			if (typeof base64string === "string") {
-				setValue("photoBase64", base64string, {
-					shouldDirty: true,
-				});
-			}
-		}
-	};
 
 	return (
 		<div className="min-h-screen p-4">
@@ -100,7 +78,6 @@ const UpdateContactPage = () => {
 				})}
 				className="flex flex-col gap-2"
 			>
-				<input hidden {...register("photoBase64")} />
 				<div className="mx-auto">
 					<div className="placeholder avatar">
 						<div className="relative w-24 rounded-full bg-base-300 text-base-content ring ring-secondary">
@@ -118,21 +95,6 @@ const UpdateContactPage = () => {
 									width={photo.width}
 								/>
 							)}
-							<div className="absolute top-0 right-0 bottom-0 left-0">
-								<div className="flex h-full flex-col justify-end">
-									<label className="cursor-pointer text-center hover:bg-base-100/80">
-										<div className="text-transparent hover:text-secondary">
-											Edit
-										</div>
-										<input
-											className="hidden"
-											type="file"
-											accept="image/*"
-											onChange={onFileChange}
-										/>
-									</label>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>

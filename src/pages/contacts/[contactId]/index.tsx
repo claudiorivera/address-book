@@ -1,38 +1,21 @@
-import { createServerSideHelpers } from "@trpc/react-query/server";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Link from "next/link";
-import superjson from "superjson";
+import { useRouter } from "next/router";
 
 import { ContactDetails } from "@/components";
-import { createContext } from "@/server/trpc/context";
-import { appRouter } from "@/server/trpc/router/_app";
 import { trpc } from "@/utils";
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-	const contactId = params?.contactId as string;
+const ContactDetailsPage = () => {
+	const router = useRouter();
+	const { contactId } = router.query;
 
-	const helpers = createServerSideHelpers({
-		router: appRouter,
-		ctx: await createContext(),
-		transformer: superjson,
-	});
-
-	helpers.contact.getById.prefetch({ id: contactId });
-
-	return {
-		props: {
-			contactId,
-			trpcState: helpers.dehydrate(),
+	const { data: contact } = trpc.contact.getById.useQuery(
+		{
+			id: contactId as string,
 		},
-	};
-};
-
-const ContactDetailsPage = ({
-	contactId,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-	const { data: contact } = trpc.contact.getById.useQuery({
-		id: contactId,
-	});
+		{
+			enabled: !!contactId,
+		},
+	);
 
 	return (
 		<div className="min-h-screen p-4">

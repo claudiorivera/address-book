@@ -1,19 +1,22 @@
-// src/pages/api/trpc/[trpc].ts
-import { createNextApiHandler } from "@trpc/server/adapters/next";
+import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
+import { NextRequest } from "next/server";
 
-import { createContext } from "@/server/trpc/context";
+import { prisma } from "@/server/db/client";
 import { appRouter } from "@/server/trpc/router/_app";
 
-// export API handler
-export default createNextApiHandler({
-	router: appRouter,
-	createContext,
-});
+export default async function handler(req: NextRequest) {
+	return fetchRequestHandler({
+		endpoint: "/api/trpc",
+		router: appRouter,
+		req,
+		createContext: () => ({
+			prisma: prisma,
+		}),
+	});
+}
+
+export type AppRouter = typeof appRouter;
 
 export const config = {
-	api: {
-		bodyParser: {
-			sizeLimit: "10mb",
-		},
-	},
+	runtime: "edge",
 };
