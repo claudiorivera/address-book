@@ -1,28 +1,8 @@
-import { createServerSideHelpers } from "@trpc/react-query/server";
-import type { GetServerSideProps, NextPage } from "next";
+import type { NextPage } from "next";
 import { useState } from "react";
-import superjson from "superjson";
 
 import { ContactList, CreateContactFormModal, Search } from "@/components";
-import { createContext } from "@/server/trpc/context";
-import { appRouter } from "@/server/trpc/router/_app";
 import { filterByQuery, trpc } from "@/utils";
-
-export const getServerSideProps: GetServerSideProps = async () => {
-	const helpers = createServerSideHelpers({
-		router: appRouter,
-		ctx: await createContext(),
-		transformer: superjson,
-	});
-
-	await helpers.contact.getAll.prefetch();
-
-	return {
-		props: {
-			trpcState: helpers.dehydrate(),
-		},
-	};
-};
 
 const Home: NextPage = () => {
 	const [isCreateContactModalOpen, setIsCreateContactModalOpen] =

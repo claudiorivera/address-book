@@ -1,4 +1,4 @@
-import { Contact } from "@prisma/client";
+import { Contact } from "@prisma/client/edge";
 
 import { sortedInsert } from "./sortedInsert";
 import { RouterOutput } from "./trpc";

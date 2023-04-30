@@ -1,5 +1,4 @@
-import { Prisma } from "@prisma/client";
-import { v2 as cloudinary } from "cloudinary";
+import { Prisma } from "@prisma/client/edge";
 import { z } from "zod";
 
 import {
@@ -50,38 +49,9 @@ export const contactRouter = router({
 	update: publicProcedure
 		.input(updateContactValidationSchema)
 		.mutation(async ({ input, ctx }) => {
-			const { photoBase64, ...contact } = input;
-
-			if (!photoBase64)
-				return ctx.prisma.contact.update({
-					where: { id: input.id },
-					data: contact,
-					select: defaultContactSelect,
-				});
-
-			const { secure_url, height, width, public_id } =
-				await cloudinary.uploader.upload(photoBase64, {
-					public_id: `address-book/${input.id}`,
-				});
-
-			const contactPhoto = {
-				cloudinaryId: public_id,
-				url: secure_url,
-				height,
-				width,
-			};
-
-			return await ctx.prisma.contact.update({
+			return ctx.prisma.contact.update({
 				where: { id: input.id },
-				data: {
-					...contact,
-					photo: {
-						upsert: {
-							create: contactPhoto,
-							update: contactPhoto,
-						},
-					},
-				},
+				data: input,
 				select: defaultContactSelect,
 			});
 		}),
