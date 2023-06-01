@@ -12,8 +12,8 @@ dependencies:
     specifier: 4.15.0
     version: 4.15.0(prisma@4.15.0)
   '@t3-oss/env-core':
-    specifier: 0.3.1
-    version: 0.3.1(typescript@5.0.4)(zod@3.21.4)
+    specifier: 0.4.0
+    version: 0.4.0(typescript@5.0.4)(zod@3.21.4)
   '@t3-oss/env-nextjs':
     specifier: 0.3.1
     version: 0.3.1(typescript@5.0.4)(zod@3.21.4)
@@ -605,6 +605,16 @@ packages:
 
   /@t3-oss/env-core@0.3.1(typescript@5.0.4)(zod@3.21.4):
     resolution: {integrity: sha512-iEnBuWeSjzqQLDTUw7H+YhstV4OZrGXTkQGL6ZOMxZQoCmwGX7GVS+1KCd5RvCzOtrIAD9jeOItSWNjC7sG4Sg==}
+    peerDependencies:
+      typescript: '>=4.7.2'
+      zod: ^3.0.0
+    dependencies:
+      typescript: 5.0.4
+      zod: 3.21.4
+    dev: false
+
+  /@t3-oss/env-core@0.4.0(typescript@5.0.4)(zod@3.21.4):
+    resolution: {integrity: sha512-6JlMp0Vru15q/axHzBKsQQjiyGS6k+EsZBY1iErGVmOGzNSoVluBahnYFP7tEkwZ7KoRgSq4NRIc1Ez7SVYuxQ==}
     peerDependencies:
       typescript: '>=4.7.2'
       zod: ^3.0.0
