@@ -36,8 +36,8 @@ dependencies:
     specifier: 2.3.2
     version: 2.3.2
   daisyui:
-    specifier: 3.0.2
-    version: 3.0.2(postcss@8.4.24)(ts-node@10.9.1)
+    specifier: 3.0.3
+    version: 3.0.3(postcss@8.4.24)(ts-node@10.9.1)
   next:
     specifier: 13.4.4
     version: 13.4.4(react-dom@18.2.0)(react@18.2.0)
@@ -1301,8 +1301,8 @@ packages:
     deprecated: Cuid and other k-sortable and non-cryptographic ids (Ulid, ObjectId, KSUID, all UUIDs) are all insecure. Use @paralleldrive/cuid2 instead.
     dev: true
 
-  /daisyui@3.0.2(postcss@8.4.24)(ts-node@10.9.1):
-    resolution: {integrity: sha512-0X+0PkgTIWevt5m4AZCCgvqI5pKRormTEhdfmc31dwfLNq6uY4wENCXAtcXzZMKt7JBKcVTWlj/uDrOjj6XpUQ==}
+  /daisyui@3.0.3(postcss@8.4.24)(ts-node@10.9.1):
+    resolution: {integrity: sha512-RSbXsEBj2LonvjOKEI0I64F5xFJrFrthPgxRNeAZKmACQ3NoIoP45lO6UXLW3bm8PVOUGpKf1Br2SWwc1NqnHQ==}
     peerDependencies:
       postcss: ^8
     dependencies:
