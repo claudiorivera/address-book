@@ -16,11 +16,6 @@ It's an address book! It lets you add and manage your contacts.
 
 - Postgres
 - pnpm
-- Docker (optional)
-
-## Docker (Optional)
-
-- `docker compose up -d` to start the database
 
 ## Configure
 
