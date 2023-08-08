@@ -79,7 +79,7 @@ const UpdateContactPage = () => {
 				className="flex flex-col gap-2"
 			>
 				<div className="mx-auto">
-					<div className="placeholder avatar">
+					<div className="avatar placeholder">
 						<div className="relative w-24 rounded-full bg-base-300 text-base-content ring ring-secondary">
 							{!photo.src && (
 								<span className="text-3xl">

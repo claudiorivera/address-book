@@ -32,7 +32,7 @@ export const Search = ({ query, setQuery }: Props) => {
 				</span>
 				<input
 					type="search"
-					className="input-bordered input w-full pl-8"
+					className="input input-bordered w-full pl-8"
 					placeholder="Search"
 					autoComplete="off"
 					value={query}

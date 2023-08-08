@@ -25,7 +25,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
 					<textarea
 						ref={ref}
 						{...inputProps}
-						className={classNames("textarea-bordered textarea", {
+						className={classNames("textarea textarea-bordered", {
 							"textarea-error": error,
 						})}
 					/>

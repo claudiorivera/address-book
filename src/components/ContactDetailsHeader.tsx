@@ -11,7 +11,7 @@ export const ContactDetailsHeader = ({ contact }: Props) => {
 
 	return (
 		<>
-			<div className="placeholder avatar">
+			<div className="avatar placeholder">
 				<div className="w-24 rounded-full bg-base-300 text-base-content ring ring-secondary">
 					{!contact.photo?.url && (
 						<span className="text-3xl">

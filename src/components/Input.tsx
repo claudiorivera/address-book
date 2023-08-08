@@ -23,7 +23,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 					type={type ?? "text"}
 					className={classNames(
 						{
-							"input-bordered input": type !== "checkbox" && type !== "file",
+							"input input-bordered": type !== "checkbox" && type !== "file",
 						},
 						{
 							toggle: type === "checkbox",
