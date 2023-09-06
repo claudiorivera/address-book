@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-import { CreateContactForm } from "@/components";
+import { CreateContactForm } from "~/components";
 
 type Props = {
 	isOpen: boolean;

@@ -3,10 +3,10 @@ import NextImage from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import { Input, TextArea } from "@/components";
-import { useZodForm } from "@/hooks";
-import { updateContactValidationSchema } from "@/schemas";
-import { trpc } from "@/utils";
+import { Input, TextArea } from "~/components";
+import { useZodForm } from "~/hooks";
+import { updateContactValidationSchema } from "~/schemas";
+import { trpc } from "~/utils";
 
 type Photo = Partial<Pick<HTMLImageElement, "src" | "width" | "height">>;
 

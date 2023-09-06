@@ -1,6 +1,6 @@
 import NextImage from "next/image";
 
-import { ContactGetByIdOutput } from "@/server/trpc/router/contact";
+import { ContactGetByIdOutput } from "~/server/trpc/router/contact";
 
 type Props = {
 	contact: ContactGetByIdOutput;

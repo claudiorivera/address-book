@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import { useState } from "react";
 
-import { ContactList, CreateContactFormModal, Search } from "@/components";
-import { filterByQuery, trpc } from "@/utils";
+import { ContactList, CreateContactFormModal, Search } from "~/components";
+import { filterByQuery, trpc } from "~/utils";
 
 const Home: NextPage = () => {
 	const [isCreateContactModalOpen, setIsCreateContactModalOpen] =

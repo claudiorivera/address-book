@@ -2,8 +2,8 @@ import {
 	ContactDetailsAddressSection,
 	ContactDetailsHeader,
 	ContactDetailsSection,
-} from "@/components";
-import { ContactGetByIdOutput } from "@/server/trpc/router/contact";
+} from "~/components";
+import { ContactGetByIdOutput } from "~/server/trpc/router/contact";
 
 type Props = {
 	contact: ContactGetByIdOutput;

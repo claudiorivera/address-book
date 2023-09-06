@@ -1,9 +1,9 @@
 import classNames from "classnames";
 
-import { Input, TextArea } from "@/components";
-import { useZodForm } from "@/hooks";
-import { createContactValidationSchema } from "@/schemas";
-import { trpc } from "@/utils";
+import { Input, TextArea } from "~/components";
+import { useZodForm } from "~/hooks";
+import { createContactValidationSchema } from "~/schemas";
+import { trpc } from "~/utils";
 
 type Props = {
 	onClose: () => void;

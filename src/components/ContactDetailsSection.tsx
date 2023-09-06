@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import { ConditionalWrapper } from "@/components";
-import { ContactGetByIdOutput } from "@/server/trpc/router/contact";
-import { hrefPrefixForField } from "@/utils";
+import { ConditionalWrapper } from "~/components";
+import { ContactGetByIdOutput } from "~/server/trpc/router/contact";
+import { hrefPrefixForField } from "~/utils";
 
 type Props = {
 	contact: ContactGetByIdOutput;

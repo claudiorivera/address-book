@@ -1,6 +1,6 @@
-import { ContactListSection } from "@/components";
-import { ContactGetAllOutput } from "@/server/trpc/router/contact";
-import { collateContacts } from "@/utils";
+import { ContactListSection } from "~/components";
+import { ContactGetAllOutput } from "~/server/trpc/router/contact";
+import { collateContacts } from "~/utils";
 
 type Props = {
 	contacts: ContactGetAllOutput;

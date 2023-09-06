@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { Meta } from "@/components";
+import { Meta } from "~/components";
 
 type Props = {
 	children: ReactNode;

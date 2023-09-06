@@ -2,7 +2,7 @@ import { initTRPC } from "@trpc/server";
 import type { FetchCreateContextFnOptions } from "@trpc/server/adapters/fetch";
 import superjson from "superjson";
 
-import { prisma } from "@/server/db/client";
+import { prisma } from "~/server/db/client";
 
 export const createContext = async (_opts: FetchCreateContextFnOptions) => {
 	return {

@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { ContactListRow } from "@/components";
-import { ContactGetAllOutput } from "@/server/trpc/router/contact";
+import { ContactListRow } from "~/components";
+import { ContactGetAllOutput } from "~/server/trpc/router/contact";
 
 type Props = {
 	label: string;

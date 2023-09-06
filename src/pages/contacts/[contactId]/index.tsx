@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import { ContactDetails } from "@/components";
-import { trpc } from "@/utils";
+import { ContactDetails } from "~/components";
+import { trpc } from "~/utils";
 
 const ContactDetailsPage = () => {
 	const router = useRouter();

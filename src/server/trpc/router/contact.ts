@@ -4,9 +4,9 @@ import { z } from "zod";
 import {
 	createContactValidationSchema,
 	updateContactValidationSchema,
-} from "@/schemas";
-import { publicProcedure, router } from "@/server/trpc/trpc";
-import { RouterOutput } from "@/utils";
+} from "~/schemas";
+import { publicProcedure, router } from "~/server/trpc/trpc";
+import { RouterOutput } from "~/utils";
 
 const defaultContactSelect = Prisma.validator<Prisma.ContactSelect>()({
 	id: true,

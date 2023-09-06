@@ -1,5 +1,5 @@
-import { ContactGetByIdOutput } from "@/server/trpc/router/contact";
-import { getGoogleMapsUrlForContact } from "@/utils";
+import { ContactGetByIdOutput } from "~/server/trpc/router/contact";
+import { getGoogleMapsUrlForContact } from "~/utils";
 
 type Props = {
 	contact: ContactGetByIdOutput;
