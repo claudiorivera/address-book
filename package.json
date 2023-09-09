@@ -41,7 +41,7 @@
 		"@typescript-eslint/parser": "6.6.0",
 		"autoprefixer": "10.4.15",
 		"cuid": "3.0.0",
-		"eslint": "8.48.0",
+		"eslint": "8.49.0",
 		"eslint-config-next": "13.4.19",
 		"eslint-config-prettier": "9.0.0",
 		"eslint-plugin-simple-import-sort": "10.0.0",
