@@ -32,7 +32,7 @@
 		"zod": "3.22.2"
 	},
 	"devDependencies": {
-		"@faker-js/faker": "8.0.2",
+		"@faker-js/faker": "8.1.0",
 		"@tailwindcss/forms": "0.5.6",
 		"@types/node": "18.17.17",
 		"@types/react": "18.2.22",
