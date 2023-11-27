@@ -4,7 +4,7 @@ import { z } from "zod";
 export const env = createEnv({
 	clientPrefix: "PUBLIC_",
 	server: {
-		DATABASE_URL: z.string().url(),
+		POSTGRES_URL: z.string().url(),
 		GITHUB_CLIENT_ID: z.string().optional(),
 		GITHUB_CLIENT_SECRET: z.string().optional(),
 		NEXTAUTH_SECRET: z.string(),
@@ -14,7 +14,7 @@ export const env = createEnv({
 	},
 	client: {},
 	runtimeEnv: {
-		DATABASE_URL: process.env.DATABASE_URL,
+		POSTGRES_URL: process.env.POSTGRES_URL,
 		GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
 		GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
 		NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
