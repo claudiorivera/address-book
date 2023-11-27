@@ -1,22 +1,11 @@
-import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
-import { NextRequest } from "next/server";
+import * as trpcNext from "@trpc/server/adapters/next";
 
 import { prisma } from "~/server/db/client";
 import { appRouter } from "~/server/trpc/router/_app";
 
-export default async function handler(req: NextRequest) {
-	return fetchRequestHandler({
-		endpoint: "/api/trpc",
-		router: appRouter,
-		req,
-		createContext: () => ({
-			prisma: prisma,
-		}),
-	});
-}
-
-export type AppRouter = typeof appRouter;
-
-export const config = {
-	runtime: "edge",
-};
+export default trpcNext.createNextApiHandler({
+	router: appRouter,
+	createContext: () => ({
+		prisma,
+	}),
+});
