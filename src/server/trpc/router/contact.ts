@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client/edge";
+import { Prisma } from "@prisma/client";
 import { z } from "zod";
 
 import {

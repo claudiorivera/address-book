@@ -1,4 +1,4 @@
-import { Contact } from "@prisma/client/edge";
+import { Contact } from "@prisma/client";
 
 export const getGoogleMapsUrlForContact = (contact: Contact) => {
 	const url = new URL("https://www.google.com/maps/search/");

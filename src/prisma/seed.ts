@@ -1,6 +1,6 @@
-import { PrismaClient } from "@prisma/client/edge";
-const prisma = new PrismaClient();
 import { faker } from "@faker-js/faker";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 
 async function main() {
 	// delete all contacts
