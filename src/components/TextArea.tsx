@@ -1,10 +1,10 @@
 import classNames from "classnames";
 import React, {
-	DetailedHTMLProps,
+	type DetailedHTMLProps,
 	forwardRef,
-	InputHTMLAttributes,
+	type InputHTMLAttributes,
 } from "react";
-import { FieldError } from "react-hook-form";
+import { type FieldError } from "react-hook-form";
 
 type InputProps = DetailedHTMLProps<
 	InputHTMLAttributes<HTMLTextAreaElement>,

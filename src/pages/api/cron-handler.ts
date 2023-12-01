@@ -1,10 +1,14 @@
 import { faker } from "@faker-js/faker";
-import { NextApiHandler } from "next";
+import cuid from "cuid";
+import { type NextApiRequest, type NextApiResponse } from "next";
+import { env } from "~/env.js";
+import { db } from "~/server/db";
+import { contacts } from "~/server/db/schema";
 
-import { env } from "~/env.mjs";
-import { prisma } from "~/server/db/client";
-
-const handler: NextApiHandler = async (req, res) => {
+export default async function handler(
+	req: NextApiRequest,
+	res: NextApiResponse,
+) {
 	const { method } = req;
 
 	const { authorization } = req.headers;
@@ -12,28 +16,28 @@ const handler: NextApiHandler = async (req, res) => {
 	if (authorization === `Bearer ${env.CRON_SECRET}`) {
 		switch (method) {
 			case "POST":
-				await prisma.contact.deleteMany();
+				await db.delete(contacts);
 
 				// create 20 contacts
 				for (let i = 0; i < 20; i++) {
-					const isOftenProvided = Math.random() > 0.2;
+					const isOftenProvided = Math.random() > 0.33;
 					const isRarelyProvided = Math.random() > 0.75;
 
-					await prisma.contact.create({
-						data: {
-							firstName: isOftenProvided ? faker.name.firstName() : "",
-							lastName: isOftenProvided ? faker.name.lastName() : "",
-							phoneNumber: faker.phone.number("+1##########"), // assume always provided, for now
-							email: isRarelyProvided ? faker.internet.email() : "",
-							address1: isRarelyProvided ? faker.address.streetAddress() : "",
-							address2: isRarelyProvided
-								? faker.address.secondaryAddress()
-								: "",
-							city: isRarelyProvided ? faker.address.city() : "",
-							state: isRarelyProvided ? faker.address.stateAbbr() : "",
-							zip: isRarelyProvided ? faker.address.zipCode("#####") : "",
-							notes: isRarelyProvided ? faker.lorem.paragraph() : "",
-						},
+					await db.insert(contacts).values({
+						id: cuid(),
+						firstName: isOftenProvided ? faker.person.firstName() : "",
+						lastName: isOftenProvided ? faker.person.lastName() : "",
+						phoneNumber:
+							"+" + faker.helpers.replaceSymbolWithNumber("###########"),
+						email: isRarelyProvided ? faker.internet.email() : "",
+						address1: isRarelyProvided ? faker.location.streetAddress() : "",
+						address2: isRarelyProvided ? faker.location.secondaryAddress() : "",
+						city: isRarelyProvided ? faker.location.city() : "",
+						state: isRarelyProvided
+							? faker.location.state({ abbreviated: true })
+							: "",
+						zip: isRarelyProvided ? faker.location.zipCode("#####") : "",
+						notes: isRarelyProvided ? faker.lorem.paragraph() : "",
 					});
 				}
 				return res.status(204).end();
@@ -44,6 +48,4 @@ const handler: NextApiHandler = async (req, res) => {
 	}
 
 	return res.status(401).end("Unauthorized");
-};
-
-export default handler;
+}

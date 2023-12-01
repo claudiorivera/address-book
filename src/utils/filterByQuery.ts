@@ -1,12 +1,12 @@
-export const filterByQuery = <T extends Record<string, unknown>>(
+export function filterByQuery<T extends Record<string, unknown>>(
 	array: T[],
 	query: string,
-) =>
-	array.filter((el) =>
+) {
+	return array.filter((el) =>
 		Object.values(el).some(
 			(value) =>
-				!!value &&
 				typeof value === "string" &&
 				value.toLowerCase().includes(query.toLowerCase()),
 		),
 	);
+}
