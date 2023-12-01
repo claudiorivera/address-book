@@ -1,6 +1,6 @@
-import { Contact } from "@prisma/client";
+import { type Contact } from "~/server/api/routers/contact";
 
-export const getGoogleMapsUrlForContact = (contact: Contact) => {
+export function getGoogleMapsUrlForContact(contact: Contact) {
 	const url = new URL("https://www.google.com/maps/search/");
 
 	const addressFields = [];
@@ -18,4 +18,4 @@ export const getGoogleMapsUrlForContact = (contact: Contact) => {
 	url.pathname += addressFields.join("%20");
 
 	return url.toString();
-};
+}

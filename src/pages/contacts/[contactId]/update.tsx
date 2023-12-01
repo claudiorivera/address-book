@@ -2,36 +2,33 @@ import classNames from "classnames";
 import NextImage from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { Input } from "~/components/Input";
+import { TextArea } from "~/components/TextArea";
+import { useZodForm } from "~/hooks/useZodForm";
+import { updateContactValidationSchema } from "~/schemas/updateContactValidationSchema";
+import { api } from "~/utils/api";
 
-import { Input, TextArea } from "~/components";
-import { useZodForm } from "~/hooks";
-import { updateContactValidationSchema } from "~/schemas";
-import { trpc } from "~/utils";
-
-type Photo = Partial<Pick<HTMLImageElement, "src" | "width" | "height">>;
-
-const UpdateContactPage = () => {
+export default function UpdateContactPage() {
 	const router = useRouter();
-	const utils = trpc.useContext();
+	const utils = api.useUtils();
 	const contactId = router.query.contactId as string;
 
-	const { data: contact } = trpc.contact.getById.useQuery({
+	const { data: contact } = api.contact.getById.useQuery({
 		id: contactId,
 	});
 
-	const photo: Photo = {
+	const photo: Partial<Pick<HTMLImageElement, "src" | "width" | "height">> = {
 		src: contact?.photo?.url,
 		width: contact?.photo?.width,
 		height: contact?.photo?.height,
 	};
 
-	const { mutateAsync: updateContact, isLoading } =
-		trpc.contact.update.useMutation({
-			onSuccess: async () => {
-				await utils.contact.getById.invalidate();
-				await router.push(`/contacts/${contactId}`);
-			},
-		});
+	const { mutate: updateContact, isLoading } = api.contact.update.useMutation({
+		onSuccess: async () => {
+			await utils.contact.getById.invalidate();
+			await router.push(`/contacts/${contactId}`);
+		},
+	});
 
 	const {
 		register,
@@ -81,19 +78,18 @@ const UpdateContactPage = () => {
 				<div className="mx-auto">
 					<div className="avatar placeholder">
 						<div className="relative w-24 rounded-full bg-base-300 text-base-content ring ring-secondary">
-							{!photo.src && (
-								<span className="text-3xl">
-									{contact?.firstName?.charAt(0).toUpperCase()}
-									{contact?.lastName?.charAt(0).toUpperCase()}
-								</span>
-							)}
-							{!!photo.src && (
+							{!!photo.src ? (
 								<NextImage
 									src={photo.src}
 									alt="avatar"
 									height={photo.height}
 									width={photo.width}
 								/>
+							) : (
+								<span className="text-3xl">
+									{contact?.firstName?.charAt(0).toUpperCase()}
+									{contact?.lastName?.charAt(0).toUpperCase()}
+								</span>
 							)}
 						</div>
 					</div>
@@ -165,6 +161,4 @@ const UpdateContactPage = () => {
 			</form>
 		</div>
 	);
-};
-
-export default UpdateContactPage;
+}

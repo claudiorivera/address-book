@@ -1,28 +1,27 @@
-import { Contact } from "@prisma/client";
-
+import {
+	type Contact,
+	type ContactGetAllOutput,
+} from "~/server/api/routers/contact";
 import { sortedInsert } from "./sortedInsert";
-import { RouterOutput } from "./trpc";
 
-type Options = {
-	sortKey?: keyof Contact;
-};
-
-export const collateContacts = (
-	contacts: RouterOutput["contact"]["getAll"],
-	options?: Options,
-) => {
-	const collatedContacts = new Map<string, RouterOutput["contact"]["getAll"]>();
+export function collateContacts(
+	contacts: ContactGetAllOutput,
+	options?: {
+		sortKey?: keyof Contact;
+	},
+) {
+	const collatedContacts = new Map<string, ContactGetAllOutput>();
 
 	contacts.forEach((contact) => {
-		const key =
-			contact[options?.sortKey || "firstName"]?.toUpperCase().slice(0, 1) ||
-			"#";
+		const firstInitial = contact.firstName?.toUpperCase().slice(0, 1);
 
-		const contactsArrayForCurrentKey = collatedContacts.get(key);
+		const key = firstInitial?.length ? firstInitial : "#";
 
-		if (contactsArrayForCurrentKey) {
+		const contactsForKey = collatedContacts.get(key);
+
+		if (contactsForKey) {
 			const sortedArray = sortedInsert(
-				contactsArrayForCurrentKey,
+				contactsForKey,
 				contact,
 				options?.sortKey,
 			);
@@ -40,4 +39,4 @@ export const collateContacts = (
 			return a[0].localeCompare(b[0]);
 		}),
 	);
-};
+}

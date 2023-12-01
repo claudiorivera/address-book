@@ -1,9 +1,7 @@
-import { RouterOutput } from "./trpc";
+import { type Contact } from "~/server/api/routers/contact";
 
-type Contact = RouterOutput["contact"]["getById"];
-
-export const hrefPrefixForField = (field: string) => {
-	switch (field as keyof Contact) {
+export function hrefPrefixForField(field: keyof Contact) {
+	switch (field) {
 		case "phoneNumber":
 			return "tel:";
 		case "email":
@@ -11,4 +9,4 @@ export const hrefPrefixForField = (field: string) => {
 		default:
 			return "";
 	}
-};
+}

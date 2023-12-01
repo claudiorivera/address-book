@@ -1,15 +1,14 @@
 import { faker } from "@faker-js/faker";
 import cuid from "cuid";
 import { describe, expect, it } from "vitest";
-
+import { type ContactGetAllOutput } from "~/server/api/routers/contact";
 import { collateContacts } from "./collateContacts";
-import { RouterOutput } from "./trpc";
 
 const fakeContact = {
 	id: cuid(),
 	firstName: "",
 	lastName: "",
-	phoneNumber: faker.phone.number("+1##########"),
+	phoneNumber: "+" + faker.helpers.replaceSymbolWithNumber("###########"),
 	email: "",
 	address1: "",
 	address2: "",
@@ -17,11 +16,20 @@ const fakeContact = {
 	state: "",
 	zip: "",
 	notes: "",
-	photo: null,
-};
+	photo: {
+		id: cuid(),
+		cloudinaryId: "123",
+		contactId: cuid(),
+		height: 100,
+		width: 100,
+		url: "https://picsum.photos/100/100",
+	},
+	createdAt: Date.now(),
+	updatedAt: Date.now(),
+} satisfies ContactGetAllOutput[number];
 
 describe("collateContacts", () => {
-	const contacts: RouterOutput["contact"]["getAll"] = [];
+	const contacts: ContactGetAllOutput = [];
 
 	it("should return an object with a # key", () => {
 		contacts.length = 0;
@@ -57,7 +65,16 @@ describe("collateContacts", () => {
 				state: "",
 				zip: "",
 				notes: "",
-				photo: null,
+				photo: {
+					id: cuid(),
+					cloudinaryId: "123",
+					contactId: cuid(),
+					height: 100,
+					width: 100,
+					url: "https://picsum.photos/100/100",
+				},
+				createdAt: Date.now(),
+				updatedAt: Date.now(),
 			},
 			{
 				id: cuid(),
@@ -71,7 +88,16 @@ describe("collateContacts", () => {
 				state: "",
 				zip: "",
 				notes: "",
-				photo: null,
+				photo: {
+					id: cuid(),
+					cloudinaryId: "123",
+					contactId: cuid(),
+					height: 100,
+					width: 100,
+					url: "https://picsum.photos/100/100",
+				},
+				createdAt: Date.now(),
+				updatedAt: Date.now(),
 			},
 		);
 		const sortedContacts = collateContacts(contacts);

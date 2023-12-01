@@ -9,12 +9,12 @@ It's an address book! It lets you add and manage your contacts.
   - Next.js
   - tRPC
   - Tailwind
-  - Prisma
+  - Drizzle ORM
+  - Turso
   - NextAuth.js
 
 ## Prerequisites
 
-- Postgres
 - pnpm
 
 ## Configure
