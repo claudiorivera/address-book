@@ -36,8 +36,8 @@ dependencies:
     specifier: 2.3.2
     version: 2.3.2
   daisyui:
-    specifier: 4.4.17
-    version: 4.4.17(postcss@8.4.32)
+    specifier: 4.4.18
+    version: 4.4.18(postcss@8.4.32)
   drizzle-orm:
     specifier: ^0.29.0
     version: 0.29.0(@libsql/client@0.4.0-pre.5)
@@ -2121,8 +2121,8 @@ packages:
       type: 1.2.0
     dev: true
 
-  /daisyui@4.4.17(postcss@8.4.32):
-    resolution: {integrity: sha512-vcxLKoWiqPjEtcBkSayi9sDW1kWgWRdy1GjSu3zNtMiCsXwqDpCzNkdijuY9RuJ/2tBCtnwxhBv72Yizfi7KAQ==}
+  /daisyui@4.4.18(postcss@8.4.32):
+    resolution: {integrity: sha512-7e9gHo8swozeYMrXR10Mjo0QoBt7rAhKZZ1gQKiu+FxuSW8tinSV//O/rMQAw3liVBxkxWNYD/g2vrNQ8h/ThQ==}
     engines: {node: '>=16.9.0'}
     dependencies:
       css-selector-tokenizer: 0.8.0
