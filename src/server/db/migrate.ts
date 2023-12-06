@@ -1,14 +1,9 @@
-import { drizzle } from "drizzle-orm/node-postgres";
-import { migrate } from "drizzle-orm/node-postgres/migrator";
-import { Client } from "pg";
+import { drizzle } from "drizzle-orm/postgres-js";
+import { migrate } from "drizzle-orm/postgres-js/migrator";
+import postgres from "postgres";
 import { env } from "~/env";
 
-const client = new Client({
-  connectionString: env.DATABASE_URL,
-  
-});
-
-await client.connect();
+const client = postgres(env.DATABASE_URL, {max: 1});
 
 const db = drizzle(client);
 
