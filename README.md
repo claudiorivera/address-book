@@ -9,7 +9,7 @@ It's an address book! It lets you add and manage your contacts.
   - Next.js
   - tRPC
   - Tailwind
-  - Drizzle ORM
+  - Prisma
   - Postgres
   - NextAuth.js
 

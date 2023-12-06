@@ -1,15 +1,14 @@
 import classNames from "classnames";
-import cuid from "cuid";
 import Link from "next/link";
 import { useState, type Dispatch, type SetStateAction } from "react";
 import { Input } from "~/components/Input";
 import { TextArea } from "~/components/TextArea";
 import { useZodForm } from "~/hooks/useZodForm";
+import { createContactValidationSchema } from "~/schemas/createContactValidationSchema";
 import {
 	type Contact,
 	type ContactGetAllOutput,
 } from "~/server/api/routers/contact";
-import { createContactSchema } from "~/server/db/schema";
 import { api } from "~/utils/api";
 import { collateContacts } from "~/utils/collateContacts";
 import { filterByQuery } from "~/utils/filterByQuery";
@@ -155,10 +154,7 @@ function CreateContactForm({ onClose }: { onClose: () => void }) {
 		});
 
 	const form = useZodForm({
-		schema: createContactSchema,
-		defaultValues: {
-			id: cuid(),
-		},
+		schema: createContactValidationSchema,
 	});
 
 	const isSubmitDisabled = isLoading || !form.formState.isDirty;
