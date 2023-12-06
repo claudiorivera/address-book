@@ -3,6 +3,7 @@ import { env } from "~/env";
 
 export default {
 	schema: "./src/server/db/schema.ts",
+	out: "./src/server/db/migrations",
 	driver: "pg",
 	dbCredentials: {
 		connectionString: env.DATABASE_URL,

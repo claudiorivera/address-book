@@ -11,7 +11,8 @@
 		"test": "vitest",
 		"format": "prettier --write .",
 		"db:push": "drizzle-kit push:pg",
-		"db:studio": "drizzle-kit studio"
+		"db:studio": "drizzle-kit studio",
+		"db:generate": "drizzle-kit generate:pg"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "3.3.2",
