@@ -1,13 +1,10 @@
 import type { Config } from "drizzle-kit";
-
-import { env } from "~/env.js";
+import { env } from "~/env";
 
 export default {
 	schema: "./src/server/db/schema.ts",
-	driver: "turso",
+	driver: "pg",
 	dbCredentials: {
-		url: env.TURSO_URL,
-		authToken: env.TURSO_AUTH_TOKEN,
+		connectionString: env.DATABASE_URL,
 	},
-	tablesFilter: ["drizzle_*"],
 } satisfies Config;

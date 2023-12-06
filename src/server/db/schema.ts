@@ -1,9 +1,12 @@
-import { relations, sql } from "drizzle-orm";
-import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import cuid from "cuid";
+import { relations } from "drizzle-orm";
+import { integer, pgTable, text, timestamp } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 
-export const contacts = sqliteTable("contacts", {
-	id: text("id").primaryKey(),
+export const contacts = pgTable("contacts", {
+	id: text("id")
+		.primaryKey()
+		.$defaultFn(() => cuid()),
 	firstName: text("firstName"),
 	lastName: text("lastName"),
 	email: text("email"),
@@ -14,8 +17,8 @@ export const contacts = sqliteTable("contacts", {
 	state: text("state"),
 	zip: text("zip"),
 	notes: text("notes"),
-	createdAt: integer("createdAt").default(sql`(cast (unixepoch () as int))`),
-	updatedAt: integer("updatedAt").default(sql`(cast (unixepoch () as int))`),
+	createdAt: timestamp("createdAt").defaultNow().notNull(),
+	updatedAt: timestamp("updatedAt").defaultNow().notNull(),
 });
 
 export const contactsRelations = relations(contacts, ({ one }) => ({
@@ -25,8 +28,10 @@ export const contactsRelations = relations(contacts, ({ one }) => ({
 	}),
 }));
 
-export const photo = sqliteTable("photos", {
-	id: text("id").primaryKey(),
+export const photo = pgTable("photos", {
+	id: text("id")
+		.primaryKey()
+		.$defaultFn(() => cuid()),
 	cloudinaryId: text("cloudinaryId").notNull().unique(),
 	url: text("url").notNull(),
 	width: integer("width").notNull(),

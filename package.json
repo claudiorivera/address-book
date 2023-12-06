@@ -10,12 +10,11 @@
 		"start": "next start",
 		"test": "vitest",
 		"format": "prettier --write .",
-		"db:push": "drizzle-kit push:sqlite",
+		"db:push": "drizzle-kit push:pg",
 		"db:studio": "drizzle-kit studio"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "3.3.2",
-		"@libsql/client": "0.4.0-pre.5",
 		"@t3-oss/env-core": "0.7.1",
 		"@t3-oss/env-nextjs": "0.7.1",
 		"@tanstack/react-query": "4.36.1",
@@ -28,6 +27,7 @@
 		"drizzle-orm": "^0.29.0",
 		"drizzle-zod": "^0.5.1",
 		"next": "14.0.3",
+		"postgres": "^3.4.3",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"react-hook-form": "7.48.2",

@@ -10,7 +10,7 @@ It's an address book! It lets you add and manage your contacts.
   - tRPC
   - Tailwind
   - Drizzle ORM
-  - Turso
+  - Postgres
   - NextAuth.js
 
 ## Prerequisites
