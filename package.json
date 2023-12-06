@@ -5,7 +5,6 @@
 	"type": "module",
 	"scripts": {
 		"build": "next build",
-		"vercel-build": "pnpm db:migrate && next build",
 		"dev": "next dev",
 		"lint": "next lint",
 		"start": "next start",
