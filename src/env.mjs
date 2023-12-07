@@ -3,11 +3,13 @@ import { z } from "zod";
 
 export const env = createEnv({
 	server: {
+		CRON_SECRET: z.string(),
+		DATABASE_URL: z.string(),
+	},
+	shared: {
 		NODE_ENV: z
 			.enum(["development", "test", "production"])
 			.default("development"),
-		CRON_SECRET: z.string(),
-		DATABASE_URL: z.string(),
 	},
 	runtimeEnv: {
 		NODE_ENV: process.env.NODE_ENV,
