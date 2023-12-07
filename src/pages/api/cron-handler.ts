@@ -1,5 +1,4 @@
 import { faker } from "@faker-js/faker";
-import cuid from "cuid";
 import { type NextApiRequest, type NextApiResponse } from "next";
 import { env } from "~/env.mjs";
 import { db } from "~/server/db";
@@ -24,7 +23,6 @@ export default async function handler(
 					const isRarelyProvided = Math.random() > 0.75;
 
 					await db.insert(contacts).values({
-						id: cuid(),
 						firstName: isOftenProvided ? faker.person.firstName() : "",
 						lastName: isOftenProvided ? faker.person.lastName() : "",
 						phoneNumber:
