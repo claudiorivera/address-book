@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 import cuid from "cuid";
 import { type NextApiRequest, type NextApiResponse } from "next";
-import { env } from "~/env.js";
+import { env } from "~/env.mjs";
 import { db } from "~/server/db";
 import { contacts } from "~/server/db/schema";
 
