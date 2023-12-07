@@ -1,67 +1,45 @@
-import { Prisma } from "@prisma/client";
+import { eq } from "drizzle-orm";
 import { z } from "zod";
-import { createContactValidationSchema } from "~/schemas/createContactValidationSchema";
 import { updateContactValidationSchema } from "~/schemas/updateContactValidationSchema";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
+import { contacts, createContactSchema } from "~/server/db/schema";
 import { type RouterOutputs } from "~/utils/api";
-
-const defaultContactSelect = Prisma.validator<Prisma.ContactSelect>()({
-	id: true,
-	firstName: true,
-	lastName: true,
-	email: true,
-	phoneNumber: true,
-	address1: true,
-	address2: true,
-	city: true,
-	state: true,
-	zip: true,
-	notes: true,
-	photo: true,
-});
 
 export const contactRouter = createTRPCRouter({
 	getAll: publicProcedure.query(({ ctx }) =>
-		ctx.prisma.contact.findMany({
-			select: defaultContactSelect,
+		ctx.db.query.contacts.findMany({
+			with: {
+				photo: true,
+			},
 		}),
 	),
 	getById: publicProcedure
 		.input(z.object({ id: z.string().cuid() }))
-		.query(({ input, ctx }) => {
-			const { id } = input;
-			return ctx.prisma.contact.findUnique({
-				where: { id },
-				select: defaultContactSelect,
-			});
-		}),
+		.query(async ({ input, ctx }) =>
+			ctx.db.query.contacts.findFirst({
+				where: eq(contacts.id, input.id),
+				with: {
+					photo: true,
+				},
+			}),
+		),
 	create: publicProcedure
-		.input(createContactValidationSchema)
-		.mutation(({ input, ctx }) => {
-			return ctx.prisma.contact.create({
-				data: input,
-				select: defaultContactSelect,
-			});
-		}),
+		.input(createContactSchema)
+		.mutation(({ input, ctx }) => ctx.db.insert(contacts).values(input)),
 	update: publicProcedure
 		.input(updateContactValidationSchema)
-		.mutation(async ({ input, ctx }) => {
-			return ctx.prisma.contact.update({
-				where: { id: input.id },
-				data: input,
-				select: defaultContactSelect,
-			});
-		}),
+		.mutation(async ({ input, ctx }) =>
+			ctx.db.update(contacts).set(input).where(eq(contacts.id, input.id)),
+		),
 	delete: publicProcedure
 		.input(
 			z.object({
 				id: z.string().cuid(),
 			}),
 		)
-		.mutation(({ input, ctx }) => {
-			const { id } = input;
-			return ctx.prisma.contact.delete({ where: { id } });
-		}),
+		.mutation(({ input, ctx }) =>
+			ctx.db.delete(contacts).where(eq(contacts.id, input.id)),
+		),
 });
 
 type ContactGetByIdOutput = RouterOutputs["contact"]["getById"];

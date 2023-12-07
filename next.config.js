@@ -1,4 +1,4 @@
-import("./src/env.mjs");
+import "./src/env.mjs";
 
 /**
  * Don't be scared of the generics here.
