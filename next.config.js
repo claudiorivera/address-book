@@ -1,4 +1,4 @@
-await import("./src/env.js");
+import("./src/env.mjs");
 
 /**
  * Don't be scared of the generics here.

@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Contact {
+  id          String        @id @default(cuid())
+  firstName   String?
+  lastName    String?
+  email       String?
+  phoneNumber String?
+  address1    String?
+  address2    String?
+  city        String?
+  state       String?
+  zip         String?
+  notes       String?       @db.Text
+  photo       ContactPhoto?
+}
+
+model ContactPhoto {
+  id           String @id @default(cuid())
+  cloudinaryId String @unique
+
+  url    String
+  width  Int
+  height Int
+
+  contact   Contact @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  contactId String  @unique
+}
