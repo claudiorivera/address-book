@@ -24,7 +24,7 @@
 		"@trpc/react-query": "10.44.1",
 		"@trpc/server": "10.44.1",
 		"classnames": "2.3.2",
-		"daisyui": "4.4.22",
+		"daisyui": "4.4.23",
 		"drizzle-orm": "^0.29.0",
 		"drizzle-zod": "^0.5.1",
 		"next": "14.0.4",
