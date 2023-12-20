@@ -30,8 +30,8 @@ dependencies:
     specifier: 2.3.2
     version: 2.3.2
   daisyui:
-    specifier: 4.4.22
-    version: 4.4.22(postcss@8.4.32)
+    specifier: 4.4.23
+    version: 4.4.23(postcss@8.4.32)
   drizzle-orm:
     specifier: ^0.29.0
     version: 0.29.0(postgres@3.4.3)
@@ -1943,8 +1943,8 @@ packages:
       type: 1.2.0
     dev: true
 
-  /daisyui@4.4.22(postcss@8.4.32):
-    resolution: {integrity: sha512-hn50npYa07qS0v+WbBGhTMTIq0X1cHe8Jc5/vxnnkKUTKyJQ2C1UQnNa2HNMVoCyzBct1fv6VBnEB4LGc0dVEQ==}
+  /daisyui@4.4.23(postcss@8.4.32):
+    resolution: {integrity: sha512-IFQRGoGoAke8chxPcDqQJFldVVd51JL7b4mRA3LqsLexW/6xicZzz9X3GXdGdnYsu8QPxZN4uzQZ5fwRNYXOSg==}
     engines: {node: '>=16.9.0'}
     dependencies:
       css-selector-tokenizer: 0.8.0
