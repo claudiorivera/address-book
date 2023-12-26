@@ -16,7 +16,7 @@
 		"db:migrate": "tsx ./src/server/db/migrate.ts"
 	},
 	"dependencies": {
-		"@hookform/resolvers": "3.3.2",
+		"@hookform/resolvers": "3.3.3",
 		"@t3-oss/env-nextjs": "0.7.1",
 		"@tanstack/react-query": "4.36.1",
 		"@trpc/client": "10.44.1",
