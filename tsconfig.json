@@ -1,33 +1,30 @@
 {
 	"compilerOptions": {
-		/* Base Options: */
-		"esModuleInterop": true,
-		"skipLibCheck": true,
-		"target": "es2022",
-		"allowJs": true,
-		"resolveJsonModule": true,
-		"moduleDetection": "force",
-		"isolatedModules": true,
-
-		/* Strictness */
-		"strict": true,
-		"noUncheckedIndexedAccess": true,
-		"checkJs": true,
-
-		/* Bundled projects */
-		"lib": ["dom", "dom.iterable", "ES2022"],
-		"noEmit": true,
-		"module": "ESNext",
-		"moduleResolution": "Bundler",
-		"jsx": "preserve",
-		"plugins": [{ "name": "next" }],
-		"incremental": true,
-
-		/* Path Aliases */
+		"allowImportingTsExtensions": true,
+		"allowJs": true, // allow importing `.js` from `.ts`
 		"baseUrl": ".",
+		"esModuleInterop": true,
+		"incremental": true,
+		"jsx": "preserve", // support JSX
+		"lib": ["ESNext"],
+		"module": "ESNext",
+		"moduleDetection": "force",
+		"moduleResolution": "bundler",
+		"noEmit": true,
+		"noFallthroughCasesInSwitch": true,
+		"noPropertyAccessFromIndexSignature": true,
+		"noUncheckedIndexedAccess": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
 		"paths": {
 			"~/*": ["./src/*"]
-		}
+		},
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"target": "ESNext",
+		"useUnknownInCatchVariables": true,
+		"verbatimModuleSyntax": true
 	},
 	"include": [
 		".eslintrc.cjs",
@@ -36,8 +33,7 @@
 		"**/*.tsx",
 		"**/*.cjs",
 		"**/*.mjs",
-		"**/*.js",
-		".next/types/**/*.ts"
+		"**/*.js"
 	],
 	"exclude": ["node_modules"]
 }

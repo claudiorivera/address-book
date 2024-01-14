@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
+import { describe, expect, it } from "bun:test";
 import cuid from "cuid";
-import { describe, expect, it } from "vitest";
 import { type ContactGetAllOutput } from "~/server/api/routers/contact";
 import { collateContacts } from "./collateContacts";
 
@@ -24,15 +24,15 @@ const fakeContact = {
 		width: 100,
 		url: "https://picsum.photos/100/100",
 	},
-	createdAt: Date.now(),
-	updatedAt: Date.now(),
+	createdAt: new Date(),
+	updatedAt: new Date(),
 } satisfies ContactGetAllOutput[number];
 
 describe("collateContacts", () => {
 	const contacts: ContactGetAllOutput = [];
 
-	it("should return an object with a # key", () => {
-		contacts.length = 0;
+	it("should return a Map", () => {
+		contacts.length = 0; // clear the array
 		for (let i = 0; i < 3; i++) {
 			contacts.push(fakeContact);
 		}
@@ -40,7 +40,7 @@ describe("collateContacts", () => {
 	});
 
 	it("should return an array in the # key", () => {
-		contacts.length = 0;
+		contacts.length = 0; // clear the array
 		for (let i = 0; i < 3; i++) {
 			contacts.push(fakeContact);
 		}
@@ -51,7 +51,7 @@ describe("collateContacts", () => {
 	});
 
 	it("should sort the elements of the array in the # key", () => {
-		contacts.length = 0;
+		contacts.length = 0; // clear the array
 		contacts.push(
 			{
 				id: cuid(),
@@ -73,8 +73,8 @@ describe("collateContacts", () => {
 					width: 100,
 					url: "https://picsum.photos/100/100",
 				},
-				createdAt: Date.now(),
-				updatedAt: Date.now(),
+				createdAt: new Date(),
+				updatedAt: new Date(),
 			},
 			{
 				id: cuid(),
@@ -96,8 +96,8 @@ describe("collateContacts", () => {
 					width: 100,
 					url: "https://picsum.photos/100/100",
 				},
-				createdAt: Date.now(),
-				updatedAt: Date.now(),
+				createdAt: new Date(),
+				updatedAt: new Date(),
 			},
 		);
 		const sortedContacts = collateContacts(contacts);
