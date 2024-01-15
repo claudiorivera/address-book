@@ -1,6 +1,8 @@
-import { type Contact } from "~/server/api/routers/contact";
+import type { ContactGetByIdOutput } from "~/server/api/routers/contact";
 
-export function getGoogleMapsUrlForContact(contact: Contact) {
+export function getGoogleMapsUrlForContact(
+	contact: NonNullable<ContactGetByIdOutput>,
+) {
 	const url = new URL("https://www.google.com/maps/search/");
 
 	const addressFields = [];

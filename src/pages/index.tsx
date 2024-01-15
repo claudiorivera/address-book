@@ -1,18 +1,23 @@
 import classNames from "classnames";
 import cuid from "cuid";
 import Link from "next/link";
-import { useState, type Dispatch, type SetStateAction } from "react";
+import {
+	useCallback,
+	useMemo,
+	useState,
+	type Dispatch,
+	type SetStateAction,
+} from "react";
 import { Input } from "~/components/Input";
 import { TextArea } from "~/components/TextArea";
 import { useZodForm } from "~/hooks/useZodForm";
-import {
-	type Contact,
-	type ContactGetAllOutput,
-} from "~/server/api/routers/contact";
+import { type ContactGetAllOutput } from "~/server/api/routers/contact";
 import { createContactSchema } from "~/server/db/schema";
 import { api } from "~/utils/api";
 import { collateContacts } from "~/utils/collateContacts";
 import { filterByQuery } from "~/utils/filterByQuery";
+
+type Contact = ContactGetAllOutput[number];
 
 export default function HomePage() {
 	const [isCreateContactModalOpen, setIsCreateContactModalOpen] =
@@ -21,11 +26,14 @@ export default function HomePage() {
 
 	const { data: contacts = [] } = api.contact.getAll.useQuery();
 
-	const filteredContacts = filterByQuery(contacts, query);
+	const filteredContacts = useMemo(
+		() => filterByQuery(contacts, query),
+		[contacts, query],
+	);
 
-	const handleAddContactModalToggle = () => {
-		setIsCreateContactModalOpen(!isCreateContactModalOpen);
-	};
+	const handleAddContactModalToggle = useCallback(() => {
+		setIsCreateContactModalOpen((previousValue) => !previousValue);
+	}, []);
 
 	return (
 		<div className="relative">
@@ -62,7 +70,7 @@ export default function HomePage() {
 }
 
 function ContactList({ contacts }: { contacts: ContactGetAllOutput }) {
-	const collatedContacts = collateContacts(contacts);
+	const collatedContacts = useMemo(() => collateContacts(contacts), [contacts]);
 
 	return (
 		<>
@@ -146,22 +154,18 @@ function CreateContactFormModal({
 function CreateContactForm({ onClose }: { onClose: () => void }) {
 	const utils = api.useUtils();
 
-	const { mutateAsync: createContact, isLoading } =
-		api.contact.create.useMutation({
-			onSuccess: async () => {
-				await utils.contact.getAll.invalidate();
-				onClose();
-			},
-		});
+	const { mutate: createContact, isLoading } = api.contact.create.useMutation({
+		onSettled: () => utils.contact.getAll.invalidate(),
+	});
 
-	const form = useZodForm({
+	const { handleSubmit, formState, register } = useZodForm({
 		schema: createContactSchema,
 		defaultValues: {
 			id: cuid(),
 		},
 	});
 
-	const isSubmitDisabled = isLoading || !form.formState.isDirty;
+	const isSubmitDisabled = isLoading || !formState.isDirty;
 
 	return (
 		<>
@@ -181,70 +185,72 @@ function CreateContactForm({ onClose }: { onClose: () => void }) {
 
 			<form
 				id="create-contact"
-				onSubmit={form.handleSubmit(async (values) => {
-					await createContact(values);
-				})}
+				onSubmit={handleSubmit((values) =>
+					createContact(values, {
+						onSuccess: () => onClose(),
+					}),
+				)}
 				className="flex flex-col gap-2"
 			>
 				<Input
 					label="First Name"
-					{...form.register("firstName")}
-					error={form.formState.errors.firstName}
+					{...register("firstName")}
+					error={formState.errors.firstName?.message}
 				/>
 				<Input
 					label="Last Name"
-					{...form.register("lastName")}
+					{...register("lastName")}
 					autoComplete="family-name"
-					error={form.formState.errors.lastName}
+					error={formState.errors.lastName?.message}
 				/>
 				<Input
 					label="Email"
-					{...form.register("email")}
+					{...register("email")}
 					autoComplete="email"
 					type="email"
-					error={form.formState.errors.email}
+					error={formState.errors.email?.message}
 				/>
 				<Input
 					label="Phone Number"
-					{...form.register("phoneNumber")}
+					{...register("phoneNumber")}
 					autoComplete="tel"
 					type="tel"
-					error={form.formState.errors.phoneNumber}
+					error={formState.errors.phoneNumber?.message}
 				/>
 				<Input
 					label="Address 1"
-					{...form.register("address1")}
+					{...register("address1")}
 					autoComplete="address-line1"
-					error={form.formState.errors.address1}
+					error={formState.errors.address1?.message}
 				/>
 				<Input
 					label="Address 2"
-					{...form.register("address2")}
+					{...register("address2")}
 					autoComplete="address-line2"
-					error={form.formState.errors.address2}
+					error={formState.errors.address2?.message}
 				/>
 				<Input
 					label="City"
-					{...form.register("city")}
+					{...register("city")}
 					autoComplete="address-level2"
-					error={form.formState.errors.city}
+					error={formState.errors.city?.message}
 				/>
 				<Input
 					label="State"
-					{...form.register("state")}
+					{...register("state")}
 					autoComplete="address-level1"
-					error={form.formState.errors.state}
+					error={formState.errors.state?.message}
 				/>
 				<Input
 					label="Zip"
-					{...form.register("zip")}
+					{...register("zip")}
 					autoComplete="postal-code"
-					error={form.formState.errors.zip}
+					error={formState.errors.zip?.message}
 				/>
 				<TextArea
 					label="Notes"
-					{...form.register("notes")}
-					error={form.formState.errors.notes}
+					{...register("notes")}
+					error={formState.errors.notes?.message}
 				/>
 			</form>
 		</>
@@ -287,6 +293,7 @@ function Search({
 					className="input input-bordered w-full pl-8"
 					placeholder="Search"
 					autoComplete="off"
+					autoCorrect="off"
 					value={query}
 					onChange={(e) => setQuery(e.target.value)}
 				/>

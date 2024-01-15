@@ -1,5 +1,5 @@
 export function filterByQuery<T extends Record<string, unknown>>(
-	array: T[],
+	array: Array<T>,
 	query: string,
 ) {
 	return array.filter((el) =>

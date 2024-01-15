@@ -1,4 +1,6 @@
-import { type Contact } from "~/server/api/routers/contact";
+import type { ContactGetByIdOutput } from "~/server/api/routers/contact";
+
+type Contact = NonNullable<ContactGetByIdOutput>;
 
 export function hrefPrefixForField(field: keyof Contact) {
 	switch (field) {

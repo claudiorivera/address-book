@@ -1,23 +1,20 @@
 import classNames from "classnames";
-import React, {
-	type DetailedHTMLProps,
+import {
 	forwardRef,
+	type DetailedHTMLProps,
 	type InputHTMLAttributes,
 } from "react";
-import { type FieldError } from "react-hook-form";
 
 type InputProps = DetailedHTMLProps<
 	InputHTMLAttributes<HTMLTextAreaElement>,
 	HTMLTextAreaElement
 > & {
 	label: string;
-	error?: FieldError;
+	error?: string;
 };
 
 export const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
-	(props, ref) => {
-		const { label, error, ...inputProps } = props;
-
+	function TextArea({ label, error, ...inputProps }, ref) {
 		return (
 			<div className="w-full">
 				<label className="label flex flex-col items-stretch gap-1">
@@ -26,14 +23,12 @@ export const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
 						ref={ref}
 						{...inputProps}
 						className={classNames("textarea textarea-bordered", {
-							"textarea-error": error,
+							"textarea-error": !!error,
 						})}
 					/>
 				</label>
-				<div className="text-xs text-red-500">{error?.message}</div>
+				{!!error && <div className="text-xs text-red-500">{error}</div>}
 			</div>
 		);
 	},
 );
-
-TextArea.displayName = "TextArea";
