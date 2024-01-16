@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "bun:test";
 import { sortedInsert } from "./sortedInsert";
 
 describe("sortedInsert", () => {
@@ -28,6 +28,10 @@ describe("sortedInsert", () => {
 		const array5: Array<number> = [];
 		const result5 = sortedInsert(array5, 1);
 		expect(result5).toEqual([1]);
+
+		const array6 = [0, 1];
+		const result6 = sortedInsert(array6, -1);
+		expect(result6).toEqual([-1, 0, 1]);
 	});
 
 	it("should sort objects by a given sort key", () => {

@@ -1,13 +1,13 @@
 {
-  "version": "5",
-  "dialect": "pg",
-  "entries": [
-    {
-      "idx": 0,
-      "version": "5",
-      "when": 1701829152905,
-      "tag": "0000_cheerful_moonstone",
-      "breakpoints": true
-    }
-  ]
+	"version": "5",
+	"dialect": "pg",
+	"entries": [
+		{
+			"idx": 0,
+			"version": "5",
+			"when": 1701829152905,
+			"tag": "0000_cheerful_moonstone",
+			"breakpoints": true
+		}
+	]
 }

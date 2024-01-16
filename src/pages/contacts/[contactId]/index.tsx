@@ -1,24 +1,36 @@
+import type { GetServerSidePropsContext } from "next";
 import NextImage from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { ConditionalWrapper } from "~/components/ConditionalWrapper";
-import { type Contact } from "~/server/api/routers/contact";
+import { type ContactGetByIdOutput } from "~/server/api/routers/contact";
 import { api } from "~/utils/api";
 import { getGoogleMapsUrlForContact } from "~/utils/getGoogleMapsUrlForContact";
 import { hrefPrefixForField } from "~/utils/getHrefPrefixForField";
 
-export default function ContactDetailsPage() {
-	const router = useRouter();
-	const { contactId } = router.query as { contactId: string };
+type Contact = NonNullable<ContactGetByIdOutput>;
 
-	const { data: contact } = api.contact.getById.useQuery(
-		{
-			id: contactId,
+export function getServerSideProps({ query }: GetServerSidePropsContext) {
+	if (typeof query["contactId"] !== "string") {
+		return {
+			notFound: true,
+		};
+	}
+
+	return {
+		props: {
+			contactId: query["contactId"],
 		},
-		{
-			enabled: !!contactId,
-		},
-	);
+	};
+}
+
+export default function ContactDetailsPage({
+	contactId,
+}: {
+	contactId: string;
+}) {
+	const { data: contact } = api.contact.getById.useQuery({
+		id: contactId,
+	});
 
 	return (
 		<div className="min-h-screen p-4">

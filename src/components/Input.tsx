@@ -1,18 +1,22 @@
 import classNames from "classnames";
-import { type DetailedHTMLProps, forwardRef, type InputHTMLAttributes } from "react";
-import { type FieldError } from "react-hook-form";
+import {
+	forwardRef,
+	type DetailedHTMLProps,
+	type InputHTMLAttributes,
+} from "react";
 
 type InputProps = DetailedHTMLProps<
 	InputHTMLAttributes<HTMLInputElement>,
 	HTMLInputElement
 > & {
 	label: string;
-	error?: FieldError;
+	error?: string;
 };
 
-export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-	const { label, error, type, ...inputProps } = props;
-
+export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
+	{ label, error, type, ...inputProps },
+	ref,
+) {
 	return (
 		<div className="w-full">
 			<label className="label flex flex-col items-stretch gap-1">
@@ -29,14 +33,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 							toggle: type === "checkbox",
 						},
 						{
-							"input-error": error,
+							"input-error": !!error,
 						},
 					)}
 				/>
 			</label>
-			<div className="text-xs text-red-500">{error?.message}</div>
+			{!!error && <div className="text-xs text-red-500">{error}</div>}
 		</div>
 	);
 });
-
-Input.displayName = "Input";

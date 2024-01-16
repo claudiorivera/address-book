@@ -1,5 +1,9 @@
 // inspired by https://stackoverflow.com/a/60702475
-export function sortedInsert<T>(array: T[], element: T, sortKey?: keyof T) {
+export function sortedInsert<Element>(
+	array: Array<Element>,
+	element: Element,
+	sortKey?: keyof Element,
+) {
 	if (!array.length) return [element];
 
 	const newArray = [...array];
@@ -15,12 +19,12 @@ export function sortedInsert<T>(array: T[], element: T, sortKey?: keyof T) {
 	return newArray;
 }
 
-function binarySearchAndInsert<T>(
-	array: T[],
-	element: T,
+function binarySearchAndInsert<Element>(
+	array: Array<Element>,
+	element: Element,
 	min: number,
 	max: number,
-	compareFn: (a: T, b: T) => boolean,
+	compareFn: (a: Element, b: Element) => boolean,
 ): void {
 	if (min > max) {
 		array.splice(min, 0, element);
@@ -40,7 +44,7 @@ function binarySearchAndInsert<T>(
 	return;
 }
 
-function compare<T>(a: T, b: T) {
+function compare<Value>(a: Value, b: Value) {
 	if (typeof a === "string" && typeof b === "string") {
 		return !!a.localeCompare(b);
 	}

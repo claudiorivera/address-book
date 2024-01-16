@@ -4,18 +4,19 @@ It's an address book! It lets you add and manage your contacts.
 
 ## Technologies Used
 
+- Bun
 - [`create-t3-app`](https://create.t3.gg)
-  - TypeScript
-  - Next.js
-  - tRPC
-  - Tailwind
-  - Drizzle ORM
-  - Postgres
-  - NextAuth.js
+- TypeScript
+- Next.js
+- tRPC
+- Tailwind
+- Drizzle ORM
+- Postgres
+- NextAuth.js
 
 ## Prerequisites
 
-- pnpm
+- [bun](https://bun.sh)
 
 ## Configure
 
@@ -23,8 +24,8 @@ It's an address book! It lets you add and manage your contacts.
 
 ## Install
 
-- `pnpm i`
+- `bun i`
 
 ## Develop
 
-- `pnpm dev`
+- `bun dev`

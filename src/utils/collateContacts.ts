@@ -1,8 +1,7 @@
-import {
-	type Contact,
-	type ContactGetAllOutput,
-} from "~/server/api/routers/contact";
+import { type ContactGetAllOutput } from "~/server/api/routers/contact";
 import { sortedInsert } from "./sortedInsert";
+
+type Contact = ContactGetAllOutput[number];
 
 export function collateContacts(
 	contacts: ContactGetAllOutput,

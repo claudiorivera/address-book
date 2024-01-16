@@ -15,7 +15,7 @@ export const contactRouter = createTRPCRouter({
 	),
 	getById: publicProcedure
 		.input(z.object({ id: z.string().cuid() }))
-		.query(async ({ input, ctx }) =>
+		.query(({ input, ctx }) =>
 			ctx.db.query.contacts.findFirst({
 				where: eq(contacts.id, input.id),
 				with: {
@@ -28,7 +28,7 @@ export const contactRouter = createTRPCRouter({
 		.mutation(({ input, ctx }) => ctx.db.insert(contacts).values(input)),
 	update: publicProcedure
 		.input(updateContactValidationSchema)
-		.mutation(async ({ input, ctx }) =>
+		.mutation(({ input, ctx }) =>
 			ctx.db.update(contacts).set(input).where(eq(contacts.id, input.id)),
 		),
 	delete: publicProcedure
@@ -42,6 +42,5 @@ export const contactRouter = createTRPCRouter({
 		),
 });
 
-type ContactGetByIdOutput = RouterOutputs["contact"]["getById"];
-export type Contact = NonNullable<ContactGetByIdOutput>;
+export type ContactGetByIdOutput = RouterOutputs["contact"]["getById"];
 export type ContactGetAllOutput = RouterOutputs["contact"]["getAll"];
