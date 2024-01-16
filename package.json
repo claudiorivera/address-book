@@ -13,7 +13,7 @@
 		"db:push": "drizzle-kit push:pg",
 		"db:studio": "drizzle-kit studio",
 		"db:generate": "drizzle-kit generate:pg",
-		"db:migrate": "tsx ./src/server/db/migrate.ts"
+		"db:migrate": "bun run ./src/server/db/migrate.ts"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "3.3.4",
