@@ -6,7 +6,8 @@
 	"scripts": {
 		"build": "next build",
 		"dev": "next dev",
-		"check": "bunx @biomejs/biome check --apply src",
+		"check:fix": "bunx @biomejs/biome check --apply src",
+		"typecheck": "tsc --noEmit",
 		"start": "next start",
 		"test": "bun test",
 		"db:push": "drizzle-kit push:pg",
