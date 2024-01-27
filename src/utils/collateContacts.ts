@@ -11,7 +11,7 @@ export function collateContacts(
 ) {
 	const collatedContacts = new Map<string, ContactGetAllOutput>();
 
-	contacts.forEach((contact) => {
+	for (const contact of contacts) {
 		const firstInitial = contact.firstName?.toUpperCase().slice(0, 1);
 
 		const key = firstInitial?.length ? firstInitial : "#";
@@ -29,7 +29,7 @@ export function collateContacts(
 		} else {
 			collatedContacts.set(key, [contact]);
 		}
-	});
+	}
 
 	return new Map(
 		[...collatedContacts.entries()].sort((a, b) => {

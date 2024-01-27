@@ -11,8 +11,6 @@
 		"moduleDetection": "force",
 		"moduleResolution": "bundler",
 		"noEmit": true,
-		"noFallthroughCasesInSwitch": true,
-		"noPropertyAccessFromIndexSignature": true,
 		"noUncheckedIndexedAccess": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
@@ -23,7 +21,6 @@
 		"skipLibCheck": true,
 		"strict": true,
 		"target": "ESNext",
-		"useUnknownInCatchVariables": true,
 		"verbatimModuleSyntax": true
 	},
 	"include": [

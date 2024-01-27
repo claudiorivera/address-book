@@ -25,10 +25,10 @@ function binarySearchAndInsert<Element>(
 	min: number,
 	max: number,
 	compareFn: (a: Element, b: Element) => boolean,
-): void {
+): () => void {
 	if (min > max) {
 		array.splice(min, 0, element);
-		return;
+		return () => {};
 	}
 
 	const mid = Math.floor((max - min) / 2) + min;
@@ -41,7 +41,7 @@ function binarySearchAndInsert<Element>(
 	}
 
 	array.splice(mid, 0, element);
-	return;
+	return () => {};
 }
 
 function compare<Value>(a: Value, b: Value) {

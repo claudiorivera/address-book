@@ -10,7 +10,7 @@ import { hrefPrefixForField } from "~/utils/getHrefPrefixForField";
 type Contact = NonNullable<ContactGetByIdOutput>;
 
 export function getServerSideProps({ query }: GetServerSidePropsContext) {
-	if (typeof query["contactId"] !== "string") {
+	if (typeof query.contactId !== "string") {
 		return {
 			notFound: true,
 		};
@@ -18,7 +18,7 @@ export function getServerSideProps({ query }: GetServerSidePropsContext) {
 
 	return {
 		props: {
-			contactId: query["contactId"],
+			contactId: query.contactId,
 		},
 	};
 }
@@ -44,6 +44,7 @@ export default function ContactDetailsPage({
 						stroke="currentColor"
 						className="h-6 w-6"
 					>
+						<title>Back Arrow</title>
 						<path
 							strokeLinecap="round"
 							strokeLinejoin="round"
@@ -117,7 +118,7 @@ function ContactDetailsHeader({ contact }: { contact: Contact }) {
 		<>
 			<div className="avatar placeholder">
 				<div className="w-24 rounded-full bg-base-300 text-base-content ring ring-secondary">
-					{!!contact.photo?.url ? (
+					{contact.photo?.url ? (
 						<NextImage
 							src={contact.photo.url}
 							alt="avatar"

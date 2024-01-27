@@ -1,8 +1,8 @@
 import classNames from "classnames";
 import {
-	forwardRef,
 	type DetailedHTMLProps,
 	type InputHTMLAttributes,
+	forwardRef,
 } from "react";
 
 type InputProps = DetailedHTMLProps<
