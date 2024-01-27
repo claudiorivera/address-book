@@ -2,11 +2,11 @@ import classNames from "classnames";
 import cuid from "cuid";
 import Link from "next/link";
 import {
+	type Dispatch,
+	type SetStateAction,
 	useCallback,
 	useMemo,
 	useState,
-	type Dispatch,
-	type SetStateAction,
 } from "react";
 import { Input } from "~/components/Input";
 import { TextArea } from "~/components/TextArea";
@@ -39,6 +39,7 @@ export default function HomePage() {
 		<div className="relative">
 			<h1 className="p-4 text-xl font-bold text-secondary">Address Book</h1>
 			<button
+				type="button"
 				className="absolute right-4 top-4 text-secondary"
 				onClick={handleAddContactModalToggle}
 			>
@@ -50,6 +51,7 @@ export default function HomePage() {
 					stroke="currentColor"
 					className="h-6 w-6"
 				>
+					<title>Plus Icon</title>
 					<path
 						strokeLinecap="round"
 						strokeLinejoin="round"
@@ -118,7 +120,7 @@ function NameOrPhoneNumber({ contact }: { contact: Contact }) {
 	if (contact.firstName ?? contact.lastName) {
 		return (
 			<span>
-				{contact.firstName + " "}
+				{`${contact.firstName} `}
 				{contact.lastName}
 			</span>
 		);
@@ -170,9 +172,12 @@ function CreateContactForm({ onClose }: { onClose: () => void }) {
 	return (
 		<>
 			<div className="modal-action mt-0 flex justify-between pb-4">
-				<button onClick={onClose}>Cancel</button>
+				<button type="button" onClick={onClose}>
+					Cancel
+				</button>
 				<h1 className="text-secondary">New Contact</h1>
 				<button
+					type="submit"
 					form="create-contact"
 					disabled={isSubmitDisabled}
 					className={classNames({
@@ -280,6 +285,7 @@ function Search({
 							stroke="currentColor"
 							className="h-4 w-4"
 						>
+							<title>Search Icon</title>
 							<path
 								strokeLinecap="round"
 								strokeLinejoin="round"

@@ -25,8 +25,7 @@ export default async function handler(
 					await db.insert(contacts).values({
 						firstName: isOftenProvided ? faker.person.firstName() : "",
 						lastName: isOftenProvided ? faker.person.lastName() : "",
-						phoneNumber:
-							"+" + faker.helpers.replaceSymbolWithNumber("###########"),
+						phoneNumber: `+1${faker.string.numeric(10)}`,
 						email: isRarelyProvided ? faker.internet.email() : "",
 						address1: isRarelyProvided ? faker.location.streetAddress() : "",
 						address2: isRarelyProvided ? faker.location.secondaryAddress() : "",

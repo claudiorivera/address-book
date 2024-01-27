@@ -10,7 +10,7 @@ import { updateContactValidationSchema } from "~/schemas/updateContactValidation
 import { api } from "~/utils/api";
 
 export function getServerSideProps({ query }: GetServerSidePropsContext) {
-	if (typeof query["contactId"] !== "string") {
+	if (typeof query.contactId !== "string") {
 		return {
 			notFound: true,
 		};
@@ -18,7 +18,7 @@ export function getServerSideProps({ query }: GetServerSidePropsContext) {
 
 	return {
 		props: {
-			contactId: query["contactId"],
+			contactId: query.contactId,
 		},
 	};
 }
@@ -76,6 +76,7 @@ export default function UpdateContactPage({
 					<span className="text-sm">Cancel</span>
 				</Link>
 				<button
+					type="submit"
 					className={classNames("text-sm", {
 						"text-gray-500": !isDirty,
 					})}

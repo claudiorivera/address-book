@@ -1,5 +1,5 @@
-import { faker } from "@faker-js/faker";
 import { describe, expect, it } from "bun:test";
+import { faker } from "@faker-js/faker";
 import cuid from "cuid";
 import { type ContactGetAllOutput } from "~/server/api/routers/contact";
 import { collateContacts } from "./collateContacts";
@@ -8,7 +8,7 @@ const fakeContact = {
 	id: cuid(),
 	firstName: "",
 	lastName: "",
-	phoneNumber: "+" + faker.helpers.replaceSymbolWithNumber("###########"),
+	phoneNumber: `+1${faker.string.numeric(10)}`,
 	email: "",
 	address1: "",
 	address2: "",
