@@ -2,7 +2,7 @@ import { describe, expect, it } from "bun:test";
 import { faker } from "@faker-js/faker";
 import cuid from "cuid";
 import { type ContactGetAllOutput } from "~/server/api/routers/contact";
-import { collateContacts } from "./collateContacts";
+import { collateContacts } from "./collate-contacts";
 
 const fakeContact = {
 	id: cuid(),

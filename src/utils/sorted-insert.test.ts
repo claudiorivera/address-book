@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test";
-import { sortedInsert } from "./sortedInsert";
+import { sortedInsert } from "./sorted-insert";
 
 describe("sortedInsert", () => {
 	it("should return an array with +1 length than the original", () => {

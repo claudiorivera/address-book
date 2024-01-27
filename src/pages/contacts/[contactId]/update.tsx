@@ -3,10 +3,10 @@ import type { GetServerSidePropsContext } from "next";
 import NextImage from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Input } from "~/components/Input";
-import { TextArea } from "~/components/TextArea";
-import { useZodForm } from "~/hooks/useZodForm";
-import { updateContactValidationSchema } from "~/schemas/updateContactValidationSchema";
+import { Input } from "~/components/input";
+import { TextArea } from "~/components/text-area";
+import { useZodForm } from "~/hooks/use-zod-form";
+import { updateContactValidationSchema } from "~/schemas/update-contact-validation-schema";
 import { api } from "~/utils/api";
 
 export function getServerSideProps({ query }: GetServerSidePropsContext) {

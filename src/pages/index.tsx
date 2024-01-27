@@ -8,14 +8,14 @@ import {
 	useMemo,
 	useState,
 } from "react";
-import { Input } from "~/components/Input";
-import { TextArea } from "~/components/TextArea";
-import { useZodForm } from "~/hooks/useZodForm";
+import { Input } from "~/components/input";
+import { TextArea } from "~/components/text-area";
+import { useZodForm } from "~/hooks/use-zod-form";
 import { type ContactGetAllOutput } from "~/server/api/routers/contact";
 import { createContactSchema } from "~/server/db/schema";
 import { api } from "~/utils/api";
-import { collateContacts } from "~/utils/collateContacts";
-import { filterByQuery } from "~/utils/filterByQuery";
+import { collateContacts } from "~/utils/collate-contacts";
+import { filterByQuery } from "~/utils/filter-by-query";
 
 type Contact = ContactGetAllOutput[number];
 
