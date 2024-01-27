@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test";
-import { filterByQuery } from "./filterByQuery";
+import { filterByQuery } from "./filter-by-query";
 
 describe("filterByQuery", () => {
 	const contacts = [

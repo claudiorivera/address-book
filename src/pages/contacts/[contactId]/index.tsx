@@ -1,11 +1,11 @@
 import type { GetServerSidePropsContext } from "next";
 import NextImage from "next/image";
 import Link from "next/link";
-import { ConditionalWrapper } from "~/components/ConditionalWrapper";
+import { ConditionalWrapper } from "~/components/conditional-wrapper";
 import { type ContactGetByIdOutput } from "~/server/api/routers/contact";
 import { api } from "~/utils/api";
-import { getGoogleMapsUrlForContact } from "~/utils/getGoogleMapsUrlForContact";
-import { hrefPrefixForField } from "~/utils/getHrefPrefixForField";
+import { getGoogleMapsUrlForContact } from "~/utils/get-google-maps-url-for-contact";
+import { hrefPrefixForField } from "~/utils/get-href-prefix-for-field";
 
 type Contact = NonNullable<ContactGetByIdOutput>;
 
