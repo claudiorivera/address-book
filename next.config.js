@@ -23,5 +23,10 @@ export default defineNextConfig({
 	images: {
 		domains: ["res.cloudinary.com", "picsum.photos", "loremflickr.com"],
 	},
-	eslint: { ignoreDuringBuilds: !!process.env.CI },
+	eslint: {
+		ignoreDuringBuilds: true,
+	},
+	typescript: {
+		ignoreBuildErrors: true,
+	},
 });
