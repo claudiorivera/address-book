@@ -46,7 +46,7 @@
     "autoprefixer": "10.4.17",
     "cuid": "3.0.0",
     "drizzle-kit": "0.20.14",
-    "postcss": "8.4.33",
+    "postcss": "8.4.34",
     "tailwindcss": "3.4.1",
     "tsx": "^4.6.2",
     "typescript": "5.3.3"
