@@ -1,3 +1,4 @@
+import { useIsFetching } from "@tanstack/react-query";
 import type { AppType } from "next/dist/shared/lib/utils";
 import Head from "next/head";
 import { type ReactNode } from "react";
@@ -13,6 +14,8 @@ const MyApp: AppType = ({ Component, pageProps }) => {
 };
 
 function Layout({ children }: { children: ReactNode }) {
+	const isLoading = useIsFetching();
+
 	return (
 		<>
 			<Head>
@@ -25,6 +28,9 @@ function Layout({ children }: { children: ReactNode }) {
 			</Head>
 
 			<main className="container mx-auto max-w-3xl bg-base-200">
+				{!!isLoading && (
+					<progress className="progress progress-primary w-full rounded-none absolute" />
+				)}
 				{children}
 			</main>
 		</>
