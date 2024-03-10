@@ -27,9 +27,9 @@ function Layout({ children }: { children: ReactNode }) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<main className="container mx-auto max-w-3xl bg-base-200">
+			<main className="container mx-auto max-w-3xl bg-base-200 relative">
 				{!!isLoading && (
-					<progress className="progress progress-primary w-full rounded-none absolute" />
+					<progress className="progress progress-primary rounded-none h-2 absolute top-0" />
 				)}
 				{children}
 			</main>
