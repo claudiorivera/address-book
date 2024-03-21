@@ -43,7 +43,7 @@
     "@types/node": "20.11.30",
     "@types/react": "18.2.67",
     "@types/react-dom": "18.2.22",
-    "autoprefixer": "10.4.18",
+    "autoprefixer": "10.4.19",
     "cuid": "3.0.0",
     "drizzle-kit": "0.20.14",
     "postcss": "8.4.37",
