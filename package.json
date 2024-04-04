@@ -42,7 +42,7 @@
     "@types/bun": "^1.0.4",
     "@types/node": "20.12.4",
     "@types/react": "18.2.74",
-    "@types/react-dom": "18.2.23",
+    "@types/react-dom": "18.2.24",
     "autoprefixer": "10.4.19",
     "cuid": "3.0.0",
     "drizzle-kit": "0.20.14",
