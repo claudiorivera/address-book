@@ -1,8 +1,8 @@
 import { describe, expect, it } from "bun:test";
 import { faker } from "@faker-js/faker";
-import { type ContactGetAllOutput } from "~/server/api/routers/contact";
-import { collateContacts } from "./collate-contacts";
 import { createId } from "@paralleldrive/cuid2";
+import type { ContactGetAllOutput } from "~/server/api/routers/contact";
+import { collateContacts } from "./collate-contacts";
 
 const fakeContact = {
 	id: createId(),

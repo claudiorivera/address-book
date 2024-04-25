@@ -1,4 +1,4 @@
-import { type ContactGetAllOutput } from "~/server/api/routers/contact";
+import type { ContactGetAllOutput } from "~/server/api/routers/contact";
 import { sortedInsert } from "./sorted-insert";
 
 type Contact = ContactGetAllOutput[number];

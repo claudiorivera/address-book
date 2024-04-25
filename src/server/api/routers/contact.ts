@@ -3,7 +3,7 @@ import { z } from "zod";
 import { updateContactValidationSchema } from "~/schemas/update-contact-validation-schema";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { contacts, createContactSchema } from "~/server/db/schema";
-import { type RouterOutputs } from "~/utils/api";
+import type { RouterOutputs } from "~/utils/api";
 
 export const contactRouter = createTRPCRouter({
 	getAll: publicProcedure.query(({ ctx }) =>

@@ -1,5 +1,5 @@
+import { createId } from "@paralleldrive/cuid2";
 import classNames from "classnames";
-import {createId} from "@paralleldrive/cuid2";
 import Link from "next/link";
 import {
 	type Dispatch,
@@ -11,7 +11,7 @@ import {
 import { Input } from "~/components/input";
 import { TextArea } from "~/components/text-area";
 import { useZodForm } from "~/hooks/use-zod-form";
-import { type ContactGetAllOutput } from "~/server/api/routers/contact";
+import type { ContactGetAllOutput } from "~/server/api/routers/contact";
 import { createContactSchema } from "~/server/db/schema";
 import { api } from "~/utils/api";
 import { collateContacts } from "~/utils/collate-contacts";

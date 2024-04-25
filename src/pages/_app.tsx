@@ -1,7 +1,7 @@
 import { useIsFetching } from "@tanstack/react-query";
 import type { AppType } from "next/dist/shared/lib/utils";
 import Head from "next/head";
-import { type ReactNode } from "react";
+import type { ReactNode } from "react";
 import "~/styles/globals.css";
 import { api } from "~/utils/api";
 
