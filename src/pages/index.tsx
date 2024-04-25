@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import cuid from "cuid";
+import {createId} from "@paralleldrive/cuid2";
 import Link from "next/link";
 import {
 	type Dispatch,
@@ -163,7 +163,7 @@ function CreateContactForm({ onClose }: { onClose: () => void }) {
 	const { handleSubmit, formState, register } = useZodForm({
 		schema: createContactSchema,
 		defaultValues: {
-			id: cuid(),
+			id: createId(),
 		},
 	});
 

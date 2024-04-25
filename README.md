@@ -4,7 +4,7 @@ It's an address book! It lets you add and manage your contacts.
 
 ## Technologies Used
 
-- Bun
+- [pnpm](https://pnpm.io)
 - [`create-t3-app`](https://create.t3.gg)
 - TypeScript
 - Next.js
@@ -16,7 +16,7 @@ It's an address book! It lets you add and manage your contacts.
 
 ## Prerequisites
 
-- [bun](https://bun.sh)
+- [pnpm](https://pnpm.io)
 
 ## Configure
 
@@ -24,8 +24,8 @@ It's an address book! It lets you add and manage your contacts.
 
 ## Install
 
-- `bun i`
+- `pnpm i`
 
 ## Develop
 
-- `bun dev`
+- `pnpm dev`

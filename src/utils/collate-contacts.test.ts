@@ -1,11 +1,11 @@
 import { describe, expect, it } from "bun:test";
 import { faker } from "@faker-js/faker";
-import cuid from "cuid";
 import { type ContactGetAllOutput } from "~/server/api/routers/contact";
 import { collateContacts } from "./collate-contacts";
+import { createId } from "@paralleldrive/cuid2";
 
 const fakeContact = {
-	id: cuid(),
+	id: createId(),
 	firstName: "",
 	lastName: "",
 	phoneNumber: `+1${faker.string.numeric(10)}`,
@@ -17,9 +17,9 @@ const fakeContact = {
 	zip: "",
 	notes: "",
 	photo: {
-		id: cuid(),
+		id: createId(),
 		cloudinaryId: "123",
-		contactId: cuid(),
+		contactId: createId(),
 		height: 100,
 		width: 100,
 		url: "https://picsum.photos/100/100",
@@ -54,7 +54,7 @@ describe("collateContacts", () => {
 		contacts.length = 0; // clear the array
 		contacts.push(
 			{
-				id: cuid(),
+				id: createId(),
 				firstName: "",
 				lastName: "",
 				phoneNumber: "+9",
@@ -66,9 +66,9 @@ describe("collateContacts", () => {
 				zip: "",
 				notes: "",
 				photo: {
-					id: cuid(),
+					id: createId(),
 					cloudinaryId: "123",
-					contactId: cuid(),
+					contactId: createId(),
 					height: 100,
 					width: 100,
 					url: "https://picsum.photos/100/100",
@@ -77,7 +77,7 @@ describe("collateContacts", () => {
 				updatedAt: new Date(),
 			},
 			{
-				id: cuid(),
+				id: createId(),
 				firstName: "",
 				lastName: "",
 				phoneNumber: "+1",
@@ -89,9 +89,9 @@ describe("collateContacts", () => {
 				zip: "",
 				notes: "",
 				photo: {
-					id: cuid(),
+					id: createId(),
 					cloudinaryId: "123",
-					contactId: cuid(),
+					contactId: createId(),
 					height: 100,
 					width: 100,
 					url: "https://picsum.photos/100/100",

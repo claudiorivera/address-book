@@ -1,4 +1,4 @@
-import cuid from "cuid";
+import {createId} from "@paralleldrive/cuid2";
 import { relations } from "drizzle-orm";
 import { integer, pgTable, text, timestamp } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
@@ -6,7 +6,7 @@ import { createInsertSchema } from "drizzle-zod";
 export const contacts = pgTable("contacts", {
 	id: text("id")
 		.primaryKey()
-		.$defaultFn(() => cuid()),
+		.$defaultFn(() => createId()),
 	firstName: text("firstName"),
 	lastName: text("lastName"),
 	email: text("email"),
@@ -31,7 +31,7 @@ export const contactsRelations = relations(contacts, ({ one }) => ({
 export const photo = pgTable("photos", {
 	id: text("id")
 		.primaryKey()
-		.$defaultFn(() => cuid()),
+		.$defaultFn(() => createId()),
 	cloudinaryId: text("cloudinaryId").notNull().unique(),
 	url: text("url").notNull(),
 	width: integer("width").notNull(),

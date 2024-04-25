@@ -1,4 +1,4 @@
-name: 🚨 Check Quality and Types
+name: 🚨 Check Quality, Types, and Test
 
 on:
   push:
@@ -12,14 +12,20 @@ jobs:
       - name: 🏗️ Setup Biome
         uses: biomejs/setup-biome@v2
         with:
-          version: '1.5.3'
+          version: 'latest'
       - name: 🎨 Run Biome
         run: biome ci src
-      - name: 🏗️ Setup Bun
-        uses: oven-sh/setup-bun@v1
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 'latest'
+      - name: 🏗️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'latest'
+          cache: 'pnpm'
       - name: 📦 Install Dependencies
-        run: bun install
+        run: pnpm install
       - name: 🏷️ Check Types
-        run: bun typecheck
-      - name: 🧪 Test
-        run: bun test
+        run: pnpm typecheck
+      - name: 🧪 Run Tests
+        run: pnpm test
