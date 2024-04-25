@@ -14,7 +14,7 @@ export const contactRouter = createTRPCRouter({
 		}),
 	),
 	getById: publicProcedure
-		.input(z.object({ id: z.string().cuid() }))
+		.input(z.object({ id: z.string().cuid2() }))
 		.query(({ input, ctx }) =>
 			ctx.db.query.contacts.findFirst({
 				where: eq(contacts.id, input.id),
@@ -34,7 +34,7 @@ export const contactRouter = createTRPCRouter({
 	delete: publicProcedure
 		.input(
 			z.object({
-				id: z.string().cuid(),
+				id: z.string().cuid2(),
 			}),
 		)
 		.mutation(({ input, ctx }) =>

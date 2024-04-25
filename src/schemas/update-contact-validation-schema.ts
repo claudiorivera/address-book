@@ -1,7 +1,7 @@
 import { literal, z } from "zod";
 
 export const updateContactValidationSchema = z.object({
-	id: z.string().cuid(),
+	id: z.string().cuid2(),
 	firstName: z.string().nullish(),
 	lastName: z.string().nullish(),
 	email: z.string().email().or(literal("")).nullish(),
