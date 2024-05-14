@@ -79,8 +79,8 @@ importers:
         specifier: ^1.0.4
         version: 1.1.2
       '@types/node':
-        specifier: 20.12.11
-        version: 20.12.11
+        specifier: 20.12.12
+        version: 20.12.12
       '@types/react':
         specifier: 18.3.2
         version: 18.3.2
@@ -818,8 +818,8 @@ packages:
   '@types/bun@1.1.2':
     resolution: {integrity: sha512-pRBDD3EDqPf83qe95i3EpYu5G2J8bbb78a3736vnCm2K8YWtEE5cvJUq2jkKvJhW07YTfQtbImywIwRhWL8z3Q==}
 
-  '@types/node@20.12.11':
-    resolution: {integrity: sha512-vDg9PZ/zi+Nqp6boSOT7plNuthRugEKixDv5sFTIpkE89MmNtEArAShI4mxuX2+UrLEe9pxC1vm2cjm9YlWbJw==}
+  '@types/node@20.12.12':
+    resolution: {integrity: sha512-eWLDGF/FOSPtAvEqeRAQ4C8LSA7M1I7i0ky1I8U7kD1J5ITyW3AsRhQrKVoWf5pFKZ2kILsEGJhsI9r93PYnOw==}
 
   '@types/prop-types@15.7.12':
     resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
@@ -2097,7 +2097,7 @@ snapshots:
     dependencies:
       bun-types: 1.1.8
 
-  '@types/node@20.12.11':
+  '@types/node@20.12.12':
     dependencies:
       undici-types: 5.26.5
 
@@ -2114,7 +2114,7 @@ snapshots:
 
   '@types/ws@8.5.10':
     dependencies:
-      '@types/node': 20.12.11
+      '@types/node': 20.12.12
 
   ansi-regex@5.0.1: {}
 
@@ -2168,7 +2168,7 @@ snapshots:
 
   bun-types@1.1.8:
     dependencies:
-      '@types/node': 20.12.11
+      '@types/node': 20.12.12
       '@types/ws': 8.5.10
 
   bun@1.1.8:
