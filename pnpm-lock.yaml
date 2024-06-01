@@ -79,8 +79,8 @@ importers:
         specifier: ^1.0.4
         version: 1.1.3
       '@types/node':
-        specifier: 20.12.12
-        version: 20.12.12
+        specifier: 20.13.0
+        version: 20.13.0
       '@types/react':
         specifier: 18.3.3
         version: 18.3.3
@@ -669,6 +669,9 @@ packages:
 
   '@types/node@20.12.12':
     resolution: {integrity: sha512-eWLDGF/FOSPtAvEqeRAQ4C8LSA7M1I7i0ky1I8U7kD1J5ITyW3AsRhQrKVoWf5pFKZ2kILsEGJhsI9r93PYnOw==}
+
+  '@types/node@20.13.0':
+    resolution: {integrity: sha512-FM6AOb3khNkNIXPnHFDYaHerSv8uN22C91z098AnGccVu+Pcdhi+pNUFDi0iLmPIsVE0JBD0KVS7mzUYt4nRzQ==}
 
   '@types/prop-types@15.7.12':
     resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
@@ -1729,6 +1732,10 @@ snapshots:
     dependencies:
       undici-types: 5.26.5
 
+  '@types/node@20.13.0':
+    dependencies:
+      undici-types: 5.26.5
+
   '@types/prop-types@15.7.12': {}
 
   '@types/react-dom@18.3.0':
@@ -1742,7 +1749,7 @@ snapshots:
 
   '@types/ws@8.5.10':
     dependencies:
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
 
   ansi-regex@5.0.1: {}
 
