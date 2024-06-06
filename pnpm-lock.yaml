@@ -94,8 +94,8 @@ importers:
         specifier: 1.1.12
         version: 1.1.12
       drizzle-kit:
-        specifier: 0.22.2
-        version: 0.22.2
+        specifier: 0.22.4
+        version: 0.22.4
       postcss:
         specifier: 8.4.38
         version: 8.4.38
@@ -823,8 +823,8 @@ packages:
   dlv@1.1.3:
     resolution: {integrity: sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==}
 
-  drizzle-kit@0.22.2:
-    resolution: {integrity: sha512-dxluXlhT1N9bpj2eZR3N/z3u4H0PbbrBYgyouIobFF25tOt2Buy1abx26Jii96qcYV0JgxjhnuV+FBcgR0Xa0w==}
+  drizzle-kit@0.22.4:
+    resolution: {integrity: sha512-jsiYGqHsbsP/GtM26y/bGK7je1ja+1H/RniCt1ovg2E7tMNraw6XdqKcjxHhb8FonCfDDjvwFgouRsZS46vrmA==}
     hasBin: true
 
   drizzle-orm@0.31.1:
@@ -1887,7 +1887,7 @@ snapshots:
 
   dlv@1.1.3: {}
 
-  drizzle-kit@0.22.2:
+  drizzle-kit@0.22.4:
     dependencies:
       '@esbuild-kit/esm-loader': 2.6.5
       esbuild: 0.19.12
