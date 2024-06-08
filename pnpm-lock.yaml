@@ -37,10 +37,10 @@ importers:
         version: 4.11.1(postcss@8.4.38)
       drizzle-orm:
         specifier: ^0.31.0
-        version: 0.31.1(@types/react@18.3.3)(bun-types@1.1.9)(postgres@3.4.4)(react@18.3.1)
+        version: 0.31.2(@types/react@18.3.3)(bun-types@1.1.9)(postgres@3.4.4)(react@18.3.1)
       drizzle-zod:
         specifier: ^0.5.1
-        version: 0.5.1(drizzle-orm@0.31.1(@types/react@18.3.3)(bun-types@1.1.9)(postgres@3.4.4)(react@18.3.1))(zod@3.23.8)
+        version: 0.5.1(drizzle-orm@0.31.2(@types/react@18.3.3)(bun-types@1.1.9)(postgres@3.4.4)(react@18.3.1))(zod@3.23.8)
       next:
         specifier: 14.2.3
         version: 14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -827,8 +827,8 @@ packages:
     resolution: {integrity: sha512-hhCJRyZkr6cWnnUuslxE3VbptPVLpFPZkfS3iyuuHUHGQV8jTUotRvpDFhhytxhwazy4Uj5s7wcsQp3iXHn1vQ==}
     hasBin: true
 
-  drizzle-orm@0.31.1:
-    resolution: {integrity: sha512-hTbYne2XX3y6sV7WSxcPH6/vNSiQSUG9VZsFI27jBMCN0OT3Ok7ao3pIT5OMAqWkzJCRFgGjAaUeTAZWPgOKag==}
+  drizzle-orm@0.31.2:
+    resolution: {integrity: sha512-QnenevbnnAzmbNzQwbhklvIYrDE8YER8K7kSrAWQSV1YvFCdSQPzj+jzqRdTSsV2cDqSpQ0NXGyL1G9I43LDLg==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
@@ -838,6 +838,7 @@ packages:
       '@op-engineering/op-sqlite': '>=2'
       '@opentelemetry/api': ^1.4.1
       '@planetscale/database': '>=1'
+      '@tidbcloud/serverless': '*'
       '@types/better-sqlite3': '*'
       '@types/pg': '*'
       '@types/react': '>=18'
@@ -871,6 +872,8 @@ packages:
       '@opentelemetry/api':
         optional: true
       '@planetscale/database':
+        optional: true
+      '@tidbcloud/serverless':
         optional: true
       '@types/better-sqlite3':
         optional: true
@@ -1895,16 +1898,16 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.31.1(@types/react@18.3.3)(bun-types@1.1.9)(postgres@3.4.4)(react@18.3.1):
+  drizzle-orm@0.31.2(@types/react@18.3.3)(bun-types@1.1.9)(postgres@3.4.4)(react@18.3.1):
     optionalDependencies:
       '@types/react': 18.3.3
       bun-types: 1.1.9
       postgres: 3.4.4
       react: 18.3.1
 
-  drizzle-zod@0.5.1(drizzle-orm@0.31.1(@types/react@18.3.3)(bun-types@1.1.9)(postgres@3.4.4)(react@18.3.1))(zod@3.23.8):
+  drizzle-zod@0.5.1(drizzle-orm@0.31.2(@types/react@18.3.3)(bun-types@1.1.9)(postgres@3.4.4)(react@18.3.1))(zod@3.23.8):
     dependencies:
-      drizzle-orm: 0.31.1(@types/react@18.3.3)(bun-types@1.1.9)(postgres@3.4.4)(react@18.3.1)
+      drizzle-orm: 0.31.2(@types/react@18.3.3)(bun-types@1.1.9)(postgres@3.4.4)(react@18.3.1)
       zod: 3.23.8
 
   eastasianwidth@0.2.0: {}
