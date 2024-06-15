@@ -29,7 +29,7 @@ function Layout({ children }: { children: ReactNode }) {
 
 			<main className="container mx-auto max-w-3xl bg-base-200 relative">
 				{!!isLoading && (
-					<progress className="progress progress-primary rounded-none h-2 absolute top-0" />
+					<progress className="progress progress-primary rounded-none h-1 absolute top-0" />
 				)}
 				{children}
 			</main>
