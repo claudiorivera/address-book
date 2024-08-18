@@ -1,7 +1,8 @@
 import type { GetServerSidePropsContext } from "next";
-import NextImage from "next/image";
 import Link from "next/link";
 import { ConditionalWrapper } from "~/components/conditional-wrapper";
+import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
+import { Card } from "~/components/ui/card";
 import type { ContactGetByIdOutput } from "~/server/api/routers/contact";
 import { api } from "~/utils/api";
 import { getGoogleMapsUrlForContact } from "~/utils/get-google-maps-url-for-contact";
@@ -34,7 +35,7 @@ export default function ContactDetailsPage({
 
 	return (
 		<div className="min-h-screen p-4">
-			<div className="flex items-center justify-between pb-4 text-secondary">
+			<div className="flex items-center justify-between pb-4 text-primary-foreground">
 				<Link href="/" className="flex items-center">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +43,7 @@ export default function ContactDetailsPage({
 						viewBox="0 0 24 24"
 						strokeWidth={1.5}
 						stroke="currentColor"
-						className="h-6 w-6"
+						className="h-4 w-4"
 					>
 						<title>Back Arrow</title>
 						<path
@@ -57,24 +58,38 @@ export default function ContactDetailsPage({
 					<span className="text-sm">Update</span>
 				</Link>
 			</div>
-			{!!contact && <ContactDetails contact={contact} />}
-		</div>
-	);
-}
+			{!!contact && (
+				<div className="flex flex-col items-center gap-4">
+					<Avatar>
+						<AvatarImage src={contact.photo?.url} />
+						<AvatarFallback>
+							{contact.firstName?.charAt(0).toUpperCase()}
+							{contact.lastName?.charAt(0).toUpperCase()}
+						</AvatarFallback>
+					</Avatar>
 
-function ContactDetails({ contact }: { contact: Contact }) {
-	return (
-		<div className="flex flex-col items-center gap-4">
-			<ContactDetailsHeader contact={contact} />
+					<h1 className="mb-4 text-2xl font-bold">
+						{contact.firstName} {contact.lastName}
+					</h1>
 
-			<ContactDetailsSection
-				label="Phone Number"
-				contact={contact}
-				field="phoneNumber"
-			/>
-			<ContactDetailsSection label="Email" contact={contact} field="email" />
-			<ContactDetailsAddressSection contact={contact} />
-			<ContactDetailsSection label="Notes" contact={contact} field="notes" />
+					<ContactDetailsSection
+						label="Phone Number"
+						contact={contact}
+						field="phoneNumber"
+					/>
+					<ContactDetailsSection
+						label="Email"
+						contact={contact}
+						field="email"
+					/>
+					<ContactDetailsAddressSection contact={contact} />
+					<ContactDetailsSection
+						label="Notes"
+						contact={contact}
+						field="notes"
+					/>
+				</div>
+			)}
 		</div>
 	);
 }
@@ -89,54 +104,25 @@ function ContactDetailsAddressSection({ contact }: { contact: Contact }) {
 	if (hasNoAddressFields) return null;
 
 	return (
-		<div className="card w-full rounded bg-base-100 text-xs">
-			<div className="card-body px-4 py-2">
-				<label className="text-secondary">Address</label>
-				<a
-					target="_blank"
-					rel="noopener noreferrer"
-					href={getGoogleMapsUrlForContact(contact)}
-					className="flex flex-col"
-				>
-					<div className="flex flex-col">
-						<span>{address1}</span>
-						<span>{address2}</span>
-						<span>
-							{city}
-							{state ? `, ${state}` : ""}
-							{zip ? ` ${zip}` : ""}
-						</span>
-					</div>
-				</a>
-			</div>
-		</div>
-	);
-}
-
-function ContactDetailsHeader({ contact }: { contact: Contact }) {
-	return (
-		<>
-			<div className="avatar placeholder">
-				<div className="w-24 rounded-full bg-base-300 text-base-content ring ring-secondary">
-					{contact.photo?.url ? (
-						<NextImage
-							src={contact.photo.url}
-							alt="avatar"
-							height={contact.photo.height}
-							width={contact.photo.width}
-						/>
-					) : (
-						<span className="text-3xl">
-							{contact.firstName?.charAt(0).toUpperCase()}
-							{contact.lastName?.charAt(0).toUpperCase()}
-						</span>
-					)}
+		<Card className="w-full bg-background flex flex-col gap-1 px-4 py-2 text-xs">
+			<label className="text-primary-foreground">Address</label>
+			<a
+				target="_blank"
+				rel="noopener noreferrer"
+				href={getGoogleMapsUrlForContact(contact)}
+				className="flex flex-col"
+			>
+				<div className="flex flex-col">
+					<span>{address1}</span>
+					<span>{address2}</span>
+					<span>
+						{city}
+						{state ? `, ${state}` : ""}
+						{zip ? ` ${zip}` : ""}
+					</span>
 				</div>
-			</div>
-			<h1 className="mb-4 text-2xl font-bold text-base-content">
-				{contact.firstName} {contact.lastName}
-			</h1>
-		</>
+			</a>
+		</Card>
 	);
 }
 
@@ -156,20 +142,16 @@ function ContactDetailsSection({
 	if (!value.length) return null;
 
 	return (
-		<div className="card w-full rounded bg-base-100 text-xs">
-			<div className="card-body px-4 py-2">
-				<label className="text-secondary">{label}</label>
-				<ConditionalWrapper
-					condition={["email", "phoneNumber"].includes(field)}
-					wrapper={(children) => (
-						<Link href={`${hrefPrefixForField(field)}${value}`}>
-							{children}
-						</Link>
-					)}
-				>
-					<span>{value}</span>
-				</ConditionalWrapper>
-			</div>
-		</div>
+		<Card className="w-full bg-background flex flex-col gap-1 px-4 py-2 text-xs">
+			<label className="text-primary-foreground">{label}</label>
+			<ConditionalWrapper
+				condition={["email", "phoneNumber"].includes(field)}
+				wrapper={(children) => (
+					<Link href={`${hrefPrefixForField(field)}${value}`}>{children}</Link>
+				)}
+			>
+				<span>{value}</span>
+			</ConditionalWrapper>
+		</Card>
 	);
 }

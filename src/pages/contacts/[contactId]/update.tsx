@@ -1,12 +1,11 @@
-import classNames from "classnames";
 import type { GetServerSidePropsContext } from "next";
-import NextImage from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Input } from "~/components/input";
-import { TextArea } from "~/components/text-area";
+import { ContactForm } from "~/components/contact-form";
+import { Form } from "~/components/ui/form";
 import { useZodForm } from "~/hooks/use-zod-form";
-import { updateContactValidationSchema } from "~/schemas/update-contact-validation-schema";
+import type { ContactGetByIdOutput } from "~/server/api/routers/contact";
+import { updateContactSchema } from "~/server/db/schema";
 import { api } from "~/utils/api";
 
 export function getServerSideProps({ query }: GetServerSidePropsContext) {
@@ -28,162 +27,73 @@ export default function UpdateContactPage({
 }: {
 	contactId: string;
 }) {
-	const router = useRouter();
-	const utils = api.useUtils();
-
 	const { data: contact } = api.contact.getById.useQuery({
 		id: contactId,
 	});
 
+	if (!contact) return null;
+
+	return <ResolvedUpdateContactPage contact={contact} />;
+}
+
+function ResolvedUpdateContactPage({
+	contact,
+}: { contact: NonNullable<ContactGetByIdOutput> }) {
+	const router = useRouter();
+	const utils = api.useUtils();
+
 	const { mutate: updateContact, isLoading } = api.contact.update.useMutation({
 		onSettled: () =>
 			utils.contact.getById.invalidate({
-				id: contactId,
+				id: contact.id,
 			}),
 	});
 
-	const {
-		register,
-		formState: { isDirty, errors },
-		handleSubmit,
-	} = useZodForm({
-		schema: updateContactValidationSchema,
+	const form = useZodForm({
+		schema: updateContactSchema,
 		values: {
-			id: contactId,
-			firstName: contact?.firstName,
-			lastName: contact?.lastName,
-			address1: contact?.address1,
-			address2: contact?.address2,
-			city: contact?.city,
-			state: contact?.state,
-			zip: contact?.zip,
-			email: contact?.email,
-			phoneNumber: contact?.phoneNumber,
-			notes: contact?.notes,
+			id: contact.id,
+			firstName: contact.firstName ?? undefined,
+			lastName: contact.lastName ?? undefined,
+			address1: contact.address1 ?? undefined,
+			address2: contact.address2 ?? undefined,
+			city: contact.city ?? undefined,
+			state: contact.state ?? undefined,
+			zip: contact.zip ?? undefined,
+			email: contact.email ?? undefined,
+			phoneNumber: contact.phoneNumber,
+			notes: contact.notes ?? undefined,
 		},
 	});
 
-	const hasPhoto = !!(
-		contact?.photo?.url &&
-		contact.photo.height &&
-		contact.photo.width
-	);
-
 	return (
 		<div className="min-h-screen p-4">
-			<div className="flex items-center justify-between pb-4 text-secondary">
-				<Link href={`/contacts/${contactId}`} className="flex items-center">
+			<div className="flex items-center justify-between pb-4 text-primary-foreground">
+				<Link href={`/contacts/${contact.id}`} className="flex items-center">
 					<span className="text-sm">Cancel</span>
 				</Link>
 				<button
 					type="submit"
-					className={classNames("text-sm", {
-						"text-gray-500": !isDirty,
-					})}
+					className="text-sm text-primary-foreground"
 					form="update-contact"
-					disabled={!isDirty || isLoading}
+					disabled={isLoading}
 				>
 					Done
 				</button>
 			</div>
 
-			<form
-				id="update-contact"
-				onSubmit={handleSubmit((values) => {
-					updateContact(values, {
-						onSuccess: () => void router.push(`/contacts/${contactId}`),
-					});
-				})}
-				className="flex flex-col gap-2"
-			>
-				<div className="mx-auto">
-					<div className="avatar placeholder">
-						<div className="relative w-24 rounded-full bg-base-300 text-base-content ring ring-secondary">
-							{hasPhoto ? (
-								<NextImage
-									src={contact.photo.url}
-									alt="avatar"
-									height={contact.photo.height}
-									width={contact.photo.width}
-								/>
-							) : (
-								<span className="text-3xl">
-									{contact?.firstName?.charAt(0).toUpperCase()}
-									{contact?.lastName?.charAt(0).toUpperCase()}
-								</span>
-							)}
-						</div>
-					</div>
-				</div>
-
-				<div className="md:flex">
-					<Input
-						label="First Name"
-						{...register("firstName")}
-						autoComplete="given-name"
-						error={errors.firstName?.message}
-					/>
-					<Input
-						label="Last Name"
-						{...register("lastName")}
-						autoComplete="family-name"
-						error={errors.lastName?.message}
+			<Form {...form}>
+				<div className="p-4">
+					<ContactForm
+						id="update-contact"
+						onSubmit={form.handleSubmit((values) => {
+							updateContact(values, {
+								onSuccess: () => void router.push(`/contacts/${contact.id}`),
+							});
+						})}
 					/>
 				</div>
-				<div className="md:flex">
-					<Input
-						label="Email"
-						{...register("email")}
-						autoComplete="email"
-						error={errors.email?.message}
-					/>
-					<Input
-						label="Phone Number"
-						{...register("phoneNumber")}
-						autoComplete="tel"
-						error={errors.phoneNumber?.message}
-					/>
-				</div>
-				<Input
-					label="Address 1"
-					{...register("address1")}
-					autoComplete="address-line1"
-					error={errors.address1?.message}
-				/>
-				<Input
-					label="Address 2"
-					{...register("address2")}
-					autoComplete="address-line2"
-					error={errors.address2?.message}
-				/>
-				<div className="md:flex">
-					<Input
-						label="City"
-						{...register("city")}
-						autoComplete="address-level2"
-						error={errors.city?.message}
-					/>
-				</div>
-				<div className="md:flex">
-					<Input
-						label="State"
-						{...register("state")}
-						autoComplete="address-level1"
-						error={errors.state?.message}
-					/>
-					<Input
-						label="Zip"
-						{...register("zip")}
-						autoComplete="postal-code"
-						error={errors.zip?.message}
-					/>
-				</div>
-				<TextArea
-					label="Notes"
-					{...register("notes")}
-					error={errors.notes?.message}
-				/>
-			</form>
+			</Form>
 		</div>
 	);
 }

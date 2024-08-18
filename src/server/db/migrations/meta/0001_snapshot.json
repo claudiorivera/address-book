@@ -1,4 +1,6 @@
 {
+  "id": "44ad7923-e365-4852-b8e0-cd6ec5cf1033",
+  "prevId": "834d1b66-921a-48f7-97bf-c4cb05e5f439",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -34,7 +36,7 @@
           "name": "phoneNumber",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "address1": {
           "name": "address1",
@@ -68,6 +70,12 @@
         },
         "notes": {
           "name": "notes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "photoId": {
+          "name": "photoId",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -138,37 +146,35 @@
         "photos_contactId_contacts_id_fk": {
           "name": "photos_contactId_contacts_id_fk",
           "tableFrom": "photos",
+          "tableTo": "contacts",
           "columnsFrom": [
             "contactId"
           ],
-          "tableTo": "contacts",
           "columnsTo": [
             "id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "no action"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
         "photos_cloudinaryId_unique": {
           "name": "photos_cloudinaryId_unique",
+          "nullsNotDistinct": false,
           "columns": [
             "cloudinaryId"
-          ],
-          "nullsNotDistinct": false
+          ]
         }
       }
     }
   },
   "enums": {},
   "schemas": {},
+  "sequences": {},
   "_meta": {
+    "columns": {},
     "schemas": {},
-    "tables": {},
-    "columns": {}
-  },
-  "id": "834d1b66-921a-48f7-97bf-c4cb05e5f439",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "sequences": {}
+    "tables": {}
+  }
 }

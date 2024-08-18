@@ -2,15 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --background: 213.33 18% 10%;
+    --foreground: 220 13% 69%;
+    --card: 24 9.8% 10%;
+    --card-foreground: 220 13% 69%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 220 13% 69%;
+    --primary: 212.73 18% 12%;
+    --primary-foreground: 316.31 100% 69%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 346.84 77% 50%;
+    --destructive-foreground: 0 85.7% 97.3%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 346.8 77.2% 49.8%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
 @layer components {
 	.loading {
 		@apply h-1 w-full bg-gradient-to-r from-secondary via-primary to-secondary;
 
 		background-size: 400%;
 
-		animation: AnimationName 3s ease infinite;
+		animation: loading 3s ease infinite;
 	}
-	@keyframes AnimationName {
+	@keyframes loading {
 		0%,
 		100% {
 			background-position: left;
