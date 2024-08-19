@@ -79,8 +79,8 @@ importers:
         specifier: ^1.0.4
         version: 1.1.6
       '@types/node':
-        specifier: 20.16.0
-        version: 20.16.0
+        specifier: 20.16.1
+        version: 20.16.1
       '@types/react':
         specifier: 18.3.3
         version: 18.3.3
@@ -673,8 +673,8 @@ packages:
   '@types/node@20.12.14':
     resolution: {integrity: sha512-scnD59RpYD91xngrQQLGkE+6UrHUPzeKZWhhjBSa3HSkwjbQc38+q3RoIVEwxQGRw3M+j5hpNAM+lgV3cVormg==}
 
-  '@types/node@20.16.0':
-    resolution: {integrity: sha512-vDxceJcoZhIVh67S568bm1UGZO0DX0hpplJZxzeXMKwIPLn190ec5RRxQ69BKhX44SUGIxxgMdDY557lGLKprQ==}
+  '@types/node@20.16.1':
+    resolution: {integrity: sha512-zJDo7wEadFtSyNz5QITDfRcrhqDvQI1xQNQ0VoizPjM/dVAODqqIUWbJPkvsxmTI0MYRGRikcdjMPhOssnPejQ==}
 
   '@types/prop-types@15.7.12':
     resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
@@ -1755,7 +1755,7 @@ snapshots:
     dependencies:
       undici-types: 5.26.5
 
-  '@types/node@20.16.0':
+  '@types/node@20.16.1':
     dependencies:
       undici-types: 6.19.6
 
@@ -1772,7 +1772,7 @@ snapshots:
 
   '@types/ws@8.5.10':
     dependencies:
-      '@types/node': 20.16.0
+      '@types/node': 20.16.1
 
   ansi-regex@5.0.1: {}
 
