@@ -1,8 +1,11 @@
 import { eq } from "drizzle-orm";
 import { z } from "zod";
-import { updateContactValidationSchema } from "~/schemas/update-contact-validation-schema";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
-import { contacts, createContactSchema } from "~/server/db/schema";
+import {
+	contacts,
+	createContactSchema,
+	updateContactSchema,
+} from "~/server/db/schema";
 import type { RouterOutputs } from "~/utils/api";
 
 export const contactRouter = createTRPCRouter({
@@ -27,7 +30,7 @@ export const contactRouter = createTRPCRouter({
 		.input(createContactSchema)
 		.mutation(({ input, ctx }) => ctx.db.insert(contacts).values(input)),
 	update: publicProcedure
-		.input(updateContactValidationSchema)
+		.input(updateContactSchema)
 		.mutation(({ input, ctx }) =>
 			ctx.db.update(contacts).set(input).where(eq(contacts.id, input.id)),
 		),

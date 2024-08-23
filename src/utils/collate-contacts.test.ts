@@ -24,6 +24,7 @@ const fakeContact = {
 		width: 100,
 		url: "https://picsum.photos/100/100",
 	},
+	photoId: createId(),
 	createdAt: new Date(),
 	updatedAt: new Date(),
 } satisfies ContactGetAllOutput[number];
@@ -73,6 +74,7 @@ describe("collateContacts", () => {
 					width: 100,
 					url: "https://picsum.photos/100/100",
 				},
+				photoId: createId(),
 				createdAt: new Date(),
 				updatedAt: new Date(),
 			},
@@ -96,6 +98,7 @@ describe("collateContacts", () => {
 					width: 100,
 					url: "https://picsum.photos/100/100",
 				},
+				photoId: createId(),
 				createdAt: new Date(),
 				updatedAt: new Date(),
 			},

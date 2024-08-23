@@ -3,10 +3,12 @@
 	"version": "0.1.0",
 	"private": true,
 	"type": "module",
+	"papckageManager": "pnpm@9.8.0",
 	"scripts": {
 		"build": "next build",
+		"vercel-build": "pnpm db:migrate && next build",
 		"dev": "next dev",
-		"check:fix": "pnpm biome check --apply src",
+		"check:fix": "pnpm biome check --write src",
 		"typecheck": "tsc --noEmit",
 		"start": "next start",
 		"test": "bun test",
@@ -17,22 +19,31 @@
 	},
 	"dependencies": {
 		"@hookform/resolvers": "3.9.0",
+		"@radix-ui/react-avatar": "1.1.0",
+		"@radix-ui/react-dialog": "1.1.1",
+		"@radix-ui/react-label": "2.1.0",
+		"@radix-ui/react-progress": "1.1.0",
+		"@radix-ui/react-slot": "1.1.0",
 		"@t3-oss/env-nextjs": "0.11.0",
 		"@tanstack/react-query": "4.36.1",
 		"@trpc/client": "10.45.2",
 		"@trpc/next": "10.45.2",
 		"@trpc/react-query": "10.45.2",
 		"@trpc/server": "10.45.2",
+		"class-variance-authority": "0.7.0",
 		"classnames": "2.5.1",
-		"daisyui": "4.12.10",
-		"drizzle-orm": "^0.33.0",
-		"drizzle-zod": "^0.5.1",
+		"clsx": "2.1.1",
+		"drizzle-orm": "0.33.0",
+		"drizzle-zod": "0.5.1",
+		"lucide-react": "0.427.0",
 		"next": "14.2.6",
-		"postgres": "^3.4.3",
+		"postgres": "3.4.4",
 		"react": "18.3.1",
 		"react-dom": "18.3.1",
 		"react-hook-form": "7.52.2",
 		"superjson": "2.2.1",
+		"tailwind-merge": "2.5.2",
+		"tailwindcss-animate": "1.0.7",
 		"zod": "3.23.8"
 	},
 	"devDependencies": {
@@ -40,7 +51,8 @@
 		"@faker-js/faker": "8.4.1",
 		"@paralleldrive/cuid2": "2.2.2",
 		"@tailwindcss/forms": "0.5.7",
-		"@types/bun": "^1.0.4",
+		"@tanstack/react-query-devtools": "5.52.0",
+		"@types/bun": "1.1.6",
 		"@types/node": "20.16.1",
 		"@types/react": "18.3.4",
 		"@types/react-dom": "18.3.0",
@@ -50,8 +62,5 @@
 		"postcss": "8.4.41",
 		"tailwindcss": "3.4.10",
 		"typescript": "5.5.4"
-	},
-	"ct3aMetadata": {
-		"initVersion": "6.0.0-next.4e87565"
 	}
 }
