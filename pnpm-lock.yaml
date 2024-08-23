@@ -60,8 +60,8 @@ importers:
         specifier: 0.5.1
         version: 0.5.1(drizzle-orm@0.33.0(@types/react@18.3.4)(bun-types@1.1.24)(postgres@3.4.4)(react@18.3.1))(zod@3.23.8)
       lucide-react:
-        specifier: 0.427.0
-        version: 0.427.0(react@18.3.1)
+        specifier: 0.429.0
+        version: 0.429.0(react@18.3.1)
       next:
         specifier: 14.2.6
         version: 14.2.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -995,6 +995,7 @@ packages:
 
   bun@1.1.25:
     resolution: {integrity: sha512-N+KvGq6jcA88QgFVoOMSr2s4sZ9u+R7Tn6Hci25mdygZxa3jgaS91PMNxpEJKkyTBLOhH5E8erx+tqtRLyFbJA==}
+    cpu: [arm64, x64]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -1321,8 +1322,8 @@ packages:
     resolution: {integrity: sha512-2bIM8x+VAf6JT4bKAljS1qUWgMsqZRPGJS6FSahIMPVvctcNhyVp7AJu7quxOW9jwkryBReKZY5tY5JYv2n/7Q==}
     engines: {node: 14 || >=16.14}
 
-  lucide-react@0.427.0:
-    resolution: {integrity: sha512-lv9s6c5BDF/ccuA0EgTdskTxIe11qpwBDmzRZHJAKtp8LTewAvDvOM+pTES9IpbBuTqkjiMhOmGpJ/CB+mKjFw==}
+  lucide-react@0.429.0:
+    resolution: {integrity: sha512-548DahFy7Ey+0OPlOyZ6ipnbGJzewv8gq2DxDrnAzWZ4RN4+3XyIwQXhD4AQvuREFjS1EnbAgOMaYB0VQyaK1g==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
 
@@ -2591,7 +2592,7 @@ snapshots:
 
   lru-cache@10.2.0: {}
 
-  lucide-react@0.427.0(react@18.3.1):
+  lucide-react@0.429.0(react@18.3.1):
     dependencies:
       react: 18.3.1
 
