@@ -55,10 +55,10 @@ importers:
         version: 2.1.1
       drizzle-orm:
         specifier: 0.33.0
-        version: 0.33.0(@types/react@18.3.4)(bun-types@1.1.24)(postgres@3.4.4)(react@18.3.1)
+        version: 0.33.0(@types/react@18.3.4)(bun-types@1.1.25)(postgres@3.4.4)(react@18.3.1)
       drizzle-zod:
         specifier: 0.5.1
-        version: 0.5.1(drizzle-orm@0.33.0(@types/react@18.3.4)(bun-types@1.1.24)(postgres@3.4.4)(react@18.3.1))(zod@3.23.8)
+        version: 0.5.1(drizzle-orm@0.33.0(@types/react@18.3.4)(bun-types@1.1.25)(postgres@3.4.4)(react@18.3.1))(zod@3.23.8)
       lucide-react:
         specifier: 0.429.0
         version: 0.429.0(react@18.3.1)
@@ -106,8 +106,8 @@ importers:
         specifier: 5.52.1
         version: 5.52.1(@tanstack/react-query@4.36.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       '@types/bun':
-        specifier: 1.1.6
-        version: 1.1.6
+        specifier: 1.1.7
+        version: 1.1.7
       '@types/node':
         specifier: 20.16.1
         version: 20.16.1
@@ -907,8 +907,8 @@ packages:
   '@trpc/server@10.45.2':
     resolution: {integrity: sha512-wOrSThNNE4HUnuhJG6PfDRp4L2009KDVxsd+2VYH8ro6o/7/jwYZ8Uu5j+VaW+mOmc8EHerHzGcdbGNQSAUPgg==}
 
-  '@types/bun@1.1.6':
-    resolution: {integrity: sha512-uJgKjTdX0GkWEHZzQzFsJkWp5+43ZS7HC8sZPFnOwnSo1AsNl2q9o2bFeS23disNDqbggEgyFkKCHl/w8iZsMA==}
+  '@types/bun@1.1.7':
+    resolution: {integrity: sha512-iIIn26SOX8qI5E8Juh+0rUgBmFHvll1akscwerhp9O/fHZGdQBWNLJkkRg/3z2Mh6a3ZgWUIkXViLZZYg47TXw==}
 
   '@types/node@20.12.14':
     resolution: {integrity: sha512-scnD59RpYD91xngrQQLGkE+6UrHUPzeKZWhhjBSa3HSkwjbQc38+q3RoIVEwxQGRw3M+j5hpNAM+lgV3cVormg==}
@@ -987,11 +987,8 @@ packages:
   buffer-from@1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
 
-  bun-types@1.1.17:
-    resolution: {integrity: sha512-Z4+OplcSd/YZq7ZsrfD00DKJeCwuNY96a1IDJyR73+cTBaFIS7SC6LhpY/W3AMEXO9iYq5NJ58WAwnwL1p5vKg==}
-
-  bun-types@1.1.24:
-    resolution: {integrity: sha512-UNEcYawHWOVw9GYQdOgjJvTQduYlPckmRMqpBqfkWpUzeK2CZfEP/JOYBH6SMypyfkNg/Zsqf0olN6vMrSPg3w==}
+  bun-types@1.1.25:
+    resolution: {integrity: sha512-WpRb8/N3S5IE8UYdIn39+0Is1XzxsC78+MCe5cIdaer0lfFs6+DREtQH9TM6KJNKTxBYDvbx81RwbvxS5+CkVQ==}
 
   bun@1.1.25:
     resolution: {integrity: sha512-N+KvGq6jcA88QgFVoOMSr2s4sZ9u+R7Tn6Hci25mdygZxa3jgaS91PMNxpEJKkyTBLOhH5E8erx+tqtRLyFbJA==}
@@ -2232,9 +2229,9 @@ snapshots:
 
   '@trpc/server@10.45.2': {}
 
-  '@types/bun@1.1.6':
+  '@types/bun@1.1.7':
     dependencies:
-      bun-types: 1.1.17
+      bun-types: 1.1.25
 
   '@types/node@20.12.14':
     dependencies:
@@ -2313,16 +2310,10 @@ snapshots:
 
   buffer-from@1.1.2: {}
 
-  bun-types@1.1.17:
+  bun-types@1.1.25:
     dependencies:
       '@types/node': 20.12.14
       '@types/ws': 8.5.12
-
-  bun-types@1.1.24:
-    dependencies:
-      '@types/node': 20.12.14
-      '@types/ws': 8.5.12
-    optional: true
 
   bun@1.1.25:
     optionalDependencies:
@@ -2408,16 +2399,16 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.33.0(@types/react@18.3.4)(bun-types@1.1.24)(postgres@3.4.4)(react@18.3.1):
+  drizzle-orm@0.33.0(@types/react@18.3.4)(bun-types@1.1.25)(postgres@3.4.4)(react@18.3.1):
     optionalDependencies:
       '@types/react': 18.3.4
-      bun-types: 1.1.24
+      bun-types: 1.1.25
       postgres: 3.4.4
       react: 18.3.1
 
-  drizzle-zod@0.5.1(drizzle-orm@0.33.0(@types/react@18.3.4)(bun-types@1.1.24)(postgres@3.4.4)(react@18.3.1))(zod@3.23.8):
+  drizzle-zod@0.5.1(drizzle-orm@0.33.0(@types/react@18.3.4)(bun-types@1.1.25)(postgres@3.4.4)(react@18.3.1))(zod@3.23.8):
     dependencies:
-      drizzle-orm: 0.33.0(@types/react@18.3.4)(bun-types@1.1.24)(postgres@3.4.4)(react@18.3.1)
+      drizzle-orm: 0.33.0(@types/react@18.3.4)(bun-types@1.1.25)(postgres@3.4.4)(react@18.3.1)
       zod: 3.23.8
 
   eastasianwidth@0.2.0: {}
