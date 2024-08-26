@@ -15,6 +15,11 @@
 			"matchPackagePatterns": ["@trpc"],
 			"groupName": "trpc",
 			"automerge": false
+		},
+		{
+			"matchPackageNames": ["lucide-react"],
+			"matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+			"automerge": true
 		}
 	],
 	"schedule": ["after 9pm and before 9am every weekday", "every weekend"],
