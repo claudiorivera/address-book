@@ -107,8 +107,8 @@ devDependencies:
     specifier: 1.1.10
     version: 1.1.10
   '@types/node':
-    specifier: 20.16.5
-    version: 20.16.5
+    specifier: 20.16.10
+    version: 20.16.10
   '@types/react':
     specifier: 18.3.10
     version: 18.3.10
@@ -1369,8 +1369,8 @@ packages:
       undici-types: 5.26.5
     dev: true
 
-  /@types/node@20.16.5:
-    resolution: {integrity: sha512-VwYCweNo3ERajwy0IUlqqcyZ8/A7Zwa9ZP3MnENWcB11AejO+tLy3pu850goUW2FC/IJMdZUfKpX/yxL1gymCA==}
+  /@types/node@20.16.10:
+    resolution: {integrity: sha512-vQUKgWTjEIRFCvK6CyriPH3MZYiYlNy0fKiEYHWbcoWLEgs4opurGGKlebrTLqdSMIbXImH6XExNiIyNUv3WpA==}
     dependencies:
       undici-types: 6.19.8
     dev: true
@@ -1392,7 +1392,7 @@ packages:
   /@types/ws@8.5.12:
     resolution: {integrity: sha512-3tPRkv1EtkDpzlgyKyI8pGsGZAGPEaXeu0DOj5DI25Ja91bdAYddYHbADRYVrZMRbfW+1l5YwXVDKohDJNQxkQ==}
     dependencies:
-      '@types/node': 20.16.5
+      '@types/node': 20.16.10
     dev: true
 
   /ansi-regex@5.0.1:
