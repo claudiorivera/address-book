@@ -105,7 +105,7 @@ function ContactDetailsAddressSection({ contact }: { contact: Contact }) {
 
 	return (
 		<Card className="w-full bg-background flex flex-col gap-1 px-4 py-2 text-xs">
-			<label className="text-primary-foreground">Address</label>
+			<p className="text-primary-foreground">Address</p>
 			<a
 				target="_blank"
 				rel="noopener noreferrer"
@@ -143,7 +143,7 @@ function ContactDetailsSection({
 
 	return (
 		<Card className="w-full bg-background flex flex-col gap-1 px-4 py-2 text-xs">
-			<label className="text-primary-foreground">{label}</label>
+			<p className="text-primary-foreground">{label}</p>
 			<ConditionalWrapper
 				condition={["email", "phoneNumber"].includes(field)}
 				wrapper={(children) => (
