@@ -55,7 +55,7 @@
 		"@types/bun": "1.1.11",
 		"@types/node": "20.16.11",
 		"@types/react": "18.3.11",
-		"@types/react-dom": "18.3.0",
+		"@types/react-dom": "18.3.1",
 		"autoprefixer": "10.4.20",
 		"bun": "1.1.30",
 		"drizzle-kit": "0.25.0",
