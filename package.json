@@ -60,7 +60,7 @@
 		"bun": "1.1.30",
 		"drizzle-kit": "0.25.0",
 		"postcss": "8.4.47",
-		"tailwindcss": "3.4.13",
+		"tailwindcss": "3.4.14",
 		"typescript": "5.6.3"
 	}
 }
