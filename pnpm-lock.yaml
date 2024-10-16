@@ -54,11 +54,11 @@ importers:
         specifier: 2.1.1
         version: 2.1.1
       drizzle-orm:
-        specifier: 0.34.1
-        version: 0.34.1(@types/react@18.3.11)(bun-types@1.1.30)(postgres@3.4.4)(react@18.3.1)
+        specifier: 0.35.1
+        version: 0.35.1(@types/react@18.3.11)(bun-types@1.1.30)(postgres@3.4.4)(react@18.3.1)
       drizzle-zod:
         specifier: 0.5.1
-        version: 0.5.1(drizzle-orm@0.34.1(@types/react@18.3.11)(bun-types@1.1.30)(postgres@3.4.4)(react@18.3.1))(zod@3.23.8)
+        version: 0.5.1(drizzle-orm@0.35.1(@types/react@18.3.11)(bun-types@1.1.30)(postgres@3.4.4)(react@18.3.1))(zod@3.23.8)
       lucide-react:
         specifier: 0.453.0
         version: 0.453.0(react@18.3.1)
@@ -1088,8 +1088,8 @@ packages:
     resolution: {integrity: sha512-cMq8omEKywjIy5KcqUo6LvEFxkl8/zYHsgYjFVXjmPWWtuW4blcz+YW9+oIhoaALgs2ebRjzXwsJgN9i6P49Dw==}
     hasBin: true
 
-  drizzle-orm@0.34.1:
-    resolution: {integrity: sha512-t+zCwyWWt8xTqtYV4doE/xYmT7hpv1L8pQ66zddEz+3VWyedBBtctjMAp22mAJPfyWurRQXUJ1nrTtqLq+DqNA==}
+  drizzle-orm@0.35.1:
+    resolution: {integrity: sha512-HQxDdYuXlZFuvDPztlUIzrX8TqWa/Ej6uN6L0hkbuGL4slexOUMc3u4nXVU15RQ5QYbk+uLQnR6v1+OIrdCTXQ==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
@@ -2417,16 +2417,16 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.34.1(@types/react@18.3.11)(bun-types@1.1.30)(postgres@3.4.4)(react@18.3.1):
+  drizzle-orm@0.35.1(@types/react@18.3.11)(bun-types@1.1.30)(postgres@3.4.4)(react@18.3.1):
     optionalDependencies:
       '@types/react': 18.3.11
       bun-types: 1.1.30
       postgres: 3.4.4
       react: 18.3.1
 
-  drizzle-zod@0.5.1(drizzle-orm@0.34.1(@types/react@18.3.11)(bun-types@1.1.30)(postgres@3.4.4)(react@18.3.1))(zod@3.23.8):
+  drizzle-zod@0.5.1(drizzle-orm@0.35.1(@types/react@18.3.11)(bun-types@1.1.30)(postgres@3.4.4)(react@18.3.1))(zod@3.23.8):
     dependencies:
-      drizzle-orm: 0.34.1(@types/react@18.3.11)(bun-types@1.1.30)(postgres@3.4.4)(react@18.3.1)
+      drizzle-orm: 0.35.1(@types/react@18.3.11)(bun-types@1.1.30)(postgres@3.4.4)(react@18.3.1)
       zod: 3.23.8
 
   eastasianwidth@0.2.0: {}
