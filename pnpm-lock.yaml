@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@hookform/resolvers':
-        specifier: 3.9.0
-        version: 3.9.0(react-hook-form@7.53.1(react@18.3.1))
+        specifier: 3.9.1
+        version: 3.9.1(react-hook-form@7.53.1(react@18.3.1))
       '@radix-ui/react-avatar':
         specifier: 1.1.1
         version: 1.1.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -480,8 +480,8 @@ packages:
     resolution: {integrity: sha512-GJvX9iM9PBtKScJVlXQ0tWpihK3i0pha/XAhzQa1hPK/ILLa1Wq3I63Ij7lRtqTwmdTxRCyrUhLC5Sly9SLbug==}
     engines: {node: '>=18.0.0', npm: '>=9.0.0'}
 
-  '@hookform/resolvers@3.9.0':
-    resolution: {integrity: sha512-bU0Gr4EepJ/EQsH/IwEzYLsT/PEj5C0ynLQ4m+GSHS+xKH4TfSelhluTgOaoc4kA5s7eCsQbM4wvZLzELmWzUg==}
+  '@hookform/resolvers@3.9.1':
+    resolution: {integrity: sha512-ud2HqmGBM0P0IABqoskKWI6PEf6ZDDBZkFqe2Vnl+mTHCEHzr3ISjjZyCwTjC/qpL25JC9aIDkloQejvMeq0ug==}
     peerDependencies:
       react-hook-form: ^7.0.0
 
@@ -1916,7 +1916,7 @@ snapshots:
 
   '@faker-js/faker@9.1.0': {}
 
-  '@hookform/resolvers@3.9.0(react-hook-form@7.53.1(react@18.3.1))':
+  '@hookform/resolvers@3.9.1(react-hook-form@7.53.1(react@18.3.1))':
     dependencies:
       react-hook-form: 7.53.1(react@18.3.1)
 
