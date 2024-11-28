@@ -1011,7 +1011,6 @@ packages:
 
   bun@1.1.37:
     resolution: {integrity: sha512-8jp2JhT5w+CzdrnDMwLPFK0lDZdPqo/SWih9gd7WIA0r+aC2LBnAMVCG6g31SNRPILkWLhtcXvuttb9vTH6qqg==}
-    cpu: [arm64, x64]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -1058,8 +1057,8 @@ packages:
     resolution: {integrity: sha512-yCEafptTtb4bk7GLEQoM8KVJpxAfdBJYaXyzQEgQQQgYrZiDp8SJmGKlYza6CYjEDNstAdNdKA3UuoULlEbS6w==}
     engines: {node: '>=12.13'}
 
-  cross-spawn@7.0.3:
-    resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
+  cross-spawn@7.0.6:
+    resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
 
   cssesc@3.0.0:
@@ -2406,7 +2405,7 @@ snapshots:
     dependencies:
       is-what: 4.1.16
 
-  cross-spawn@7.0.3:
+  cross-spawn@7.0.6:
     dependencies:
       path-key: 3.1.1
       shebang-command: 2.0.0
@@ -2535,7 +2534,7 @@ snapshots:
 
   foreground-child@3.3.0:
     dependencies:
-      cross-spawn: 7.0.3
+      cross-spawn: 7.0.6
       signal-exit: 4.1.0
 
   fraction.js@4.3.7: {}
