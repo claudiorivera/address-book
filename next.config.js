@@ -14,14 +14,26 @@ function defineNextConfig(config) {
 
 export default defineNextConfig({
 	reactStrictMode: true,
-	swcMinify: true,
 	// Next.js i18n docs: https://nextjs.org/docs/advanced-features/i18n-routing
 	i18n: {
 		locales: ["en"],
 		defaultLocale: "en",
 	},
 	images: {
-		domains: ["res.cloudinary.com", "picsum.photos", "loremflickr.com"],
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "res.cloudinary.com",
+			},
+			{
+				protocol: "https",
+				hostname: "picsum.photos",
+			},
+			{
+				protocol: "https",
+				hostname: "loremflickr.com",
+			},
+		],
 	},
 	eslint: {
 		ignoreDuringBuilds: true,
