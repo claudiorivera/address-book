@@ -1,6 +1,6 @@
-import { describe, expect, it } from "bun:test";
 import { faker } from "@faker-js/faker";
 import { createId } from "@paralleldrive/cuid2";
+import { describe, expect, it } from "vitest";
 import type { ContactGetAllOutput } from "~/server/api/routers/contact";
 import { collateContacts } from "./collate-contacts";
 
