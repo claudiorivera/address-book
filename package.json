@@ -52,7 +52,7 @@
 		"@faker-js/faker": "9.3.0",
 		"@paralleldrive/cuid2": "2.2.2",
 		"@tailwindcss/forms": "0.5.9",
-		"@tanstack/react-query-devtools": "5.62.8",
+		"@tanstack/react-query-devtools": "5.62.9",
 		"@types/node": "22.10.1",
 		"@types/react": "npm:types-react@19.0.0-rc.1",
 		"@types/react-dom": "npm:types-react-dom@19.0.0",
