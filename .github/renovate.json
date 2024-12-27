@@ -1,27 +1,53 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
-	"extends": ["config:base"],
+	"extends": [
+		"config:recommended"
+	],
 	"packageRules": [
 		{
-			"matchUpdateTypes": ["patch", "pin", "digest"],
+			"matchUpdateTypes": [
+				"patch",
+				"pin",
+				"digest"
+			],
 			"automerge": true
 		},
 		{
-			"matchDepTypes": ["devDependencies"],
-			"matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+			"matchDepTypes": [
+				"devDependencies"
+			],
+			"matchUpdateTypes": [
+				"minor",
+				"patch",
+				"pin",
+				"digest"
+			],
 			"automerge": true
 		},
 		{
-			"matchPackagePatterns": ["@trpc"],
 			"groupName": "trpc",
-			"automerge": false
+			"automerge": false,
+			"matchPackageNames": [
+				"/@trpc/"
+			]
 		},
 		{
-			"matchPackageNames": ["lucide-react"],
-			"matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+			"matchPackageNames": [
+				"lucide-react"
+			],
+			"matchUpdateTypes": [
+				"minor",
+				"patch",
+				"pin",
+				"digest"
+			],
 			"automerge": true
 		}
 	],
-	"schedule": ["after 9pm and before 9am every weekday", "every weekend"],
+	"schedule": [
+		"after 9pm every weekday",
+		"every weekend",
+		"before 9am every weekday"
+	],
 	"commitMessagePrefix": "🤖"
 }
