@@ -1,5 +1,5 @@
 import { createId } from "@paralleldrive/cuid2";
-import { relations } from "drizzle-orm";
+import { type InferSelectModel, relations } from "drizzle-orm";
 import { integer, pgTable, text, timestamp } from "drizzle-orm/pg-core";
 import { z } from "zod";
 
@@ -21,6 +21,8 @@ export const contacts = pgTable("contacts", {
 	createdAt: timestamp("createdAt").defaultNow().notNull(),
 	updatedAt: timestamp("updatedAt").defaultNow().notNull(),
 });
+
+export type Contact = InferSelectModel<typeof contacts>;
 
 export const createContactSchema = z.object({
 	firstName: z.string().optional(),

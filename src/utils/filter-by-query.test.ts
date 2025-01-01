@@ -20,9 +20,9 @@ describe("filterByQuery", () => {
 	];
 
 	it("should filter by any key", () => {
-		expect(filterByQuery(contacts, "")).toEqual(contacts);
-		expect(filterByQuery(contacts, "do")).toEqual(contacts);
-		expect(filterByQuery(contacts, "ja")).toEqual([
+		expect(filterByQuery({ array: contacts, query: "" })).toEqual(contacts);
+		expect(filterByQuery({ array: contacts, query: "do" })).toEqual(contacts);
+		expect(filterByQuery({ array: contacts, query: "ja" })).toEqual([
 			{
 				firstName: "Jane",
 				lastName: "Doe",
@@ -31,6 +31,6 @@ describe("filterByQuery", () => {
 				},
 			},
 		]);
-		expect(filterByQuery(contacts, "steve")).toEqual([]);
+		expect(filterByQuery({ array: contacts, query: "steve" })).toEqual([]);
 	});
 });

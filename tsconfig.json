@@ -1,36 +1,50 @@
 {
-	"compilerOptions": {
-		"allowImportingTsExtensions": true,
-		"allowJs": true, // allow importing `.js` from `.ts`
-		"baseUrl": ".",
-		"esModuleInterop": true,
-		"incremental": true,
-		"jsx": "preserve", // support JSX
-		"lib": ["DOM", "DOM.Iterable", "ESNext"],
-		"module": "ESNext",
-		"moduleDetection": "force",
-		"moduleResolution": "bundler",
-		"noEmit": true,
-		"noUncheckedIndexedAccess": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"paths": {
-			"~/*": ["./src/*"]
-		},
-		"resolveJsonModule": true,
-		"skipLibCheck": true,
-		"strict": true,
-		"target": "ESNext",
-		"verbatimModuleSyntax": true
-	},
-	"include": [
-		".eslintrc.cjs",
-		"next-env.d.ts",
-		"**/*.ts",
-		"**/*.tsx",
-		"**/*.cjs",
-		"**/*.mjs",
-		"**/*.js"
-	],
-	"exclude": ["node_modules"]
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "allowJs": true, // allow importing `.js` from `.ts`
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "incremental": true,
+    "jsx": "preserve", // support JSX
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
+    "module": "ESNext",
+    "moduleDetection": "force",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "paths": {
+      "~/*": [
+        "./src/*"
+      ]
+    },
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ESNext",
+    "verbatimModuleSyntax": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "**/*.cjs",
+    "**/*.js",
+    "**/*.mjs",
+    "**/*.ts",
+    "**/*.tsx",
+    ".eslintrc.cjs",
+    "next-env.d.ts",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

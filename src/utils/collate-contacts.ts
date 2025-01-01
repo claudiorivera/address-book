@@ -1,15 +1,13 @@
-import type { ContactGetAllOutput } from "~/server/api/routers/contact";
+import type { Contact } from "~/server/db/schema";
 import { sortedInsert } from "./sorted-insert";
 
-type Contact = ContactGetAllOutput[number];
-
 export function collateContacts(
-	contacts: ContactGetAllOutput,
+	contacts: Array<Contact>,
 	options?: {
 		sortKey?: keyof Contact;
 	},
 ) {
-	const collatedContacts = new Map<string, ContactGetAllOutput>();
+	const collatedContacts = new Map<string, Array<Contact>>();
 
 	for (const contact of contacts) {
 		const firstInitial = contact.firstName?.toUpperCase().slice(0, 1);
