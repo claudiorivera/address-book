@@ -1,8 +1,10 @@
 import { faker } from "@faker-js/faker";
 import { createId } from "@paralleldrive/cuid2";
 import { describe, expect, it } from "vitest";
-import type { ContactGetAllOutput } from "~/server/api/routers/contact";
+import type { Contact, Photo } from "~/server/db/schema";
 import { collateContacts } from "./collate-contacts";
+
+type ContactWithPhoto = Contact & { photo: Photo };
 
 const fakeContact = {
 	id: createId(),
@@ -27,10 +29,10 @@ const fakeContact = {
 	photoId: createId(),
 	createdAt: new Date(),
 	updatedAt: new Date(),
-} satisfies ContactGetAllOutput[number];
+} satisfies ContactWithPhoto;
 
 describe("collateContacts", () => {
-	const contacts: ContactGetAllOutput = [];
+	const contacts: Array<ContactWithPhoto> = [];
 
 	it("should return a Map", () => {
 		contacts.length = 0; // clear the array

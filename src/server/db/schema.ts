@@ -60,3 +60,5 @@ export const photo = pgTable("photos", {
 		.notNull()
 		.references(() => contacts.id),
 });
+
+export type Photo = InferSelectModel<typeof photo>;
