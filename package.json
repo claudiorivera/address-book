@@ -36,7 +36,7 @@
 		"drizzle-orm": "0.38.4",
 		"drizzle-seed": "0.3.0",
 		"drizzle-zod": "0.6.1",
-		"lucide-react": "0.471.1",
+		"lucide-react": "0.473.0",
 		"next": "15.1.5",
 		"postgres": "3.4.5",
 		"react": "19.0.0",
