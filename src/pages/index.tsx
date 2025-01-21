@@ -50,8 +50,8 @@ export default function HomePage() {
 		>
 			<header className="p-4">
 				<div className="flex flex-col gap-4">
-					<div className="flex justify-between items-center">
-						<h1 className="text-xl font-bold text-primary-foreground">
+					<div className="flex items-center justify-between">
+						<h1 className="font-bold text-primary-foreground text-xl">
 							Address Book
 						</h1>
 						<DialogTrigger asChild>
@@ -89,7 +89,7 @@ export default function HomePage() {
 			<section>
 				{Array.from(collatedContacts.entries()).map(([label, contacts]) => (
 					<div key={label}>
-						<div className="sticky top-0 flex items-center px-4 py-3 text-sm font-semibold bg-background text-primary-foreground">
+						<div className="sticky top-0 flex items-center bg-background px-4 py-3 font-semibold text-primary-foreground text-sm">
 							{label}
 						</div>
 
@@ -97,7 +97,7 @@ export default function HomePage() {
 							<Link key={contact.id} href={`/contacts/${contact.id}`}>
 								<div className="flex items-center gap-4 py-2">
 									<div className="h-10" />
-									<strong className="text-sm font-medium">
+									<strong className="font-medium text-sm">
 										<NameOrPhoneNumber contact={contact} />
 									</strong>
 								</div>

@@ -68,7 +68,7 @@ export default function ContactDetailsPage({
 						</AvatarFallback>
 					</Avatar>
 
-					<h1 className="mb-4 text-2xl font-bold">
+					<h1 className="mb-4 font-bold text-2xl">
 						{contact.firstName} {contact.lastName}
 					</h1>
 
@@ -104,7 +104,7 @@ function ContactDetailsAddressSection({ contact }: { contact: Contact }) {
 	if (hasNoAddressFields) return null;
 
 	return (
-		<Card className="w-full bg-background flex flex-col gap-1 px-4 py-2 text-xs">
+		<Card className="flex w-full flex-col gap-1 bg-background px-4 py-2 text-xs">
 			<p className="text-primary-foreground">Address</p>
 			<a
 				target="_blank"
@@ -142,7 +142,7 @@ function ContactDetailsSection({
 	if (!value.length) return null;
 
 	return (
-		<Card className="w-full bg-background flex flex-col gap-1 px-4 py-2 text-xs">
+		<Card className="flex w-full flex-col gap-1 bg-background px-4 py-2 text-xs">
 			<p className="text-primary-foreground">{label}</p>
 			<ConditionalWrapper
 				condition={["email", "phoneNumber"].includes(field)}

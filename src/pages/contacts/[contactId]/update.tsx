@@ -74,7 +74,7 @@ function ResolvedUpdateContactPage({
 				</Link>
 				<button
 					type="submit"
-					className="text-sm text-primary-foreground"
+					className="text-primary-foreground text-sm"
 					form="update-contact"
 					disabled={isLoading}
 				>

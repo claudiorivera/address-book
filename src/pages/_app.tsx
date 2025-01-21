@@ -29,7 +29,7 @@ function Layout({ children }: { children: ReactNode }) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<main className="mx-auto max-w-3xl relative min-h-screen bg-primary">
+			<main className="relative mx-auto min-h-screen max-w-3xl bg-primary">
 				{!!isLoading && (
 					<Progress indeterminate className="absolute top-0 rounded-none" />
 				)}
