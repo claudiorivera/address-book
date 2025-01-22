@@ -42,7 +42,7 @@ function ResolvedUpdateContactPage({
 	const router = useRouter();
 	const utils = api.useUtils();
 
-	const { mutate: updateContact, isLoading } = api.contact.update.useMutation({
+	const { mutate: updateContact, isPending } = api.contact.update.useMutation({
 		onSettled: () =>
 			utils.contact.getById.invalidate({
 				id: contact.id,
@@ -76,7 +76,7 @@ function ResolvedUpdateContactPage({
 					type="submit"
 					className="text-primary-foreground text-sm"
 					form="update-contact"
-					disabled={isLoading}
+					disabled={isPending}
 				>
 					Done
 				</button>

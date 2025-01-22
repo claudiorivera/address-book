@@ -39,7 +39,7 @@ export default function HomePage() {
 		schema: createContactSchema,
 	});
 	const utils = api.useUtils();
-	const { mutate: createContact, isLoading } = api.contact.create.useMutation({
+	const { mutate: createContact, isPending } = api.contact.create.useMutation({
 		onSettled: () => utils.contact.getAll.invalidate(),
 	});
 
@@ -124,7 +124,7 @@ export default function HomePage() {
 				</Form>
 
 				<DialogFooter>
-					<Button type="submit" form="create-contact" disabled={isLoading}>
+					<Button type="submit" form="create-contact" disabled={isPending}>
 						Save
 					</Button>
 				</DialogFooter>
