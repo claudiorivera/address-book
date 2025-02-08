@@ -57,8 +57,8 @@ importers:
         specifier: 0.3.1
         version: 0.3.1(drizzle-orm@0.38.4(@libsql/client-wasm@0.14.0)(@types/react@19.0.8)(bun-types@1.1.37)(postgres@3.4.5)(react@19.0.0))
       drizzle-zod:
-        specifier: 0.6.1
-        version: 0.6.1(drizzle-orm@0.38.4(@libsql/client-wasm@0.14.0)(@types/react@19.0.8)(bun-types@1.1.37)(postgres@3.4.5)(react@19.0.0))(zod@3.24.1)
+        specifier: 0.7.0
+        version: 0.7.0(drizzle-orm@0.38.4(@libsql/client-wasm@0.14.0)(@types/react@19.0.8)(bun-types@1.1.37)(postgres@3.4.5)(react@19.0.0))(zod@3.24.1)
       lucide-react:
         specifier: 0.475.0
         version: 0.475.0(react@19.0.0)
@@ -1664,8 +1664,8 @@ packages:
       drizzle-orm:
         optional: true
 
-  drizzle-zod@0.6.1:
-    resolution: {integrity: sha512-huEbUgnsuR8tupnmLiyB2F1I2H9dswI3GfM36IbIqx9i0YUeYjRsDpJVyFVeziUvI1ogT9JHRL2Q03cC4QmvxA==}
+  drizzle-zod@0.7.0:
+    resolution: {integrity: sha512-xgCRYYVEzRkeXTS33GSMgoowe3vKsMNBjSI+cwG1oLQVEhAWWbqtb/AAMlm7tkmV4fG/uJjEmWzdzlEmTgWOoQ==}
     peerDependencies:
       drizzle-orm: '>=0.36.0'
       zod: '>=3.0.0'
@@ -3121,7 +3121,7 @@ snapshots:
     optionalDependencies:
       drizzle-orm: 0.38.4(@libsql/client-wasm@0.14.0)(@types/react@19.0.8)(bun-types@1.1.37)(postgres@3.4.5)(react@19.0.0)
 
-  drizzle-zod@0.6.1(drizzle-orm@0.38.4(@libsql/client-wasm@0.14.0)(@types/react@19.0.8)(bun-types@1.1.37)(postgres@3.4.5)(react@19.0.0))(zod@3.24.1):
+  drizzle-zod@0.7.0(drizzle-orm@0.38.4(@libsql/client-wasm@0.14.0)(@types/react@19.0.8)(bun-types@1.1.37)(postgres@3.4.5)(react@19.0.0))(zod@3.24.1):
     dependencies:
       drizzle-orm: 0.38.4(@libsql/client-wasm@0.14.0)(@types/react@19.0.8)(bun-types@1.1.37)(postgres@3.4.5)(react@19.0.0)
       zod: 3.24.1
