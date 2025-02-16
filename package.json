@@ -54,7 +54,7 @@
 		"@tailwindcss/postcss": "4.0.6",
 		"@tanstack/react-query-devtools": "5.66.0",
 		"@types/node": "22.13.1",
-		"@types/react": "19.0.8",
+		"@types/react": "19.0.9",
 		"@types/react-dom": "19.0.3",
 		"drizzle-kit": "0.30.4",
 		"postcss": "8.5.2",
