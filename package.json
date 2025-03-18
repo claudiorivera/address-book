@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"type": "module",
-	"packageManager": "pnpm@10.6.3",
+	"packageManager": "pnpm@10.6.4",
 	"scripts": {
 		"build": "next build",
 		"vercel-build": "pnpm db:migrate && next build",
