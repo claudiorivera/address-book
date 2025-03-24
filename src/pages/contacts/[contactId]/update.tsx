@@ -1,23 +1,39 @@
+import { createServerSideHelpers } from "@trpc/react-query/server";
 import type { GetServerSidePropsContext } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import SuperJSON from "superjson";
 import { ContactForm } from "~/components/contact-form";
 import { Form } from "~/components/ui/form";
 import { useZodForm } from "~/hooks/use-zod-form";
-import type { ContactGetByIdOutput } from "~/server/api/routers/contact";
+import { appRouter } from "~/server/api/root";
+import { db } from "~/server/db";
 import { updateContactSchema } from "~/server/db/schema";
 import { api } from "~/utils/api";
 
-export function getServerSideProps({ query }: GetServerSidePropsContext) {
-	if (typeof query.contactId !== "string") {
+export async function getServerSideProps(
+	context: GetServerSidePropsContext<{ contactId: string }>,
+) {
+	if (typeof context.query.contactId !== "string") {
 		return {
 			notFound: true,
 		};
 	}
 
+	const helpers = createServerSideHelpers({
+		router: appRouter,
+		ctx: {
+			db,
+		},
+		transformer: SuperJSON,
+	});
+
+	await helpers.contact.getById.prefetch({ id: context.query.contactId });
+
 	return {
 		props: {
-			contactId: query.contactId,
+			contactId: context.query.contactId,
+			trpcState: helpers.dehydrate(),
 		},
 	};
 }
@@ -31,14 +47,10 @@ export default function UpdateContactPage({
 		id: contactId,
 	});
 
-	if (!contact) return null;
+	if (!contact) {
+		throw new Error("Unreachable");
+	}
 
-	return <ResolvedUpdateContactPage contact={contact} />;
-}
-
-function ResolvedUpdateContactPage({
-	contact,
-}: { contact: NonNullable<ContactGetByIdOutput> }) {
 	const router = useRouter();
 	const utils = api.useUtils();
 

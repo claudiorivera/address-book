@@ -1,5 +1,7 @@
+import { createServerSideHelpers } from "@trpc/react-query/server";
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import SuperJSON from "superjson";
 import { ContactForm } from "~/components/contact-form";
 import { Button } from "~/components/ui/button";
 import {
@@ -13,7 +15,9 @@ import {
 import { Form } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
 import { useZodForm } from "~/hooks/use-zod-form";
+import { appRouter } from "~/server/api/root";
 import type { ContactGetAllOutput } from "~/server/api/routers/contact";
+import { db } from "~/server/db";
 import { createContactSchema } from "~/server/db/schema";
 import { api } from "~/utils/api";
 import { collateContacts } from "~/utils/collate-contacts";
@@ -21,8 +25,31 @@ import { filterByQuery } from "~/utils/filter-by-query";
 
 type Contact = ContactGetAllOutput[number];
 
+export async function getServerSideProps() {
+	const helpers = createServerSideHelpers({
+		router: appRouter,
+		ctx: {
+			db,
+		},
+		transformer: SuperJSON,
+	});
+
+	await helpers.contact.getAll.prefetch();
+
+	return {
+		props: {
+			trpcState: helpers.dehydrate(),
+		},
+	};
+}
+
 export default function HomePage() {
-	const { data: contacts = [] } = api.contact.getAll.useQuery();
+	const { data: contacts } = api.contact.getAll.useQuery();
+
+	if (!contacts) {
+		throw new Error("Unreachable");
+	}
+
 	const [query, setQuery] = useState("");
 	const filteredContacts = useMemo(
 		() => filterByQuery(contacts, query),
@@ -98,7 +125,7 @@ export default function HomePage() {
 								<div className="flex items-center gap-4 py-2">
 									<div className="h-10" />
 									<strong className="font-medium text-sm">
-										<NameOrPhoneNumber contact={contact} />
+										<ContactDisplay contact={contact} />
 									</strong>
 								</div>
 							</Link>
@@ -133,7 +160,7 @@ export default function HomePage() {
 	);
 }
 
-function NameOrPhoneNumber({ contact }: { contact: Contact }) {
+function ContactDisplay({ contact }: { contact: Contact }) {
 	if (contact.firstName ?? contact.lastName) {
 		return (
 			<span>
