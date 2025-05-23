@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"type": "module",
-	"packageManager": "pnpm@10.10.0",
+	"packageManager": "pnpm@10.11.0",
 	"scripts": {
 		"build": "next build",
 		"vercel-build": "pnpm db:migrate && next build",
@@ -25,7 +25,7 @@
 		"@radix-ui/react-progress": "1.1.7",
 		"@radix-ui/react-slot": "1.2.3",
 		"@t3-oss/env-nextjs": "0.13.4",
-		"@tanstack/react-query": "5.75.7",
+		"@tanstack/react-query": "5.76.2",
 		"@trpc/client": "11.1.2",
 		"@trpc/next": "11.1.2",
 		"@trpc/react-query": "11.1.2",
@@ -34,7 +34,7 @@
 		"clsx": "2.1.1",
 		"drizzle-orm": "0.43.1",
 		"drizzle-seed": "0.3.1",
-		"drizzle-zod": "0.7.1",
+		"drizzle-zod": "0.8.1",
 		"lucide-react": "0.511.0",
 		"next": "15.3.2",
 		"postgres": "3.4.7",
@@ -44,7 +44,7 @@
 		"superjson": "2.2.2",
 		"tailwind-merge": "3.3.0",
 		"tailwindcss-animate": "1.0.7",
-		"zod": "3.24.4"
+		"zod": "3.25.23"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
@@ -52,7 +52,7 @@
 		"@paralleldrive/cuid2": "2.2.2",
 		"@tailwindcss/forms": "0.5.10",
 		"@tailwindcss/postcss": "4.1.7",
-		"@tanstack/react-query-devtools": "5.75.7",
+		"@tanstack/react-query-devtools": "5.76.2",
 		"@types/node": "22.15.21",
 		"@types/react": "19.1.5",
 		"@types/react-dom": "19.1.5",
