@@ -59,7 +59,7 @@
 		"drizzle-kit": "0.31.1",
 		"postcss": "8.5.4",
 		"tailwindcss": "4.1.8",
-		"tsx": "4.19.4",
+		"tsx": "4.20.0",
 		"typescript": "5.8.3",
 		"vitest": "3.2.3"
 	}
