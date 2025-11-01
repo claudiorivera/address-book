@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@hookform/resolvers':
         specifier: 5.0.1
-        version: 5.0.1(react-hook-form@7.56.4(react@19.1.0))
+        version: 5.0.1(react-hook-form@7.66.0(react@19.1.0))
       '@radix-ui/react-avatar':
         specifier: 1.1.10
         version: 1.1.10(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -75,8 +75,8 @@ importers:
         specifier: 19.1.0
         version: 19.1.0(react@19.1.0)
       react-hook-form:
-        specifier: 7.56.4
-        version: 7.56.4(react@19.1.0)
+        specifier: 7.66.0
+        version: 7.66.0(react@19.1.0)
       superjson:
         specifier: 2.2.2
         version: 2.2.2
@@ -1714,8 +1714,8 @@ packages:
     peerDependencies:
       react: ^19.1.0
 
-  react-hook-form@7.56.4:
-    resolution: {integrity: sha512-Rob7Ftz2vyZ/ZGsQZPaRdIefkgOSrQSPXfqBdvOPwJfoGnjwRJUs7EM7Kc1mcoDv3NOtqBzPGbcMB8CGn9CKgw==}
+  react-hook-form@7.66.0:
+    resolution: {integrity: sha512-xXBqsWGKrY46ZqaHDo+ZUYiMUgi8suYu5kdrS20EG8KiL7VRQitEbNjm+UcrDYrNi1YLyfpmAeGjCZYXLT9YBw==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18 || ^19
@@ -2217,10 +2217,10 @@ snapshots:
 
   '@faker-js/faker@9.9.0': {}
 
-  '@hookform/resolvers@5.0.1(react-hook-form@7.56.4(react@19.1.0))':
+  '@hookform/resolvers@5.0.1(react-hook-form@7.66.0(react@19.1.0))':
     dependencies:
       '@standard-schema/utils': 0.3.0
-      react-hook-form: 7.56.4(react@19.1.0)
+      react-hook-form: 7.66.0(react@19.1.0)
 
   '@img/sharp-darwin-arm64@0.34.1':
     optionalDependencies:
@@ -3179,7 +3179,7 @@ snapshots:
       react: 19.1.0
       scheduler: 0.26.0
 
-  react-hook-form@7.56.4(react@19.1.0):
+  react-hook-form@7.66.0(react@19.1.0):
     dependencies:
       react: 19.1.0
 
