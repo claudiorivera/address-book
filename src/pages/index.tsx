@@ -1,6 +1,8 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import { createServerSideHelpers } from "@trpc/react-query/server";
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { useForm } from "react-hook-form";
 import SuperJSON from "superjson";
 import { ContactForm } from "~/components/contact-form";
 import { Button } from "~/components/ui/button";
@@ -14,7 +16,6 @@ import {
 } from "~/components/ui/dialog";
 import { Form } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
-import { useZodForm } from "~/hooks/use-zod-form";
 import { appRouter } from "~/server/api/root";
 import type { ContactGetAllOutput } from "~/server/api/routers/contact";
 import { db } from "~/server/db";
@@ -62,8 +63,8 @@ export default function HomePage() {
 
 	const [isCreateContactDialogOpen, setIsCreateContactDialogOpen] =
 		useState(false);
-	const form = useZodForm({
-		schema: createContactSchema,
+	const form = useForm({
+		resolver: zodResolver(createContactSchema),
 	});
 	const utils = api.useUtils();
 	const { mutate: createContact, isPending } = api.contact.create.useMutation({

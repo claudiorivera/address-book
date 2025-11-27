@@ -1,11 +1,12 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import { createServerSideHelpers } from "@trpc/react-query/server";
 import type { GetServerSidePropsContext } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
 import SuperJSON from "superjson";
 import { ContactForm } from "~/components/contact-form";
 import { Form } from "~/components/ui/form";
-import { useZodForm } from "~/hooks/use-zod-form";
 import { appRouter } from "~/server/api/root";
 import { db } from "~/server/db";
 import { updateContactSchema } from "~/server/db/schema";
@@ -61,8 +62,8 @@ export default function UpdateContactPage({
 			}),
 	});
 
-	const form = useZodForm({
-		schema: updateContactSchema,
+	const form = useForm({
+		resolver: zodResolver(updateContactSchema),
 		values: {
 			id: contact.id,
 			firstName: contact.firstName ?? undefined,

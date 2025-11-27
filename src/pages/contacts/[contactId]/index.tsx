@@ -125,11 +125,7 @@ function ContactDetails({ children }: { children: ReactNode }) {
 }
 
 ContactDetails.Heading = ContactDetailsHeading;
-function ContactDetailsHeading({
-	children,
-}: {
-	children: ReactNode;
-}) {
+function ContactDetailsHeading({ children }: { children: ReactNode }) {
 	return <p className="text-primary-foreground">{children}</p>;
 }
 

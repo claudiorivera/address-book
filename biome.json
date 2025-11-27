@@ -1,32 +1,36 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.3.7/schema.json",
 	"files": {
-		"ignore": ["server/db/migrations/*"]
+		"includes": ["**", "!**/server/db/migrations/**/*"]
 	},
 	"vcs": {
 		"enabled": true,
 		"useIgnoreFile": true,
 		"clientKind": "git"
 	},
-	"organizeImports": {
-		"enabled": true
+	"assist": { "actions": { "source": { "organizeImports": "on" } } },
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		}
 	},
 	"linter": {
 		"enabled": true,
 		"rules": {
 			"recommended": true,
 			"style": {
-				"useFragmentSyntax": {
-					"fix": "safe",
-					"level": "error"
-				},
 				"useConsistentArrayType": {
 					"fix": "safe",
 					"level": "warn",
 					"options": {
 						"syntax": "generic"
 					}
-				}
+				},
+				"useConsistentCurlyBraces": {
+					"fix": "safe",
+					"level": "error"
+				},
+				"noEnum": "error"
 			},
 			"correctness": {
 				"noUnusedImports": "error",
@@ -41,12 +45,7 @@
 					"options": {
 						"functions": ["cn", "clsx"]
 					}
-				},
-				"useConsistentCurlyBraces": {
-					"fix": "safe",
-					"level": "error"
-				},
-				"noEnum": "error"
+				}
 			}
 		}
 	}
