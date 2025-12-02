@@ -6,7 +6,7 @@
 	"packageManager": "pnpm@10.20.0",
 	"scripts": {
 		"build": "next build",
-		"vercel-build": "pnpm db:migrate && next build",
+		"vercel-build": "pnpm db:push && next build",
 		"dev": "next dev --turbopack",
 		"check:fix": "pnpm biome check --write src",
 		"check-types": "tsc --noEmit",
