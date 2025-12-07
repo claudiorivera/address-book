@@ -4,15 +4,12 @@ It's an address book! It lets you add and manage your contacts.
 
 ## Technologies Used
 
-- [pnpm](https://pnpm.io)
-- [`create-t3-app`](https://create.t3.gg)
-- TypeScript
-- Next.js
-- tRPC
-- Tailwind
-- Drizzle ORM
-- Postgres
-- NextAuth.js
+- [Next.js](https://nextjs.org)
+- [tRPC](https://trpc.io)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Drizzle ORM](https://orm.drizzle.team)
+- [React Hook Form](https://react-hook-form.com)
+- [Vitest](https://vitest.dev)
 
 ## Prerequisites
 
