@@ -28,7 +28,7 @@ importers:
         version: 1.2.4(@types/react@19.2.7)(react@19.2.3)
       '@t3-oss/env-nextjs':
         specifier: 0.13.10
-        version: 0.13.10(arktype@2.1.20)(typescript@5.9.3)(zod@4.1.13)
+        version: 0.13.10(arktype@2.1.20)(typescript@5.9.3)(zod@4.2.1)
       '@tanstack/react-query':
         specifier: 5.90.12
         version: 5.90.12(react@19.2.3)
@@ -58,7 +58,7 @@ importers:
         version: 0.3.1(drizzle-orm@0.45.1(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.7))
       drizzle-zod:
         specifier: 0.8.3
-        version: 0.8.3(drizzle-orm@0.45.1(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.7))(zod@4.1.13)
+        version: 0.8.3(drizzle-orm@0.45.1(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.7))(zod@4.2.1)
       lucide-react:
         specifier: 0.562.0
         version: 0.562.0(react@19.2.3)
@@ -87,8 +87,8 @@ importers:
         specifier: 1.0.7
         version: 1.0.7(tailwindcss@4.1.18)
       zod:
-        specifier: 4.1.13
-        version: 4.1.13
+        specifier: 4.2.1
+        version: 4.2.1
     devDependencies:
       '@biomejs/biome':
         specifier: 2.3.10
@@ -2160,8 +2160,8 @@ packages:
     engines: {node: '>= 14'}
     hasBin: true
 
-  zod@4.1.13:
-    resolution: {integrity: sha512-AvvthqfqrAhNH9dnfmrfKzX5upOdjUVJYFqNSlkmGf64gRaTzlPwz99IHYnVs28qYAybvAlBV+H7pn0saFY4Ig==}
+  zod@4.2.1:
+    resolution: {integrity: sha512-0wZ1IRqGGhMP76gLqz8EyfBXKk0J2qo2+H3fi4mcUP/KtTocoX08nmIAHl1Z2kJIZbZee8KOpBCSNPRgauucjw==}
 
 snapshots:
 
@@ -2898,19 +2898,19 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@t3-oss/env-core@0.13.10(arktype@2.1.20)(typescript@5.9.3)(zod@4.1.13)':
+  '@t3-oss/env-core@0.13.10(arktype@2.1.20)(typescript@5.9.3)(zod@4.2.1)':
     optionalDependencies:
       arktype: 2.1.20
       typescript: 5.9.3
-      zod: 4.1.13
+      zod: 4.2.1
 
-  '@t3-oss/env-nextjs@0.13.10(arktype@2.1.20)(typescript@5.9.3)(zod@4.1.13)':
+  '@t3-oss/env-nextjs@0.13.10(arktype@2.1.20)(typescript@5.9.3)(zod@4.2.1)':
     dependencies:
-      '@t3-oss/env-core': 0.13.10(arktype@2.1.20)(typescript@5.9.3)(zod@4.1.13)
+      '@t3-oss/env-core': 0.13.10(arktype@2.1.20)(typescript@5.9.3)(zod@4.2.1)
     optionalDependencies:
       arktype: 2.1.20
       typescript: 5.9.3
-      zod: 4.1.13
+      zod: 4.2.1
 
   '@tailwindcss/forms@0.5.11(tailwindcss@4.1.18)':
     dependencies:
@@ -3171,10 +3171,10 @@ snapshots:
     optionalDependencies:
       drizzle-orm: 0.45.1(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.7)
 
-  drizzle-zod@0.8.3(drizzle-orm@0.45.1(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.7))(zod@4.1.13):
+  drizzle-zod@0.8.3(drizzle-orm@0.45.1(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.7))(zod@4.2.1):
     dependencies:
       drizzle-orm: 0.45.1(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.7)
-      zod: 4.1.13
+      zod: 4.2.1
 
   enhanced-resolve@5.18.3:
     dependencies:
@@ -3685,4 +3685,4 @@ snapshots:
   yaml@2.5.1:
     optional: true
 
-  zod@4.1.13: {}
+  zod@4.2.1: {}
