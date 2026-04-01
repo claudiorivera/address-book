@@ -51,14 +51,14 @@ importers:
         specifier: 2.1.1
         version: 2.1.1
       drizzle-orm:
-        specifier: 0.45.1
-        version: 0.45.1(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.8)
+        specifier: 0.45.2
+        version: 0.45.2(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.8)
       drizzle-seed:
         specifier: 0.3.1
-        version: 0.3.1(drizzle-orm@0.45.1(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.8))
+        version: 0.3.1(drizzle-orm@0.45.2(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.8))
       drizzle-zod:
         specifier: 0.8.3
-        version: 0.8.3(drizzle-orm@0.45.1(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.8))(zod@4.3.6)
+        version: 0.8.3(drizzle-orm@0.45.2(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.8))(zod@4.3.6)
       lucide-react:
         specifier: 0.577.0
         version: 0.577.0(react@19.2.4)
@@ -1624,8 +1624,8 @@ packages:
     resolution: {integrity: sha512-7OZcmQUrdGI+DUNNsKBn1aW8qSoKuTH7d0mYgSP8bAzdFzKoovxEFnoGQp2dVs82EOJeYycqRtciopszwUf8bw==}
     hasBin: true
 
-  drizzle-orm@0.45.1:
-    resolution: {integrity: sha512-Te0FOdKIistGNPMq2jscdqngBRfBpC8uMFVwqjf6gtTVJHIQ/dosgV/CLBU2N4ZJBsXL5savCba9b0YJskKdcA==}
+  drizzle-orm@0.45.2:
+    resolution: {integrity: sha512-kY0BSaTNYWnoDMVoyY8uxmyHjpJW1geOmBMdSSicKo9CIIWkSxMIj2rkeSR51b8KAPB7m+qysjuHme5nKP+E5Q==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=4'
@@ -3234,22 +3234,22 @@ snapshots:
       esbuild: 0.25.12
       tsx: 4.21.0
 
-  drizzle-orm@0.45.1(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.8):
+  drizzle-orm@0.45.2(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.8):
     optionalDependencies:
       '@libsql/client-wasm': 0.14.0
       bun-types: 1.1.37
       gel: 2.0.0
       postgres: 3.4.8
 
-  drizzle-seed@0.3.1(drizzle-orm@0.45.1(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.8)):
+  drizzle-seed@0.3.1(drizzle-orm@0.45.2(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.8)):
     dependencies:
       pure-rand: 6.1.0
     optionalDependencies:
-      drizzle-orm: 0.45.1(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.8)
+      drizzle-orm: 0.45.2(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.8)
 
-  drizzle-zod@0.8.3(drizzle-orm@0.45.1(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.8))(zod@4.3.6):
+  drizzle-zod@0.8.3(drizzle-orm@0.45.2(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.8))(zod@4.3.6):
     dependencies:
-      drizzle-orm: 0.45.1(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.8)
+      drizzle-orm: 0.45.2(@libsql/client-wasm@0.14.0)(bun-types@1.1.37)(gel@2.0.0)(postgres@3.4.8)
       zod: 4.3.6
 
   enhanced-resolve@5.19.0:
