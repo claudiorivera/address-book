@@ -28,22 +28,22 @@ importers:
         version: 1.2.4(@types/react@19.2.14)(react@19.2.5)
       '@t3-oss/env-nextjs':
         specifier: 0.13.11
-        version: 0.13.11(arktype@2.1.20)(typescript@5.9.3)(zod@4.3.6)
+        version: 0.13.11(arktype@2.1.20)(typescript@6.0.2)(zod@4.3.6)
       '@tanstack/react-query':
         specifier: 5.99.0
         version: 5.99.0(react@19.2.5)
       '@trpc/client':
         specifier: 11.16.0
-        version: 11.16.0(@trpc/server@11.16.0(typescript@5.9.3))(typescript@5.9.3)
+        version: 11.16.0(@trpc/server@11.16.0(typescript@6.0.2))(typescript@6.0.2)
       '@trpc/next':
         specifier: 11.16.0
-        version: 11.16.0(@tanstack/react-query@5.99.0(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@5.9.3))(typescript@5.9.3))(@trpc/react-query@11.16.0(@tanstack/react-query@5.99.0(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@5.9.3))(typescript@5.9.3))(@trpc/server@11.16.0(typescript@5.9.3))(react@19.2.5)(typescript@5.9.3))(@trpc/server@11.16.0(typescript@5.9.3))(next@16.2.3(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@5.9.3)
+        version: 11.16.0(@tanstack/react-query@5.99.0(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.2))(typescript@6.0.2))(@trpc/react-query@11.16.0(@tanstack/react-query@5.99.0(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.2))(typescript@6.0.2))(@trpc/server@11.16.0(typescript@6.0.2))(react@19.2.5)(typescript@6.0.2))(@trpc/server@11.16.0(typescript@6.0.2))(next@16.2.3(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@6.0.2)
       '@trpc/react-query':
         specifier: 11.16.0
-        version: 11.16.0(@tanstack/react-query@5.99.0(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@5.9.3))(typescript@5.9.3))(@trpc/server@11.16.0(typescript@5.9.3))(react@19.2.5)(typescript@5.9.3)
+        version: 11.16.0(@tanstack/react-query@5.99.0(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.2))(typescript@6.0.2))(@trpc/server@11.16.0(typescript@6.0.2))(react@19.2.5)(typescript@6.0.2)
       '@trpc/server':
         specifier: 11.16.0
-        version: 11.16.0(typescript@5.9.3)
+        version: 11.16.0(typescript@6.0.2)
       class-variance-authority:
         specifier: 0.7.1
         version: 0.7.1
@@ -130,8 +130,8 @@ importers:
         specifier: 4.21.0
         version: 4.21.0
       typescript:
-        specifier: 5.9.3
-        version: 5.9.3
+        specifier: 6.0.2
+        version: 6.0.2
       vitest:
         specifier: 4.1.4
         version: 4.1.4(@types/node@25.6.0)(vite@7.2.6(@types/node@25.6.0)(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.21.0)(yaml@2.5.1))
@@ -2100,8 +2100,8 @@ packages:
     engines: {node: '>=18.0.0'}
     hasBin: true
 
-  typescript@5.9.3:
-    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+  typescript@6.0.2:
+    resolution: {integrity: sha512-bGdAIrZ0wiGDo5l8c++HWtbaNCWTS4UTv7RaTH/ThVIgjkveJt83m74bBHMJkuCbslY8ixgLBVZJIOiQlQTjfQ==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -2979,18 +2979,18 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@t3-oss/env-core@0.13.11(arktype@2.1.20)(typescript@5.9.3)(zod@4.3.6)':
+  '@t3-oss/env-core@0.13.11(arktype@2.1.20)(typescript@6.0.2)(zod@4.3.6)':
     optionalDependencies:
       arktype: 2.1.20
-      typescript: 5.9.3
+      typescript: 6.0.2
       zod: 4.3.6
 
-  '@t3-oss/env-nextjs@0.13.11(arktype@2.1.20)(typescript@5.9.3)(zod@4.3.6)':
+  '@t3-oss/env-nextjs@0.13.11(arktype@2.1.20)(typescript@6.0.2)(zod@4.3.6)':
     dependencies:
-      '@t3-oss/env-core': 0.13.11(arktype@2.1.20)(typescript@5.9.3)(zod@4.3.6)
+      '@t3-oss/env-core': 0.13.11(arktype@2.1.20)(typescript@6.0.2)(zod@4.3.6)
     optionalDependencies:
       arktype: 2.1.20
-      typescript: 5.9.3
+      typescript: 6.0.2
       zod: 4.3.6
 
   '@tailwindcss/forms@0.5.11(tailwindcss@4.2.2)':
@@ -3082,34 +3082,34 @@ snapshots:
       '@tanstack/query-core': 5.99.0
       react: 19.2.5
 
-  '@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@5.9.3))(typescript@5.9.3)':
+  '@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.2))(typescript@6.0.2)':
     dependencies:
-      '@trpc/server': 11.16.0(typescript@5.9.3)
-      typescript: 5.9.3
+      '@trpc/server': 11.16.0(typescript@6.0.2)
+      typescript: 6.0.2
 
-  '@trpc/next@11.16.0(@tanstack/react-query@5.99.0(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@5.9.3))(typescript@5.9.3))(@trpc/react-query@11.16.0(@tanstack/react-query@5.99.0(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@5.9.3))(typescript@5.9.3))(@trpc/server@11.16.0(typescript@5.9.3))(react@19.2.5)(typescript@5.9.3))(@trpc/server@11.16.0(typescript@5.9.3))(next@16.2.3(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@5.9.3)':
+  '@trpc/next@11.16.0(@tanstack/react-query@5.99.0(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.2))(typescript@6.0.2))(@trpc/react-query@11.16.0(@tanstack/react-query@5.99.0(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.2))(typescript@6.0.2))(@trpc/server@11.16.0(typescript@6.0.2))(react@19.2.5)(typescript@6.0.2))(@trpc/server@11.16.0(typescript@6.0.2))(next@16.2.3(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@6.0.2)':
     dependencies:
-      '@trpc/client': 11.16.0(@trpc/server@11.16.0(typescript@5.9.3))(typescript@5.9.3)
-      '@trpc/server': 11.16.0(typescript@5.9.3)
+      '@trpc/client': 11.16.0(@trpc/server@11.16.0(typescript@6.0.2))(typescript@6.0.2)
+      '@trpc/server': 11.16.0(typescript@6.0.2)
       next: 16.2.3(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       react: 19.2.5
       react-dom: 19.2.5(react@19.2.5)
-      typescript: 5.9.3
+      typescript: 6.0.2
     optionalDependencies:
       '@tanstack/react-query': 5.99.0(react@19.2.5)
-      '@trpc/react-query': 11.16.0(@tanstack/react-query@5.99.0(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@5.9.3))(typescript@5.9.3))(@trpc/server@11.16.0(typescript@5.9.3))(react@19.2.5)(typescript@5.9.3)
+      '@trpc/react-query': 11.16.0(@tanstack/react-query@5.99.0(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.2))(typescript@6.0.2))(@trpc/server@11.16.0(typescript@6.0.2))(react@19.2.5)(typescript@6.0.2)
 
-  '@trpc/react-query@11.16.0(@tanstack/react-query@5.99.0(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@5.9.3))(typescript@5.9.3))(@trpc/server@11.16.0(typescript@5.9.3))(react@19.2.5)(typescript@5.9.3)':
+  '@trpc/react-query@11.16.0(@tanstack/react-query@5.99.0(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.2))(typescript@6.0.2))(@trpc/server@11.16.0(typescript@6.0.2))(react@19.2.5)(typescript@6.0.2)':
     dependencies:
       '@tanstack/react-query': 5.99.0(react@19.2.5)
-      '@trpc/client': 11.16.0(@trpc/server@11.16.0(typescript@5.9.3))(typescript@5.9.3)
-      '@trpc/server': 11.16.0(typescript@5.9.3)
+      '@trpc/client': 11.16.0(@trpc/server@11.16.0(typescript@6.0.2))(typescript@6.0.2)
+      '@trpc/server': 11.16.0(typescript@6.0.2)
       react: 19.2.5
-      typescript: 5.9.3
+      typescript: 6.0.2
 
-  '@trpc/server@11.16.0(typescript@5.9.3)':
+  '@trpc/server@11.16.0(typescript@6.0.2)':
     dependencies:
-      typescript: 5.9.3
+      typescript: 6.0.2
 
   '@types/chai@5.2.3':
     dependencies:
@@ -3676,7 +3676,7 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  typescript@5.9.3: {}
+  typescript@6.0.2: {}
 
   undici-types@5.26.5:
     optional: true
