@@ -30,17 +30,17 @@ importers:
         specifier: 0.13.11
         version: 0.13.11(arktype@2.1.20)(typescript@6.0.3)(zod@4.3.6)
       '@tanstack/react-query':
-        specifier: 5.100.6
-        version: 5.100.6(react@19.2.5)
+        specifier: 5.100.7
+        version: 5.100.7(react@19.2.5)
       '@trpc/client':
         specifier: 11.16.0
         version: 11.16.0(@trpc/server@11.16.0(typescript@6.0.3))(typescript@6.0.3)
       '@trpc/next':
         specifier: 11.16.0
-        version: 11.16.0(@tanstack/react-query@5.100.6(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.3))(typescript@6.0.3))(@trpc/react-query@11.16.0(@tanstack/react-query@5.100.6(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.3))(typescript@6.0.3))(@trpc/server@11.16.0(typescript@6.0.3))(react@19.2.5)(typescript@6.0.3))(@trpc/server@11.16.0(typescript@6.0.3))(next@16.2.4(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@6.0.3)
+        version: 11.16.0(@tanstack/react-query@5.100.7(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.3))(typescript@6.0.3))(@trpc/react-query@11.16.0(@tanstack/react-query@5.100.7(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.3))(typescript@6.0.3))(@trpc/server@11.16.0(typescript@6.0.3))(react@19.2.5)(typescript@6.0.3))(@trpc/server@11.16.0(typescript@6.0.3))(next@16.2.4(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@6.0.3)
       '@trpc/react-query':
         specifier: 11.16.0
-        version: 11.16.0(@tanstack/react-query@5.100.6(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.3))(typescript@6.0.3))(@trpc/server@11.16.0(typescript@6.0.3))(react@19.2.5)(typescript@6.0.3)
+        version: 11.16.0(@tanstack/react-query@5.100.7(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.3))(typescript@6.0.3))(@trpc/server@11.16.0(typescript@6.0.3))(react@19.2.5)(typescript@6.0.3)
       '@trpc/server':
         specifier: 11.16.0
         version: 11.16.0(typescript@6.0.3)
@@ -106,8 +106,8 @@ importers:
         specifier: 4.2.4
         version: 4.2.4
       '@tanstack/react-query-devtools':
-        specifier: 5.100.6
-        version: 5.100.6(@tanstack/react-query@5.100.6(react@19.2.5))(react@19.2.5)
+        specifier: 5.100.7
+        version: 5.100.7(@tanstack/react-query@5.100.7(react@19.2.5))(react@19.2.5)
       '@types/node':
         specifier: 25.6.0
         version: 25.6.0
@@ -1443,20 +1443,20 @@ packages:
   '@tailwindcss/postcss@4.2.4':
     resolution: {integrity: sha512-wgAVj6nUWAolAu8YFvzT2cTBIElWHkjZwFYovF+xsqKsW2ADxM/X2opxj5NsF/qVccAOjRNe8X2IdPzMsWyHTg==}
 
-  '@tanstack/query-core@5.100.6':
-    resolution: {integrity: sha512-Os2CPUr98to98RYm+D4qGqGkiffn7MGSyl2547a4MljVkHE30AMJRqTiyCqBfMwzAx/I91vCkAxp5tHSla6Twg==}
+  '@tanstack/query-core@5.100.7':
+    resolution: {integrity: sha512-5R7i6ENJLhVeeJrrUz7jKBXUXv/BJrxf9FQJSkR13bPrb3zOcE8A0Z0PxYCcsKPOsiIlTibrBL/zZbtUO1TFyQ==}
 
-  '@tanstack/query-devtools@5.100.6':
-    resolution: {integrity: sha512-2SiNwlOiAdTbqktCSmwlXZH8x8mckSbES2O0bdr3qZNhdQl5DCtImZx0S3HGeNHWTIkzTaHx2Isg+bD4M3WRIg==}
+  '@tanstack/query-devtools@5.100.7':
+    resolution: {integrity: sha512-bgn0QV1kEGgHHRDaX6JHb+m7KHZ0r/TIyjARYhGhG/PBpbzR74qwpRhdjW+45CtwNseSU4HcqWJVDw1VozCU6w==}
 
-  '@tanstack/react-query-devtools@5.100.6':
-    resolution: {integrity: sha512-sz3ksMKA2t1rx0+Odzb0x1A3pXH/SVf7fzlzd3sKXzwXz8980f5sbOwfQD6+UfTG8G4Y2KaIg9e3sBn+uC4VTg==}
+  '@tanstack/react-query-devtools@5.100.7':
+    resolution: {integrity: sha512-zBaluzWz1mPAe+bxk2M08wqWAbvyb8d+q8LecQ4TQYYgfDLHBzjAk8GvEP2Mr3sbMdUniC0p88D/Pol0aoKAKA==}
     peerDependencies:
-      '@tanstack/react-query': ^5.100.6
+      '@tanstack/react-query': ^5.100.7
       react: ^18 || ^19
 
-  '@tanstack/react-query@5.100.6':
-    resolution: {integrity: sha512-uVSrps0PV16Cxmcn2rvL+dUhwTpTUtiRW347AEeYxMZXO2pZe9ja7E24PAMGoQ5u2g89DD8u4QhOviBk+RN8RA==}
+  '@tanstack/react-query@5.100.7':
+    resolution: {integrity: sha512-LoISYWz8dOOuQbeIctF8K6yi42TWtR1WPGpwGuRUpF3u79JVVIg/PVR0MQdIA0VSHqD/ydf/b7PhKTkg3I4fLQ==}
     peerDependencies:
       react: ^18 || ^19
 
@@ -3067,19 +3067,19 @@ snapshots:
       postcss: 8.5.13
       tailwindcss: 4.2.4
 
-  '@tanstack/query-core@5.100.6': {}
+  '@tanstack/query-core@5.100.7': {}
 
-  '@tanstack/query-devtools@5.100.6': {}
+  '@tanstack/query-devtools@5.100.7': {}
 
-  '@tanstack/react-query-devtools@5.100.6(@tanstack/react-query@5.100.6(react@19.2.5))(react@19.2.5)':
+  '@tanstack/react-query-devtools@5.100.7(@tanstack/react-query@5.100.7(react@19.2.5))(react@19.2.5)':
     dependencies:
-      '@tanstack/query-devtools': 5.100.6
-      '@tanstack/react-query': 5.100.6(react@19.2.5)
+      '@tanstack/query-devtools': 5.100.7
+      '@tanstack/react-query': 5.100.7(react@19.2.5)
       react: 19.2.5
 
-  '@tanstack/react-query@5.100.6(react@19.2.5)':
+  '@tanstack/react-query@5.100.7(react@19.2.5)':
     dependencies:
-      '@tanstack/query-core': 5.100.6
+      '@tanstack/query-core': 5.100.7
       react: 19.2.5
 
   '@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.3))(typescript@6.0.3)':
@@ -3087,7 +3087,7 @@ snapshots:
       '@trpc/server': 11.16.0(typescript@6.0.3)
       typescript: 6.0.3
 
-  '@trpc/next@11.16.0(@tanstack/react-query@5.100.6(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.3))(typescript@6.0.3))(@trpc/react-query@11.16.0(@tanstack/react-query@5.100.6(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.3))(typescript@6.0.3))(@trpc/server@11.16.0(typescript@6.0.3))(react@19.2.5)(typescript@6.0.3))(@trpc/server@11.16.0(typescript@6.0.3))(next@16.2.4(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@6.0.3)':
+  '@trpc/next@11.16.0(@tanstack/react-query@5.100.7(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.3))(typescript@6.0.3))(@trpc/react-query@11.16.0(@tanstack/react-query@5.100.7(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.3))(typescript@6.0.3))(@trpc/server@11.16.0(typescript@6.0.3))(react@19.2.5)(typescript@6.0.3))(@trpc/server@11.16.0(typescript@6.0.3))(next@16.2.4(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@6.0.3)':
     dependencies:
       '@trpc/client': 11.16.0(@trpc/server@11.16.0(typescript@6.0.3))(typescript@6.0.3)
       '@trpc/server': 11.16.0(typescript@6.0.3)
@@ -3096,12 +3096,12 @@ snapshots:
       react-dom: 19.2.5(react@19.2.5)
       typescript: 6.0.3
     optionalDependencies:
-      '@tanstack/react-query': 5.100.6(react@19.2.5)
-      '@trpc/react-query': 11.16.0(@tanstack/react-query@5.100.6(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.3))(typescript@6.0.3))(@trpc/server@11.16.0(typescript@6.0.3))(react@19.2.5)(typescript@6.0.3)
+      '@tanstack/react-query': 5.100.7(react@19.2.5)
+      '@trpc/react-query': 11.16.0(@tanstack/react-query@5.100.7(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.3))(typescript@6.0.3))(@trpc/server@11.16.0(typescript@6.0.3))(react@19.2.5)(typescript@6.0.3)
 
-  '@trpc/react-query@11.16.0(@tanstack/react-query@5.100.6(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.3))(typescript@6.0.3))(@trpc/server@11.16.0(typescript@6.0.3))(react@19.2.5)(typescript@6.0.3)':
+  '@trpc/react-query@11.16.0(@tanstack/react-query@5.100.7(react@19.2.5))(@trpc/client@11.16.0(@trpc/server@11.16.0(typescript@6.0.3))(typescript@6.0.3))(@trpc/server@11.16.0(typescript@6.0.3))(react@19.2.5)(typescript@6.0.3)':
     dependencies:
-      '@tanstack/react-query': 5.100.6(react@19.2.5)
+      '@tanstack/react-query': 5.100.7(react@19.2.5)
       '@trpc/client': 11.16.0(@trpc/server@11.16.0(typescript@6.0.3))(typescript@6.0.3)
       '@trpc/server': 11.16.0(typescript@6.0.3)
       react: 19.2.5
