@@ -6,3 +6,4 @@ onlyBuiltDependencies:
 overrides:
   "vite": "7.3.2"
   "esbuild": "0.28.1"
+  "next>postcss": "8.5.15"
