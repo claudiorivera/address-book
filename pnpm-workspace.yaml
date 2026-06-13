@@ -1,5 +1,7 @@
 onlyBuiltDependencies:
-  - '@biomejs/biome'
-  - '@tailwindcss/oxide'
+  - "@biomejs/biome"
+  - "@tailwindcss/oxide"
   - esbuild
   - sharp
+overrides:
+  "vite": "7.3.2"
