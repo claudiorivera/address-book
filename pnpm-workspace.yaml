@@ -5,3 +5,4 @@ onlyBuiltDependencies:
   - sharp
 overrides:
   "vite": "7.3.2"
+  "esbuild": "0.28.1"
