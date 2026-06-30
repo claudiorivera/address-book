@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  vite: 7.3.5
+  vite: 7.3.6
   esbuild: 0.28.1
   next>postcss: 8.5.16
 
@@ -139,7 +139,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: 4.1.7
-        version: 4.1.7(@types/node@25.9.4)(vite@7.3.5(@types/node@25.9.4)(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.22.4)(yaml@2.5.1))
+        version: 4.1.7(@types/node@25.9.4)(vite@7.3.6(@types/node@25.9.4)(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.22.4)(yaml@2.5.1))
 
 packages:
 
@@ -1253,7 +1253,7 @@ packages:
     resolution: {integrity: sha512-vY7nuamKgfvpA1Koa3oYIw/k7D6kZnpGyNMZW8loow2bsBYla1TFdqTaXncWdRn4pgwNs+90RhnXhJScDwQeJA==}
     peerDependencies:
       msw: ^2.4.9
-      vite: 7.3.5
+      vite: 7.3.6
     peerDependenciesMeta:
       msw:
         optional: true
@@ -1846,8 +1846,8 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
-  vite@7.3.5:
-    resolution: {integrity: sha512-KuOaNhcnGFN2zIPGA7wRmzF+lJA1sea7rHq17aiJ++9lzY1WWG6Jpwqwe1KNbRVPIqHmr8GLYx7jbrQcN/7/ww==}
+  vite@7.3.6:
+    resolution: {integrity: sha512-4XP60spRGjSZFf1qYH+dJIkK2znL3zQfl9KkOV9MkkRR/3Dls0dxaBsQPTloEc5BLXWPL9vsOxopxyKoMmDueg==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -1902,7 +1902,7 @@ packages:
       '@vitest/ui': 4.1.7
       happy-dom: '*'
       jsdom: '*'
-      vite: 7.3.5
+      vite: 7.3.6
     peerDependenciesMeta:
       '@edge-runtime/vm':
         optional: true
@@ -2719,13 +2719,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.0
 
-  '@vitest/mocker@4.1.7(vite@7.3.5(@types/node@25.9.4)(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.22.4)(yaml@2.5.1))':
+  '@vitest/mocker@4.1.7(vite@7.3.6(@types/node@25.9.4)(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.22.4)(yaml@2.5.1))':
     dependencies:
       '@vitest/spy': 4.1.7
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 7.3.5(@types/node@25.9.4)(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.22.4)(yaml@2.5.1)
+      vite: 7.3.6(@types/node@25.9.4)(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.22.4)(yaml@2.5.1)
 
   '@vitest/pretty-format@4.1.7':
     dependencies:
@@ -3214,7 +3214,7 @@ snapshots:
     dependencies:
       react: 19.2.6
 
-  vite@7.3.5(@types/node@25.9.4)(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.22.4)(yaml@2.5.1):
+  vite@7.3.6(@types/node@25.9.4)(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.22.4)(yaml@2.5.1):
     dependencies:
       esbuild: 0.28.1
       fdir: 6.5.0(picomatch@4.0.4)
@@ -3230,10 +3230,10 @@ snapshots:
       tsx: 4.22.4
       yaml: 2.5.1
 
-  vitest@4.1.7(@types/node@25.9.4)(vite@7.3.5(@types/node@25.9.4)(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.22.4)(yaml@2.5.1)):
+  vitest@4.1.7(@types/node@25.9.4)(vite@7.3.6(@types/node@25.9.4)(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.22.4)(yaml@2.5.1)):
     dependencies:
       '@vitest/expect': 4.1.7
-      '@vitest/mocker': 4.1.7(vite@7.3.5(@types/node@25.9.4)(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.22.4)(yaml@2.5.1))
+      '@vitest/mocker': 4.1.7(vite@7.3.6(@types/node@25.9.4)(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.22.4)(yaml@2.5.1))
       '@vitest/pretty-format': 4.1.7
       '@vitest/runner': 4.1.7
       '@vitest/snapshot': 4.1.7
@@ -3250,7 +3250,7 @@ snapshots:
       tinyexec: 1.0.2
       tinyglobby: 0.2.15
       tinyrainbow: 3.1.0
-      vite: 7.3.5(@types/node@25.9.4)(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.22.4)(yaml@2.5.1)
+      vite: 7.3.6(@types/node@25.9.4)(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.22.4)(yaml@2.5.1)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 25.9.4
