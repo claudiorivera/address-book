@@ -1,9 +1,7 @@
+allowBuilds:
+  esbuild: true
 onlyBuiltDependencies:
   - "@biomejs/biome"
   - "@tailwindcss/oxide"
   - esbuild
   - sharp
-overrides:
-  "vite": "7.3.6"
-  "esbuild": "0.28.1"
-  "next>postcss": "8.5.23"
